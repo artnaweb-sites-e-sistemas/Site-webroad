@@ -20,6 +20,8 @@ jobs:
         password: ${{ secrets.FTP_PASSWORD }}
         port: 21
         protocol: ftp
+        timeout: 60000
+        log-level: verbose
         local-dir: ./
         server-dir: ./public_html/
         exclude: |
