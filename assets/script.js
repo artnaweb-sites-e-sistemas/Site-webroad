@@ -1,18 +1,26 @@
-// WebRoad Landing Page JavaScript
+// WebRoad Landing Page JavaScript - Optimized
 
 document.addEventListener('DOMContentLoaded', function() {
-    // Initialize all functionality
+    // Initialize critical functionality first
     initNavigation();
-    initScrollAnimations();
-    initContactVisual();
-    initSmoothScrolling();
     initMobileMenu();
-    initParallaxEffects();
-    initCounterAnimations();
-    initMobileHeroCounters();
-    initTeamCarousel();
-    initScrollUp();
-    initCTAVideo();
+    initSmoothScrolling();
+    
+    // Initialize non-critical functionality with delay
+    setTimeout(() => {
+        initScrollAnimations();
+        initContactVisual();
+        initCounterAnimations();
+        initMobileHeroCounters();
+        initTeamCarousel();
+        initScrollUp();
+        initCTAVideo();
+    }, 100);
+    
+    // Initialize heavy animations last
+    setTimeout(() => {
+        initParallaxEffects();
+    }, 300);
 });
 
 // Mobile hero counters initialization
@@ -170,21 +178,37 @@ function initMobileMenu() {
     const navToggle = document.querySelector('.nav-toggle');
     const navMenu = document.querySelector('.nav-menu');
     
-    if (navToggle && navMenu) {
-        navToggle.addEventListener('click', function() {
-            navMenu.classList.toggle('active');
-            navToggle.classList.toggle('active');
-        });
-        
-        // Close menu when clicking on a link
-        const navLinks = document.querySelectorAll('.nav-menu a');
-        navLinks.forEach(link => {
-            link.addEventListener('click', function() {
-                navMenu.classList.remove('active');
-                navToggle.classList.remove('active');
-            });
-        });
+    if (!navToggle || !navMenu) {
+        return;
     }
+    
+    // Simple toggle function
+    function toggleMenu() {
+        navMenu.classList.toggle('active');
+        navToggle.classList.toggle('active');
+        
+        if (navMenu.classList.contains('active')) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = '';
+        }
+    }
+    
+    // Add click event
+    navToggle.onclick = function(e) {
+        e.preventDefault();
+        toggleMenu();
+    };
+    
+    // Close menu when clicking on links
+    const navLinks = navMenu.querySelectorAll('a');
+    navLinks.forEach(link => {
+        link.onclick = function() {
+            navMenu.classList.remove('active');
+            navToggle.classList.remove('active');
+            document.body.style.overflow = '';
+        };
+    });
 }
 
 // Smooth scrolling for navigation links
@@ -604,6 +628,20 @@ function initRotatingText() {
 // Particles Animation
 function initParticles() {
     const canvas = document.getElementById('particles-canvas');
+    const mobileCanvas = document.getElementById('mobile-particles-canvas');
+    
+    // Initialize desktop particles
+    if (canvas) {
+        initParticlesCanvas(canvas);
+    }
+    
+    // Initialize mobile particles
+    if (mobileCanvas) {
+        initParticlesCanvas(mobileCanvas);
+    }
+}
+
+function initParticlesCanvas(canvas) {
     if (!canvas) return;
     
     const ctx = canvas.getContext('2d');
@@ -615,19 +653,23 @@ function initParticles() {
     }
     
     function createParticle() {
+        const isMobile = canvas.id === 'mobile-particles-canvas';
         return {
             x: Math.random() * canvas.width,
             y: Math.random() * canvas.height,
             vx: (Math.random() - 0.5) * 0.5,
             vy: (Math.random() - 0.5) * 0.5,
-            size: Math.random() * 2 + 1,
-            opacity: Math.random() * 0.5 + 0.2
+            size: isMobile ? Math.random() * 3 + 2 : Math.random() * 2 + 1,
+            opacity: isMobile ? Math.random() * 0.7 + 0.3 : Math.random() * 0.5 + 0.2
         };
     }
     
     function initParticlesArray() {
         particles = [];
-        const particleCount = Math.floor((canvas.width * canvas.height) / 15000);
+        // Reduce particle count for mobile
+        const isMobile = canvas.id === 'mobile-particles-canvas';
+        const divisor = isMobile ? 25000 : 15000;
+        const particleCount = Math.floor((canvas.width * canvas.height) / divisor);
         for (let i = 0; i < particleCount; i++) {
             particles.push(createParticle());
         }
@@ -1291,4 +1333,5 @@ window.WebRoad = {
     showNotification,
     debounce,
     throttle
+};
 };

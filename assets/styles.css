@@ -1,13 +1,5 @@
-/* Reset e Base Styles */
-html, body {
-    overflow-x: hidden !important;
-}
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+/* Reset e Base Styles - Optimized */
+html,body{overflow-x:hidden!important}*{margin:0;padding:0;box-sizing:border-box}
 
 :root {
     /* Cores baseadas na paleta WebRoad */
@@ -2849,9 +2841,28 @@ body {
         font-size: 0.8rem;
     }
     
-    .highlight-item span {
-        font-size: 0.8rem;
-    }
+.highlight-item span {
+    font-size: 0.8rem;
+}
+
+/* Performance Optimizations */
+*{will-change:auto}
+img{max-width:100%;height:auto}
+.hero,.mobile-hero{contain:layout style paint}
+.team,.services,.cta-section{contain:layout style}
+.mouse-follower{contain:strict}
+.particles-canvas{contain:layout style paint}
+
+/* Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+    *{animation-duration:0.01ms!important;animation-iteration-count:1!important;transition-duration:0.01ms!important}
+    .hero-gradient,.mobile-hero-gradient{animation:none}
+    .particles-canvas{display:none}
+}
+
+/* Critical resource hints */
+.link{text-decoration:none}
+.btn{text-decoration:none;display:inline-block}
 }
 
 /* Footer */
@@ -2986,11 +2997,88 @@ body {
 /* Responsive Design */
 @media (max-width: 768px) {
     .nav-menu {
-        display: none;
+        position: fixed;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100vh;
+        background: rgba(255, 255, 255, 0.98);
+        backdrop-filter: blur(20px);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 2rem;
+        gap: 2rem;
+        z-index: 999;
+        transition: left 0.3s ease;
+        list-style: none;
+        margin: 0;
+        display: flex;
+    }
+    
+    .nav-menu.active {
+        left: 0 !important;
+    }
+    
+    .nav-menu li {
+        margin: 0;
+    }
+    
+    .nav-menu a {
+        color: var(--gray-dark);
+        font-size: 1.5rem;
+        font-weight: 600;
+        text-decoration: none;
+        padding: 1rem 2rem;
+        border-radius: 10px;
+        transition: all 0.3s ease;
+        display: block;
+        text-align: center;
+        min-width: 200px;
+    }
+    
+    .nav-menu a:hover {
+        color: var(--primary-purple);
+        background: rgba(139, 92, 246, 0.1);
+        transform: translateY(-2px);
     }
     
     .nav-toggle {
-        display: flex;
+        display: flex !important;
+        flex-direction: column;
+        cursor: pointer;
+        padding: 0.5rem;
+        z-index: 1001;
+        position: relative;
+        pointer-events: auto !important;
+        visibility: visible !important;
+        background: transparent;
+        border: none;
+        outline: none;
+    }
+    
+    .nav-toggle span {
+        width: 25px;
+        height: 3px;
+        background: #ffffff;
+        margin: 3px 0;
+        transition: all 0.3s ease;
+        border-radius: 2px;
+        display: block;
+    }
+    
+    .nav-toggle.active span:nth-child(1) {
+        transform: rotate(45deg) translate(6px, 6px);
+        background: var(--primary-purple);
+    }
+    
+    .nav-toggle.active span:nth-child(2) {
+        opacity: 0;
+    }
+    
+    .nav-toggle.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(6px, -6px);
+        background: var(--primary-purple);
     }
     
     /* Hide desktop hero on mobile */
@@ -3007,7 +3095,8 @@ body {
 @media (max-width: 768px) {
     .mobile-hero {
         display: block;
-        min-height: 70vh;
+        min-height: 60vh;
+        max-height: 70vh;
         position: relative;
         overflow: hidden;
         background: var(--black);
@@ -3029,9 +3118,10 @@ body {
         left: 0;
         width: 100%;
         height: 100%;
-        background: linear-gradient(135deg, #0f041f, #320a97, #5e2ced, #9333ea);
+        background: linear-gradient(135deg, #0f041f 0%, #1a0659 25%, #320a97 50%, #5e2ced 75%, #9333ea 100%);
         background-size: 400% 400%;
         animation: gradientAnimation 15s ease infinite;
+        z-index: 1;
     }
     
     .mobile-hero-overlay {
@@ -3040,28 +3130,40 @@ body {
         left: 0;
         width: 100%;
         height: 100%;
-        background: rgba(0, 0, 0, 0.3);
+        background: rgba(0, 0, 0, 0.15);
+        z-index: 2;
+    }
+    
+    .mobile-particles-canvas {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 3;
+        pointer-events: none;
     }
     
     .mobile-hero-content {
         position: relative;
-        z-index: 2;
-        padding: 60px var(--spacing-md) var(--spacing-lg);
+        z-index: 4;
+        padding: 40px var(--spacing-md) var(--spacing-md);
         display: flex;
         flex-direction: column;
         align-items: center;
         text-align: center;
-        min-height: 70vh;
+        min-height: 60vh;
+        max-height: 70vh;
         justify-content: center;
     }
     
     
     .mobile-hero-title {
-        font-size: clamp(2.2rem, 8vw, 3rem);
+        font-size: clamp(2.5rem, 8vw, 3.5rem);
         font-weight: 800;
         color: var(--white);
-        line-height: 1.0;
-        margin-bottom: var(--spacing-sm);
+        line-height: 1.1;
+        margin-bottom: 0.75rem;
         opacity: 0;
         transform: translateY(40px) scale(0.8);
         animation: heroTitleEntrance 1s ease-out 0.2s forwards;
@@ -3104,14 +3206,15 @@ body {
         -webkit-text-fill-color: transparent;
         background-clip: text;
         display: block;
-        margin-top: var(--spacing-xs);
+        margin-top: 0.5rem;
+        margin-bottom: 2rem;
         font-weight: 800;
-        font-size: clamp(1.8rem, 5vw, 2.8rem);
+        font-size: clamp(2rem, 6vw, 3rem);
         text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
         letter-spacing: -0.01em;
         word-spacing: 0.03em;
         line-height: 1.1;
-        padding-bottom: 0.2em;
+        padding-bottom: 0.1em;
         font-family: 'Inter', sans-serif;
         transition: all 0.3s ease;
         cursor: pointer;
@@ -3138,30 +3241,31 @@ body {
     .mobile-hero-buttons {
         display: flex;
         flex-direction: row;
-        gap: var(--spacing-md);
+        gap: 1rem;
         width: 100%;
-        max-width: 400px;
-        margin-bottom: var(--spacing-sm);
+        max-width: 380px;
+        margin-top: 0;
+        margin-bottom: 1rem;
         opacity: 0;
         transform: translateY(30px);
         animation: heroButtonsEntrance 0.8s ease-out 1s forwards;
         justify-content: center;
         flex-wrap: wrap;
-        padding: 0 var(--spacing-sm);
+        padding: 0 1rem;
         position: relative;
         z-index: 6;
     }
     
     .mobile-hero-buttons .btn {
         flex: 1;
-        min-width: 140px;
-        padding: var(--spacing-md) var(--spacing-lg);
-        font-size: 0.9rem;
-        border-radius: 12px;
+        min-width: 120px;
+        padding: 0.75rem 1rem;
+        font-size: 0.85rem;
+        border-radius: 10px;
         display: flex;
         align-items: center;
         justify-content: center;
-        gap: var(--spacing-sm);
+        gap: 0.5rem;
         transition: all 0.3s ease;
     }
     
@@ -3169,28 +3273,39 @@ body {
 }
 
 @media (max-width: 480px) {
+    .mobile-hero {
+        min-height: 55vh;
+        max-height: 65vh;
+    }
+    
     .mobile-hero-content {
-        padding: 80px var(--spacing-sm) var(--spacing-lg) !important;
-        padding-top: 115px !important;
+        padding: 30px var(--spacing-sm) var(--spacing-sm) !important;
+        min-height: 55vh;
+        max-height: 65vh;
     }
     
     .mobile-hero-title {
-        font-size: clamp(1.8rem, 7vw, 2.2rem);
+        font-size: clamp(2.2rem, 7vw, 2.8rem);
+        margin-bottom: 0.5rem;
     }
     
-    .mobile-hero-subtitle {
-        font-size: 0.9rem;
-        margin-bottom: var(--spacing-lg);
+    .mobile-hero-location {
+        font-size: clamp(1.8rem, 5vw, 2.4rem);
+        margin-top: 0.25rem;
+        margin-bottom: 1.5rem;
     }
     
     .mobile-hero-buttons {
-        max-width: 280px;
-        margin-bottom: var(--spacing-lg);
+        max-width: 320px;
+        margin-top: 0;
+        margin-bottom: 0.75rem;
+        gap: 0.75rem;
     }
     
     .mobile-hero-buttons .btn {
-        padding: var(--spacing-sm) var(--spacing-md);
-        font-size: 0.9rem;
+        padding: 0.75rem 1rem;
+        font-size: 0.85rem;
+        min-width: 120px;
     }
     
     
@@ -3346,7 +3461,7 @@ body {
 /* Mobile Hero Title */
 .mobile-hero-title {
     padding: 0;
-    margin: 0 0 0.5rem 0;
+    margin: 64px 0 1.5rem 0;
 }
 
 /* Mobile Hero Location */

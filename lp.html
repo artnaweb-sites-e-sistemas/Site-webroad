@@ -3,27 +3,120 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Performance Meta Tags -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="theme-color" content="#320a97">
+    <meta name="robots" content="index, follow">
+    <meta name="googlebot" content="index, follow">
+    
+    <!-- SEO Meta Tags -->
     <title>WebRoad - Transformamos ideias em experiências digitais memoráveis</title>
-    <link rel="stylesheet" href="assets/styles.css">
+    <meta name="description" content="Agência digital WebRoad - Desenvolvemos websites, e-commerce, branding e gestão de tráfego. Transformamos ideias em experiências digitais memoráveis com foco em resultados.">
+    <meta name="keywords" content="agência digital, web design, desenvolvimento web, e-commerce, branding, marketing digital, gestão de tráfego">
+    <meta name="author" content="WebRoad">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="WebRoad - Transformamos ideias em experiências digitais memoráveis">
+    <meta property="og:description" content="Agência digital especializada em desenvolvimento web, branding e marketing digital. Transformamos ideias em experiências digitais memoráveis.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://webroad.com.br">
+    <meta property="og:image" content="assets/imgs/agencia.jpg">
+    <meta property="og:site_name" content="WebRoad">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="WebRoad - Transformamos ideias em experiências digitais memoráveis">
+    <meta name="twitter:description" content="Agência digital especializada em desenvolvimento web, branding e marketing digital.">
+    <meta name="twitter:image" content="assets/imgs/agencia.jpg">
+    
+    <!-- Preconnect para recursos externos -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    
+    <!-- DNS Prefetch -->
+    <link rel="dns-prefetch" href="//wa.me">
+    <link rel="dns-prefetch" href="//www.youtube.com">
+    
+    <!-- Critical CSS inline -->
+    <style>
+        /* Critical CSS - Above the fold styles */
+        *{margin:0;padding:0;box-sizing:border-box}
+        html{scroll-behavior:smooth}
+        body{font-family:Inter,sans-serif;line-height:1.6;color:#1e293b;overflow-x:hidden}
+        .navbar{position:fixed;top:0;width:100%;background:rgba(255,255,255,0.1);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,0.2);z-index:1000;padding:1rem 0;transition:all 0.3s ease}
+        .nav-container{max-width:1200px;margin:0 auto;padding:0 1.5rem;display:flex;justify-content:space-between;align-items:center}
+        .nav-logo img{height:40px;width:auto;transition:opacity 0.3s ease}
+        .hero{min-height:70vh;display:flex;flex-direction:column;justify-content:center;position:relative;overflow:hidden;background:#000;z-index:0}
+        .hero-background{position:absolute;top:0;left:0;width:100%;height:100%;z-index:1}
+        .hero-gradient{position:absolute;top:0;left:0;width:100%;height:100%;background:linear-gradient(45deg,#0f041f,#320a97,#5e2ced,#9333ea);background-size:400% 400%;animation:gradientAnimation 15s ease infinite;z-index:1}
+        @keyframes gradientAnimation{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+        .hero-overlay{position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.67);z-index:2}
+        .hero-content{position:relative;z-index:4;max-width:1400px;margin:0 auto;padding:0 1.5rem;display:flex;flex-direction:column;justify-content:center;height:70vh;min-height:70vh}
+        .hero-main{display:flex;flex-direction:column;justify-content:center;text-align:center;color:#fff;padding:2rem 0;max-width:800px;flex:1;margin:0 auto;align-items:center;position:relative;z-index:5}
+        .hero-title{font-size:clamp(3rem,8vw,5rem);font-weight:800;line-height:1;margin-bottom:1rem;color:#fff;opacity:0;transform:translateY(50px) scale(0.8);animation:heroTitleEntrance 1.2s ease-out 0.3s forwards;text-shadow:0 2px 4px rgba(0,0,0,0.2)}
+        @keyframes heroTitleEntrance{0%{opacity:0;transform:translateY(50px) scale(0.8)}50%{opacity:0.7;transform:translateY(-10px) scale(1.02)}100%{opacity:1;transform:translateY(0) scale(1)}}
+        @media (max-width:768px){.nav-toggle{display:flex;flex-direction:column;cursor:pointer}.nav-toggle span{width:25px;height:3px;background:#ffffff;margin:3px 0;transition:0.3s;border-radius:2px}.hero{display:none}}
+        .mobile-hero{display:none}
+        @media (max-width:768px){.mobile-hero{display:block;min-height:60vh;max-height:70vh;position:relative;overflow:hidden;background:linear-gradient(135deg,#0f041f,#1a0659,#320a97,#5e2ced,#9333ea);z-index:0}}
+    </style>
+    
+    <!-- Non-critical CSS - Load asynchronously -->
+    <link rel="preload" href="assets/styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="assets/styles.css"></noscript>
+    
+    <!-- Fonts - Load with display=swap for better performance -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Font Awesome - Load asynchronously -->
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"></noscript>
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "WebRoad",
+        "description": "Agência digital especializada em desenvolvimento web, branding e marketing digital",
+        "url": "https://webroad.com.br",
+        "logo": "assets/imgs/logod.webp",
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "+55-11-97153-4673",
+            "contactType": "customer service",
+            "availableLanguage": "Portuguese"
+        },
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "São Paulo",
+            "addressRegion": "SP",
+            "addressCountry": "BR"
+        },
+        "sameAs": [
+            "https://www.facebook.com/profile.php?id=61555252693492",
+            "https://www.instagram.com/agenciawebroad/"
+        ]
+    }
+    </script>
 </head>
 <body>   
      <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
             <div class="nav-logo">
-                <img src="assets/imgs/logow.webp" alt="WebRoad Logo" class="logo-white" id="logo-white">
-                <img src="assets/imgs/logod.webp" alt="WebRoad Logo" class="logo-dark" id="logo-dark">
+                <img src="assets/imgs/logow.webp" alt="WebRoad Logo" class="logo-white" id="logo-white" width="120" height="40" fetchpriority="high">
+                <img src="assets/imgs/logod.webp" alt="WebRoad Logo" class="logo-dark" id="logo-dark" width="120" height="40" fetchpriority="high">
             </div>
             <ul class="nav-menu">
-                <li><a href="#home">Início</a></li>
-                <li><a href="#about">Sobre</a></li>
-                <li><a href="#services">Serviços</a></li>
-                <li><a href="#team">Equipe</a></li>
-                <li><a href="#contact">Contato</a></li>
+                <li><a href="#home" onclick="document.querySelector('.nav-menu').classList.remove('active'); document.querySelector('.nav-toggle').classList.remove('active'); document.body.style.overflow = '';">Início</a></li>
+                <li><a href="#about" onclick="document.querySelector('.nav-menu').classList.remove('active'); document.querySelector('.nav-toggle').classList.remove('active'); document.body.style.overflow = '';">Sobre</a></li>
+                <li><a href="#services" onclick="document.querySelector('.nav-menu').classList.remove('active'); document.querySelector('.nav-toggle').classList.remove('active'); document.body.style.overflow = '';">Serviços</a></li>
+                <li><a href="#team" onclick="document.querySelector('.nav-menu').classList.remove('active'); document.querySelector('.nav-toggle').classList.remove('active'); document.body.style.overflow = '';">Equipe</a></li>
+                <li><a href="#contact" onclick="document.querySelector('.nav-menu').classList.remove('active'); document.querySelector('.nav-toggle').classList.remove('active'); document.body.style.overflow = '';">Contato</a></li>
             </ul>
-            <div class="nav-toggle">
+            <div class="nav-toggle" onclick="document.querySelector('.nav-menu').classList.toggle('active'); document.querySelector('.nav-toggle').classList.toggle('active'); document.body.style.overflow = document.querySelector('.nav-menu').classList.contains('active') ? 'hidden' : '';">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -36,12 +129,13 @@
         <div class="mobile-hero-background">
             <div class="mobile-hero-gradient"></div>
             <div class="mobile-hero-overlay"></div>
+            <canvas id="mobile-particles-canvas" class="mobile-particles-canvas"></canvas>
         </div>
         
         <div class="mobile-hero-content">
             
             <h1 class="mobile-hero-title">
-                Conduzindo negócios ao
+                Conduzindo<br>negócios ao
                 <br><span class="mobile-hero-location">sucesso digital</span>
             </h1>
             
@@ -75,7 +169,7 @@
             <!-- Main Content Area -->
             <div class="hero-main">
                 <h1 class="hero-title">
-                    Conduzindo negócios ao
+                    Conduzindo<br>negócios ao
                     <br><span class="hero-location">sucesso digital</span>
                 </h1>
                 <div class="hero-buttons">
@@ -111,7 +205,8 @@
                         title="WebRoad - Agência Digital"
                         frameborder="0" 
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                        allowfullscreen>
+                        allowfullscreen
+                        loading="lazy">
                     </iframe>
                 </div>
             </div>
@@ -314,7 +409,7 @@
                 <!-- Coluna Central: Imagem Principal -->
                 <div class="team-image-column">
                     <div class="team-main-image-container" data-aos="fade-up" data-aos-offset="0" data-aos-delay="200" data-aos-duration="600" data-aos-easing="ease-out" data-aos-mirror="false" data-aos-once="true" data-aos-anchor-placement="top-bottom">
-                        <img src="assets/imgs/imgequipe.png" alt="Retrato de Bira Oliveira, Designer" class="team-main-image">
+                        <img src="assets/imgs/imgequipe.png" alt="Retrato de Bira Oliveira, Designer" class="team-main-image" width="640" height="800" loading="lazy">
                         </div>
                     </div>
                 
@@ -325,7 +420,7 @@
                         <div class="team-thumbnails-container" role="listbox" aria-label="Selecionar membro da equipe">
                             <div class="team-thumbnail active" role="option" aria-selected="true" data-member="0" data-role="Designer" data-linkedin="#" data-bio="Especialista em design estratégico e experiência do usuário" data-photo-hd="assets/imgs/imgequipe.png" tabindex="0">
                                 <div class="thumbnail-image-container">
-                                    <img src="assets/imgs/imgequipe.png" alt="Bira Oliveira" class="thumbnail-image">
+                                    <img src="assets/imgs/imgequipe.png" alt="Bira Oliveira" class="thumbnail-image" width="295" height="455" loading="lazy">
                 </div>
                                 <div class="thumbnail-name-container">
                                     <span class="thumbnail-name">BIRA OLIVEIRA</span>
@@ -333,7 +428,7 @@
                     </div>
                             <div class="team-thumbnail" role="option" aria-selected="false" data-member="1" data-role="Desenvolvedora Frontend" data-linkedin="#" data-bio="Especialista em React, Vue.js e desenvolvimento de interfaces modernas" data-photo-hd="assets/imgs/imgequipe.png" tabindex="0">
                                 <div class="thumbnail-image-container">
-                                    <img src="assets/imgs/imgequipe.png" alt="Ana Silva" class="thumbnail-image">
+                                    <img src="assets/imgs/imgequipe.png" alt="Ana Silva" class="thumbnail-image" width="295" height="455" loading="lazy">
                                 </div>
                                 <div class="thumbnail-name-container">
                                     <span class="thumbnail-name">ANA SILVA</span>
@@ -341,7 +436,7 @@
                 </div>
                             <div class="team-thumbnail" role="option" aria-selected="false" data-member="2" data-role="Desenvolvedor Backend" data-linkedin="#" data-bio="Especialista em Node.js, Python e arquiteturas escaláveis" data-photo-hd="assets/imgs/imgequipe.png" tabindex="0">
                                 <div class="thumbnail-image-container">
-                                    <img src="assets/imgs/imgequipe.png" alt="Carlos Santos" class="thumbnail-image">
+                                    <img src="assets/imgs/imgequipe.png" alt="Carlos Santos" class="thumbnail-image" width="295" height="455" loading="lazy">
                                 </div>
                                 <div class="thumbnail-name-container">
                                     <span class="thumbnail-name">CARLOS SANTOS</span>
@@ -349,7 +444,7 @@
                     </div>
                             <div class="team-thumbnail" role="option" aria-selected="false" data-member="3" data-role="UX/UI Designer" data-linkedin="#" data-bio="Especialista em pesquisa de usuários e design de interfaces" data-photo-hd="assets/imgs/imgequipe.png" tabindex="0">
                                 <div class="thumbnail-image-container">
-                                    <img src="assets/imgs/imgequipe.png" alt="Maria Costa" class="thumbnail-image">
+                                    <img src="assets/imgs/imgequipe.png" alt="Maria Costa" class="thumbnail-image" width="295" height="455" loading="lazy">
                                 </div>
                                 <div class="thumbnail-name-container">
                                     <span class="thumbnail-name">MARIA COSTA</span>
@@ -357,7 +452,7 @@
                     </div>
                             <div class="team-thumbnail" role="option" aria-selected="false" data-member="4" data-role="Gerente de Projetos" data-linkedin="#" data-bio="Especialista em gestão ágil e coordenação de equipes" data-photo-hd="assets/imgs/imgequipe.png" tabindex="0">
                                 <div class="thumbnail-image-container">
-                                    <img src="assets/imgs/imgequipe.png" alt="João Lima" class="thumbnail-image">
+                                    <img src="assets/imgs/imgequipe.png" alt="João Lima" class="thumbnail-image" width="295" height="455" loading="lazy">
                                 </div>
                                 <div class="thumbnail-name-container">
                                     <span class="thumbnail-name">JOÃO LIMA</span>
@@ -425,7 +520,7 @@
     <!-- CTA Section -->
     <section class="cta-section">
         <div class="cta-video-bg">
-            <video id="cta-video" autoplay muted loop playsinline webkit-playsinline preload="auto" poster="assets/imgs/videobackground.mp4">
+            <video id="cta-video" autoplay muted loop playsinline webkit-playsinline preload="metadata" poster="assets/imgs/videobackground.mp4">
                 <source src="assets/imgs/videobackground.mp4" type="video/mp4">
                 Seu navegador não suporta vídeos HTML5.
             </video>
@@ -540,7 +635,7 @@
                                 <p>Um ambiente moderno e profissional onde suas ideias ganham vida através da tecnologia e criatividade.</p>
                             </div>
                         </div>
-                        <img src="assets/imgs/agencia.jpg" alt="WebRoad - Nossa agência digital moderna" class="contact-image">
+                        <img src="assets/imgs/agencia.jpg" alt="WebRoad - Nossa agência digital moderna" class="contact-image" width="550" height="450" loading="lazy">
                     </div>
                     <div class="contact-highlights">
                         <div class="highlight-item">
@@ -572,7 +667,7 @@
             <div class="footer-content">
                 <div class="footer-section">
                     <div class="footer-logo">
-                        <img src="assets/imgs/logow.webp" alt="WebRoad Logo" class="footer-logo-img">
+                        <img src="assets/imgs/logow.webp" alt="WebRoad Logo" class="footer-logo-img" width="120" height="50" loading="lazy">
                     </div>
                     <p>Transformando ideias em experiências digitais memoráveis.</p>
                     <div class="social-links">
@@ -627,6 +722,24 @@
     <!-- Mouse Follower - Moved to end for maximum z-index priority -->
     <div class="mouse-follower"></div>
     
-    <script src="assets/script.js"></script>
+    <!-- JavaScript - Load with defer for better performance -->
+    <script src="assets/script.js" defer></script>
+    
+    <!-- Performance monitoring script -->
+    <script>
+        // Simple performance monitoring
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                const perfData = performance.getEntriesByType('navigation')[0];
+                if (perfData) {
+                    console.log('Page Load Performance:', {
+                        'DOM Content Loaded': Math.round(perfData.domContentLoadedEventEnd - perfData.domContentLoadedEventStart),
+                        'Load Complete': Math.round(perfData.loadEventEnd - perfData.loadEventStart),
+                        'Total Load Time': Math.round(perfData.loadEventEnd - perfData.fetchStart)
+                    });
+                }
+            }, 0);
+        });
+    </script>
 </body>
 </html>
