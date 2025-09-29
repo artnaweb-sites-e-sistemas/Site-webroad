@@ -27,6 +27,12 @@ img {
     font-display: swap;
 }
 
+/* Optimize animations to reduce reflow */
+.fade-in-up, .fade-in-left, .fade-in-right {
+    will-change: transform, opacity;
+    transform: translateZ(0);
+}
+
 :root {
     /* Cores baseadas na paleta WebRoad */
     --primary-dark: #0f041f;
@@ -201,6 +207,8 @@ body {
     height: 40px;
     width: auto;
     transition: opacity 0.3s ease;
+    will-change: opacity;
+    transform: translateZ(0);
 }
 
 /* Default logo state - show white logo initially */
@@ -962,10 +970,12 @@ body {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     background: #000;
     contain: layout style paint;
+    will-change: transform;
+    transform: translateZ(0);
 }
 
 .youtube-placeholder:hover {
-    transform: translateY(-4px);
+    transform: translateY(-4px) translateZ(0);
     box-shadow: 0 12px 48px rgba(0, 0, 0, 0.3);
 }
 
@@ -981,12 +991,37 @@ body {
     justify-content: center;
 }
 
+.youtube-skeleton {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, #333 25%, #444 50%, #333 75%);
+    background-size: 200% 100%;
+    animation: skeleton-loading 1.5s infinite;
+    z-index: 1;
+}
+
+@keyframes skeleton-loading {
+    0% {
+        background-position: 200% 0;
+    }
+    100% {
+        background-position: -200% 0;
+    }
+}
+
 .youtube-thumbnail img {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
     background: #000;
     aspect-ratio: 16/9;
+    will-change: auto;
 }
 
 .play-button {

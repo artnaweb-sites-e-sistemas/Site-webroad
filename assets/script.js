@@ -7,12 +7,29 @@ if (!window.requestIdleCallback) {
     };
 }
 
+// Optimize DOM operations to reduce forced reflow
+function optimizeDOMOperations() {
+    // Use DocumentFragment for batch DOM operations
+    const fragment = document.createDocumentFragment();
+    
+    // Batch style reads before writes
+    const elements = document.querySelectorAll('.fade-in-up, .fade-in-left, .fade-in-right');
+    
+    // Use requestAnimationFrame for smooth animations
+    requestAnimationFrame(() => {
+        elements.forEach(el => {
+            el.style.willChange = 'transform, opacity';
+        });
+    });
+}
+
 document.addEventListener('DOMContentLoaded', function() {
     // Initialize critical functionality first
     initNavigation();
     initMobileMenu();
     initSmoothScrolling();
     initYouTubeLazyLoad();
+    optimizeDOMOperations();
     
     // Initialize non-critical functionality with delay
     requestIdleCallback(() => {
@@ -1343,7 +1360,19 @@ function initYouTubeLazyLoad() {
     placeholders.forEach(placeholder => {
         // Optimize thumbnail loading - load only one image at a time
         const img = placeholder.querySelector('img');
+        const skeleton = placeholder.querySelector('.youtube-skeleton');
+        
         if (img) {
+            // Hide skeleton when image loads
+            img.onload = function() {
+                if (skeleton) {
+                    skeleton.style.opacity = '0';
+                    setTimeout(() => {
+                        skeleton.style.display = 'none';
+                    }, 300);
+                }
+            };
+            
             // Create a single image loader to avoid double requests
             const loader = new Image();
             loader.onload = function() {
