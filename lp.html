@@ -34,6 +34,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="preconnect" href="https://www.youtube.com">
+    <link rel="dns-prefetch" href="https://img.youtube.com">
     
     <!-- DNS Prefetch -->
     <link rel="dns-prefetch" href="//wa.me">
@@ -66,10 +68,11 @@
     <link rel="preload" href="assets/styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="assets/styles.css"></noscript>
     
-    <!-- Fonts - Load with display=swap for better performance -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Fonts - Load asynchronously to avoid render blocking -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"></noscript>
     
-    <!-- Font Awesome - Load asynchronously -->
+    <!-- Font Awesome - Load only used icons -->
     <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"></noscript>
     
@@ -200,14 +203,14 @@
             <!-- Video Container -->
             <div class="mission-video-container">
                 <div class="video-wrapper">
-                    <iframe 
-                        src="https://www.youtube.com/embed/ChQbnx9KtRQ" 
-                        title="WebRoad - Agência Digital"
-                        frameborder="0" 
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                        allowfullscreen
-                        loading="lazy">
-                    </iframe>
+                    <div class="youtube-placeholder" data-video-id="ChQbnx9KtRQ">
+                        <div class="youtube-thumbnail">
+                            <img src="https://img.youtube.com/vi/ChQbnx9KtRQ/hqdefault.jpg" alt="WebRoad - Agência Digital" loading="lazy">
+                            <div class="play-button">
+                                <i class="fas fa-play"></i>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
             

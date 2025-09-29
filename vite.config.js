@@ -25,7 +25,10 @@ export default defineConfig({
   },
   server: {
     port: 5173,
-    open: '/lp.html'
+    open: '/lp.html',
+    hmr: {
+      overlay: false
+    }
   },
   
   // CSS preprocessing

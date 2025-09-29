@@ -1,13 +1,21 @@
 // WebRoad Landing Page JavaScript - Optimized
 
+// Fallback for requestIdleCallback
+if (!window.requestIdleCallback) {
+    window.requestIdleCallback = function(callback, options) {
+        return setTimeout(callback, options?.timeout || 0);
+    };
+}
+
 document.addEventListener('DOMContentLoaded', function() {
     // Initialize critical functionality first
     initNavigation();
     initMobileMenu();
     initSmoothScrolling();
+    initYouTubeLazyLoad();
     
     // Initialize non-critical functionality with delay
-    setTimeout(() => {
+    requestIdleCallback(() => {
         initScrollAnimations();
         initContactVisual();
         initCounterAnimations();
@@ -15,12 +23,12 @@ document.addEventListener('DOMContentLoaded', function() {
         initTeamCarousel();
         initScrollUp();
         initCTAVideo();
-    }, 100);
+    }, { timeout: 100 });
     
     // Initialize heavy animations last
-    setTimeout(() => {
+    requestIdleCallback(() => {
         initParallaxEffects();
-    }, 300);
+    }, { timeout: 300 });
 });
 
 // Mobile hero counters initialization
@@ -1328,10 +1336,55 @@ function initCTAVideo() {
     }, 3000);
 }
 
+// YouTube Lazy Loading
+function initYouTubeLazyLoad() {
+    const placeholders = document.querySelectorAll('.youtube-placeholder');
+    
+    placeholders.forEach(placeholder => {
+        // Improve thumbnail quality
+        const img = placeholder.querySelector('img');
+        if (img) {
+            // Try to load higher quality thumbnail
+            const highQualityImg = new Image();
+            highQualityImg.onload = function() {
+                img.src = this.src;
+            };
+            highQualityImg.src = img.src.replace('hqdefault', 'maxresdefault');
+        }
+        
+        placeholder.addEventListener('click', function() {
+            const videoId = this.dataset.videoId;
+            const iframe = document.createElement('iframe');
+            
+            iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1&showinfo=0`;
+            iframe.title = 'WebRoad - Agência Digital';
+            iframe.frameBorder = '0';
+            iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+            iframe.allowFullscreen = true;
+            iframe.style.position = 'absolute';
+            iframe.style.top = '0';
+            iframe.style.left = '0';
+            iframe.style.width = '100%';
+            iframe.style.height = '100%';
+            iframe.style.borderRadius = '12px';
+            iframe.style.border = 'none';
+            
+            this.innerHTML = '';
+            this.appendChild(iframe);
+            
+            // Add loading state
+            this.style.opacity = '0.8';
+            iframe.onload = () => {
+                this.style.opacity = '1';
+            };
+        });
+    });
+}
+
 // Export functions for external use if needed
 window.WebRoad = {
     showNotification,
     debounce,
-    throttle
-};
+    throttle,
+    initYouTubeLazyLoad
 };
