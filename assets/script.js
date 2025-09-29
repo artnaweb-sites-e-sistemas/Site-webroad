@@ -9,18 +9,37 @@ if (!window.requestIdleCallback) {
 
 // Optimize DOM operations to reduce forced reflow
 function optimizeDOMOperations() {
-    // Use DocumentFragment for batch DOM operations
-    const fragment = document.createDocumentFragment();
-    
-    // Batch style reads before writes
-    const elements = document.querySelectorAll('.fade-in-up, .fade-in-left, .fade-in-right');
-    
-    // Use requestAnimationFrame for smooth animations
-    requestAnimationFrame(() => {
-        elements.forEach(el => {
-            el.style.willChange = 'transform, opacity';
+    // Batch DOM operations using requestIdleCallback
+    requestIdleCallback(() => {
+        // Use DocumentFragment for batch DOM operations
+        const fragment = document.createDocumentFragment();
+        
+        // Batch style reads before writes
+        const elements = document.querySelectorAll('.fade-in-up, .fade-in-left, .fade-in-right');
+        
+        // Use requestAnimationFrame for smooth animations
+        requestAnimationFrame(() => {
+            elements.forEach(el => {
+                el.style.willChange = 'transform, opacity';
+            });
         });
-    });
+        
+        // Optimize scroll listener
+        let ticking = false;
+        function updateScroll() {
+            ticking = false;
+            // Scroll-based updates here
+        }
+        
+        function requestTick() {
+            if (!ticking) {
+                requestAnimationFrame(updateScroll);
+                ticking = true;
+            }
+        }
+        
+        window.addEventListener('scroll', requestTick, { passive: true });
+    }, { timeout: 100 });
 }
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -35,17 +54,21 @@ document.addEventListener('DOMContentLoaded', function() {
     requestIdleCallback(() => {
         initScrollAnimations();
         initContactVisual();
-        initCounterAnimations();
-        initMobileHeroCounters();
-        initTeamCarousel();
-        initScrollUp();
-        initCTAVideo();
     }, { timeout: 100 });
     
-    // Initialize heavy animations last
+    // Initialize medium priority functionality
     requestIdleCallback(() => {
+        initCounterAnimations();
+        initMobileHeroCounters();
+        initScrollUp();
+    }, { timeout: 200 });
+    
+    // Initialize heavy functionality last
+    requestIdleCallback(() => {
+        initTeamCarousel();
+        initCTAVideo();
         initParallaxEffects();
-    }, { timeout: 300 });
+    }, { timeout: 500 });
 });
 
 // Mobile hero counters initialization
@@ -255,8 +278,21 @@ function initSmoothScrolling() {
                     behavior: 'smooth'
                 });
             }
-        });
+        }, { passive: false });
     });
+    
+    // Add passive scroll listeners for performance
+    window.addEventListener('scroll', function() {
+        // Scroll-based animations
+        const scrolled = window.pageYOffset;
+        const parallax = document.querySelectorAll('.parallax');
+        
+        parallax.forEach(element => {
+            const speed = element.dataset.speed || 0.5;
+            const yPos = -(scrolled * speed);
+            element.style.transform = `translateY(${yPos}px)`;
+        });
+    }, { passive: true });
 }
 
 // Scroll animations

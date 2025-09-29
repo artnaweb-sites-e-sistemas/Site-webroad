@@ -33,6 +33,26 @@ img {
     transform: translateZ(0);
 }
 
+/* Optimize image loading */
+img {
+    height: auto;
+    max-width: 100%;
+    content-visibility: auto;
+    contain-intrinsic-size: 300px 200px;
+}
+
+/* Optimize video loading */
+video {
+    content-visibility: auto;
+    contain-intrinsic-size: 640px 360px;
+}
+
+/* Reduce paint complexity */
+.team-main-image, .youtube-thumbnail img {
+    will-change: auto;
+    transform: translateZ(0);
+}
+
 :root {
     /* Cores baseadas na paleta WebRoad */
     --primary-dark: #0f041f;

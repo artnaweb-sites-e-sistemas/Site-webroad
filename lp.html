@@ -36,10 +36,16 @@
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
     <link rel="preconnect" href="https://www.youtube.com">
     <link rel="dns-prefetch" href="https://img.youtube.com">
+    <link rel="dns-prefetch" href="//fonts.googleapis.com">
+    <link rel="dns-prefetch" href="//fonts.gstatic.com">
     
     <!-- DNS Prefetch -->
     <link rel="dns-prefetch" href="//wa.me">
     <link rel="dns-prefetch" href="//www.youtube.com">
+    
+    <!-- Resource hints for better performance -->
+    <link rel="prefetch" href="assets/imgs/videobackground.mp4">
+    <link rel="prefetch" href="assets/imgs/imgequipe.png">
     
     <!-- Critical CSS inline -->
     <style>
@@ -67,6 +73,21 @@
     <!-- Non-critical CSS - Load asynchronously -->
     <link rel="preload" href="assets/styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="assets/styles.css"></noscript>
+    
+    <!-- Critical CSS inline for above-the-fold -->
+    <style>
+        /* Critical above-the-fold styles */
+        .navbar { position:fixed;top:0;width:100%;background:rgba(255,255,255,0.1);backdrop-filter:blur(20px);z-index:1000;padding:1rem 0 }
+        .mobile-hero { display:none;min-height:60vh;max-height:70vh;position:relative;background:linear-gradient(135deg,#0f041f,#1a0659,#320a97,#5e2ced,#9333ea) }
+        .mobile-hero-content { position:relative;z-index:4;padding:40px 1.5rem;display:flex;flex-direction:column;justify-content:center;text-align:center }
+        .mobile-hero-title { font-size:clamp(2rem,7vw,3rem);font-weight:900;color:#fff;line-height:1.05;margin-bottom:0.75rem }
+        .mobile-hero-location { font-size:clamp(1.6rem,5vw,2.5rem);font-weight:800;color:#fff;margin-top:0.5rem;margin-bottom:2rem }
+        .mobile-hero-buttons { display:flex;gap:1rem;justify-content:center;margin-top:0;margin-bottom:1rem }
+        .mobile-hero-buttons .btn { min-width:140px;padding:0.875rem 1.25rem;font-size:0.9rem;font-weight:600;border-radius:12px;color:#fff;text-decoration:none;display:flex;align-items:center;justify-content:center;gap:0.625rem;transition:all 0.3s ease }
+        .btn-primary { background:var(--primary-purple);border:2px solid var(--primary-purple) }
+        .btn-secondary { background:transparent;border:2px solid #fff }
+        @media (max-width:768px) { .mobile-hero { display:block } }
+    </style>
     
     <!-- Fonts - Load asynchronously to avoid render blocking -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
@@ -415,7 +436,7 @@
                 <!-- Coluna Central: Imagem Principal -->
                 <div class="team-image-column">
                     <div class="team-main-image-container" data-aos="fade-up" data-aos-offset="0" data-aos-delay="200" data-aos-duration="600" data-aos-easing="ease-out" data-aos-mirror="false" data-aos-once="true" data-aos-anchor-placement="top-bottom">
-                        <img src="assets/imgs/imgequipe.png" alt="Retrato de Bira Oliveira, Designer" class="team-main-image" width="640" height="800" loading="lazy">
+                        <img src="assets/imgs/imgequipe.png" alt="Retrato de Bira Oliveira, Designer" class="team-main-image" width="640" height="800" loading="lazy" decoding="async">
                         </div>
                     </div>
                 
@@ -526,7 +547,7 @@
     <!-- CTA Section -->
     <section class="cta-section">
         <div class="cta-video-bg">
-            <video id="cta-video" autoplay muted loop playsinline webkit-playsinline preload="metadata" poster="assets/imgs/videobackground.mp4">
+            <video id="cta-video" autoplay muted loop playsinline webkit-playsinline preload="none">
                 <source src="assets/imgs/videobackground.mp4" type="video/mp4">
                 Seu navegador não suporta vídeos HTML5.
             </video>
