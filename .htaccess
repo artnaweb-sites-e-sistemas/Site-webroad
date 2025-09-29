@@ -1,5 +1,17 @@
 # WebRoad Performance Optimizations
 
+# Fix 404 errors and redirects
+RewriteEngine On
+
+# Redirect root to lp.html
+RewriteCond %{REQUEST_URI} ^/$
+RewriteRule ^(.*)$ /lp.html [L]
+
+# Fix common 404 issues
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^([^/]+)/?$ /lp.html [L]
+
 # Enable compression
 <IfModule mod_deflate.c>
     AddOutputFilterByType DEFLATE text/plain
