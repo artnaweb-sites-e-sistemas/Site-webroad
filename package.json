@@ -1,0 +1,21 @@
+{
+  "name": "Site-webroad",
+  "version": "1.0.0",
+  "description": "Site da WebRoad - Landing Page",
+  "main": "lp.html",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "keywords": [
+    "website",
+    "landing-page",
+    "webroad"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "vite": "^5.0.0"
+  }
+}
