@@ -9,26 +9,41 @@ if (!window.requestIdleCallback) {
 
 // Optimize DOM operations to reduce forced reflow
 function optimizeDOMOperations() {
-    // Batch DOM operations using requestIdleCallback
+    // Use requestIdleCallback with longer timeout to avoid blocking main thread
     requestIdleCallback(() => {
-        // Use DocumentFragment for batch DOM operations
-        const fragment = document.createDocumentFragment();
-        
-        // Batch style reads before writes
+        // Batch DOM operations
         const elements = document.querySelectorAll('.fade-in-up, .fade-in-left, .fade-in-right');
         
-        // Use requestAnimationFrame for smooth animations
-        requestAnimationFrame(() => {
-            elements.forEach(el => {
-                el.style.willChange = 'transform, opacity';
-            });
-        });
+        // Process in smaller chunks to avoid long tasks
+        const chunkSize = 10;
+        let index = 0;
         
-        // Optimize scroll listener
+        function processChunk() {
+            const end = Math.min(index + chunkSize, elements.length);
+            for (let i = index; i < end; i++) {
+                elements[i].style.willChange = 'transform, opacity';
+            }
+            index = end;
+            
+            if (index < elements.length) {
+                requestIdleCallback(processChunk, { timeout: 50 });
+            }
+        }
+        
+        requestIdleCallback(processChunk, { timeout: 50 });
+        
+        // Optimize scroll listener with throttling
         let ticking = false;
+        let lastScrollY = 0;
+        
         function updateScroll() {
             ticking = false;
-            // Scroll-based updates here
+            const currentScrollY = window.pageYOffset;
+            
+            if (Math.abs(currentScrollY - lastScrollY) > 10) {
+                // Only update if scroll is significant
+                lastScrollY = currentScrollY;
+            }
         }
         
         function requestTick() {
@@ -39,7 +54,7 @@ function optimizeDOMOperations() {
         }
         
         window.addEventListener('scroll', requestTick, { passive: true });
-    }, { timeout: 100 });
+    }, { timeout: 200 });
 }
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -63,12 +78,18 @@ document.addEventListener('DOMContentLoaded', function() {
         initScrollUp();
     }, { timeout: 200 });
     
-    // Initialize heavy functionality last
+    // Initialize heavy functionality last with longer delays
     requestIdleCallback(() => {
         initTeamCarousel();
+    }, { timeout: 1000 });
+    
+    requestIdleCallback(() => {
         initCTAVideo();
+    }, { timeout: 1500 });
+    
+    requestIdleCallback(() => {
         initParallaxEffects();
-    }, { timeout: 500 });
+    }, { timeout: 2000 });
 });
 
 // Mobile hero counters initialization
@@ -1389,39 +1410,20 @@ function initCTAVideo() {
     }, 3000);
 }
 
-// YouTube Lazy Loading
+// YouTube Lazy Loading - Optimized
 function initYouTubeLazyLoad() {
     const placeholders = document.querySelectorAll('.youtube-placeholder');
     
     placeholders.forEach(placeholder => {
-        // Optimize thumbnail loading - load only one image at a time
         const img = placeholder.querySelector('img');
         const skeleton = placeholder.querySelector('.youtube-skeleton');
         
-        if (img) {
+        if (img && skeleton) {
             // Hide skeleton when image loads
-            img.onload = function() {
-                if (skeleton) {
-                    skeleton.style.opacity = '0';
-                    setTimeout(() => {
-                        skeleton.style.display = 'none';
-                    }, 300);
-                }
+            img.onload = () => {
+                skeleton.style.opacity = '0';
+                setTimeout(() => skeleton.style.display = 'none', 300);
             };
-            
-            // Create a single image loader to avoid double requests
-            const loader = new Image();
-            loader.onload = function() {
-                img.src = this.src;
-            };
-            loader.onerror = function() {
-                // If maxresdefault fails, try hqdefault
-                if (this.src.includes('maxresdefault')) {
-                    this.src = this.src.replace('maxresdefault', 'hqdefault');
-                }
-            };
-            // Start with maxresdefault
-            loader.src = img.src;
         }
         
         placeholder.addEventListener('click', function() {
