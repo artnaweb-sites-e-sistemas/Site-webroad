@@ -1,17 +1,23 @@
-# WebRoad Performance Optimizations
+# WebRoad Landing Page - WordPress Compatible
 
-# Fix 404 errors and redirects
+# Enable rewrite engine
 RewriteEngine On
 
-# Only redirect specific paths to lp.html, not WordPress URLs
-RewriteCond %{REQUEST_URI} ^/(lp|landing|home)$
-RewriteRule ^(.*)$ /lp.html [L]
+# WordPress rules (keep these if you have WordPress)
+RewriteBase /
+RewriteRule ^index\.php$ - [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /index.php [L]
 
-# Redirect direct access to lp.html
+# Landing page specific rules
 RewriteCond %{REQUEST_URI} ^/lp\.html$
 RewriteRule ^(.*)$ /lp.html [L]
 
-# Enable compression
+RewriteCond %{REQUEST_URI} ^/(landing|home|lp)$
+RewriteRule ^(.*)$ /lp.html [L]
+
+# Performance Optimizations
 <IfModule mod_deflate.c>
     AddOutputFilterByType DEFLATE text/plain
     AddOutputFilterByType DEFLATE text/html
@@ -55,52 +61,10 @@ RewriteRule ^(.*)$ /lp.html [L]
     ExpiresByType text/html "access plus 1 hour"
 </IfModule>
 
-# Add cache control headers
-<IfModule mod_headers.c>
-    # CSS and JS
-    <FilesMatch "\.(css|js)$">
-        Header set Cache-Control "public, max-age=2592000"
-    </FilesMatch>
-    
-    # Images
-    <FilesMatch "\.(jpg|jpeg|png|gif|webp|svg)$">
-        Header set Cache-Control "public, max-age=31536000"
-    </FilesMatch>
-    
-    # Fonts
-    <FilesMatch "\.(woff|woff2)$">
-        Header set Cache-Control "public, max-age=31536000"
-    </FilesMatch>
-    
-    # HTML
-    <FilesMatch "\.(html|htm)$">
-        Header set Cache-Control "public, max-age=3600"
-    </FilesMatch>
-</IfModule>
-
 # Security headers
 <IfModule mod_headers.c>
     Header always set X-Content-Type-Options nosniff
     Header always set X-Frame-Options DENY
     Header always set X-XSS-Protection "1; mode=block"
     Header always set Referrer-Policy "strict-origin-when-cross-origin"
-    Header always set Permissions-Policy "geolocation=(), microphone=(), camera=()"
-</IfModule>
-
-# Remove ETags
-<IfModule mod_headers.c>
-    Header unset ETag
-</IfModule>
-FileETag None
-
-# Enable Keep-Alive
-<IfModule mod_headers.c>
-    Header set Connection keep-alive
-</IfModule>
-
-# MIME types for modern formats
-<IfModule mod_mime.c>
-    AddType image/webp .webp
-    AddType font/woff .woff
-    AddType font/woff2 .woff2
 </IfModule>
