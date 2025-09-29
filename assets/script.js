@@ -1341,15 +1341,22 @@ function initYouTubeLazyLoad() {
     const placeholders = document.querySelectorAll('.youtube-placeholder');
     
     placeholders.forEach(placeholder => {
-        // Improve thumbnail quality
+        // Optimize thumbnail loading - load only one image at a time
         const img = placeholder.querySelector('img');
         if (img) {
-            // Try to load higher quality thumbnail
-            const highQualityImg = new Image();
-            highQualityImg.onload = function() {
+            // Create a single image loader to avoid double requests
+            const loader = new Image();
+            loader.onload = function() {
                 img.src = this.src;
             };
-            highQualityImg.src = img.src.replace('hqdefault', 'maxresdefault');
+            loader.onerror = function() {
+                // If maxresdefault fails, try hqdefault
+                if (this.src.includes('maxresdefault')) {
+                    this.src = this.src.replace('maxresdefault', 'hqdefault');
+                }
+            };
+            // Start with maxresdefault
+            loader.src = img.src;
         }
         
         placeholder.addEventListener('click', function() {
