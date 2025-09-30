@@ -1028,7 +1028,7 @@ body {
 }
 
 .strip-content::before {
-    content: "WebRoad â€¢ WebRoad â€¢ WebRoad â€¢ WebRoad â€¢ WebRoad â€¢ WebRoad â€¢ WebRoad â€¢ WebRoad â€¢ WebRoad â€¢ WebRoad â€¢ WebRoad â€¢ WebRoad â€¢ WebRoad â€¢ WebRoad â€¢ WebRoad â€¢ WebRoad â€¢ WebRoad â€¢ WebRoad â€¢ WebRoad â€¢ WebRoad â€¢ ";
+    content: "WebRoad • WebRoad • WebRoad • WebRoad • WebRoad • WebRoad • WebRoad • WebRoad • WebRoad • WebRoad • WebRoad • WebRoad • WebRoad • WebRoad • WebRoad • WebRoad • WebRoad • WebRoad • WebRoad • WebRoad • ";
     color: white;
     font-weight: 700;
     font-size: 1rem;
@@ -1777,7 +1777,7 @@ body {
 }
 
 .service-content li::before {
-    content: 'âœ“';
+    content: '✓';
     position: absolute;
     left: 8px;
     color: var(--primary-light);
