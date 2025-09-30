@@ -1028,7 +1028,7 @@ body {
 }
 
 .strip-content::before {
-    content: "WebRoad • WebRoad • WebRoad • WebRoad • WebRoad • WebRoad • WebRoad • WebRoad • WebRoad • WebRoad • WebRoad • WebRoad • WebRoad • WebRoad • WebRoad • WebRoad • WebRoad • WebRoad • WebRoad • WebRoad • ";
+    content: "WebRoad â€¢ WebRoad â€¢ WebRoad â€¢ WebRoad â€¢ WebRoad â€¢ WebRoad â€¢ WebRoad â€¢ WebRoad â€¢ WebRoad â€¢ WebRoad â€¢ WebRoad â€¢ WebRoad â€¢ WebRoad â€¢ WebRoad â€¢ WebRoad â€¢ WebRoad â€¢ WebRoad â€¢ WebRoad â€¢ WebRoad â€¢ WebRoad â€¢ ";
     color: white;
     font-weight: 700;
     font-size: 1rem;
@@ -1777,7 +1777,7 @@ body {
 }
 
 .service-content li::before {
-    content: '✓';
+    content: 'âœ“';
     position: absolute;
     left: 8px;
     color: var(--primary-light);
@@ -1807,7 +1807,7 @@ body {
     }
 }
 
-/* Team Section - EspecificaÃƒÆ’Ã‚Â§ÃƒÆ’Ã‚Âµes Detalhadas */
+/* Team Section - EspecificaÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â§ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Âµes Detalhadas */
 :root {
     --bg: #0E1330;
     --text: #FFFFFF;
@@ -1853,7 +1853,7 @@ body {
 }
 
 /* Coluna Esquerda: Texto + CTA */
-/* CabeÃ§alho da SeÃ§Ã£o da Equipe */
+/* CabeÃƒÂ§alho da SeÃƒÂ§ÃƒÂ£o da Equipe */
 .team-section-header {
     text-align: left;
     margin-bottom: 32px;
@@ -1932,7 +1932,7 @@ body {
     box-shadow: 0 1px 2px rgba(139, 92, 246, 0.2);
 }
 
-/* AnimaÃ§Ã£o do gradiente para o nome do membro */
+/* AnimaÃƒÂ§ÃƒÂ£o do gradiente para o nome do membro */
 @keyframes gradientShift {
     0% {
         background-position: 0% 50%;
@@ -1951,7 +1951,7 @@ body {
     }
 }
 
-/* AnimaÃ§Ã£o da borda gradiente dos cards de serviÃ§o */
+/* AnimaÃƒÂ§ÃƒÂ£o da borda gradiente dos cards de serviÃƒÂ§o */
 @keyframes gradientBorder {
     0% {
         background-position: 0% 50%;
@@ -2135,7 +2135,7 @@ body {
     box-shadow: 0 15px 35px rgba(139, 92, 246, 0.3);
 }
 
-/* Remover hover effect da miniatura ativa (que estÃ¡ oculta) */
+/* Remover hover effect da miniatura ativa (que estÃƒÂ¡ oculta) */
 .team-thumbnail:not(.active):hover .thumbnail-image {
     filter: grayscale(0%);
 }
@@ -2768,7 +2768,7 @@ body {
 .play-button i {
     font-size: 2rem;
     color: white;
-    margin-left: 4px; /* Ajuste visual para centralizar o Ã­cone */
+    margin-left: 4px; /* Ajuste visual para centralizar o ÃƒÂ­cone */
 }
 
 /* Overlay escuro para melhor contraste do texto */
@@ -3243,17 +3243,21 @@ img{max-width:100%;height:auto}
 
 .footer-logo {
     margin-bottom: var(--spacing-md);
+    display: block;
 }
 
 .footer-logo-img {
     height: 50px;
-    width: auto;
-    filter: brightness(0) invert(1);
+    width: 200px;
+    object-fit: contain;
+    display: block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
     transition: filter 0.3s ease;
 }
 
 .footer-logo-img:hover {
-    filter: brightness(0) invert(1) sepia(1) saturate(5) hue-rotate(250deg);
+    filter: sepia(1) saturate(5) hue-rotate(250deg);
 }
 
 .footer-section h3 {
@@ -3747,24 +3751,24 @@ img{max-width:100%;height:auto}
         font-size: 2rem;
     }
     
-    /* OtimizaÃ§Ãµes para mobile */
+    /* OtimizaÃƒÂ§ÃƒÂµes para mobile */
     .cta-video-bg video {
         opacity: 1;
         filter: brightness(2.6);
         object-position: center center;
-        /* ForÃ§a aceleraÃ§Ã£o de hardware no mobile */
+        /* ForÃƒÂ§a aceleraÃƒÂ§ÃƒÂ£o de hardware no mobile */
         -webkit-transform: translate3d(0, 0, 0);
         transform: translate3d(0, 0, 0);
         will-change: transform;
     }
     
-    /* Garante que o vÃ­deo seja reproduzido no mobile */
+    /* Garante que o vÃƒÂ­deo seja reproduzido no mobile */
     .cta-video-bg {
         -webkit-transform: translateZ(0);
         transform: translateZ(0);
     }
     
-    /* Ajustes do botÃ£o de play no mobile */
+    /* Ajustes do botÃƒÂ£o de play no mobile */
     .play-button {
         width: 60px;
         height: 60px;
@@ -3779,15 +3783,15 @@ img{max-width:100%;height:auto}
     }
 }
 
-/* Mobile Containers - CSS EspecÃ­fico para Ajustes Individuais
+/* Mobile Containers - CSS EspecÃƒÂ­fico para Ajustes Individuais
  * 
- * Cada container mobile agora tem seu prÃ³prio CSS especÃ­fico,
+ * Cada container mobile agora tem seu prÃƒÂ³prio CSS especÃƒÂ­fico,
  * permitindo ajustes individuais de padding e margin.
  * 
- * Para ajustar espaÃ§amentos:
+ * Para ajustar espaÃƒÂ§amentos:
  * - Modifique os valores de padding e margin de cada classe
- * - Os valores estÃ£o em rem para melhor responsividade
- * - Use !important se necessÃ¡rio para sobrescrever estilos existentes
+ * - Os valores estÃƒÂ£o em rem para melhor responsividade
+ * - Use !important se necessÃƒÂ¡rio para sobrescrever estilos existentes
  */
 
 /* Mobile Hero Background */
@@ -3891,19 +3895,19 @@ img{max-width:100%;height:auto}
     margin: 0;
 }
 
-/* Ajustes de EspaÃ§amento Mobile - SeÃ§Ãµes Testimonials, Contact e Footer */
+/* Ajustes de EspaÃƒÂ§amento Mobile - SeÃƒÂ§ÃƒÂµes Testimonials, Contact e Footer */
 @media (max-width: 768px) {
-    /* Testimonials - Reduzir espaÃ§amento superior */
+    /* Testimonials - Reduzir espaÃƒÂ§amento superior */
     .testimonials {
         padding: var(--spacing-lg) 0 var(--spacing-3xl) 0;
     }
     
-    /* Contact - Reduzir espaÃ§amento superior */
+    /* Contact - Reduzir espaÃƒÂ§amento superior */
     .contact {
         padding: var(--spacing-lg) 0 var(--spacing-3xl) 0;
     }
     
-    /* Footer - Reduzir espaÃ§amento superior */
+    /* Footer - Reduzir espaÃƒÂ§amento superior */
     .footer {
         padding: var(--spacing-lg) 0 var(--spacing-md) 0;
     }
