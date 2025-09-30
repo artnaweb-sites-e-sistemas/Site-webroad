@@ -66,23 +66,22 @@ document.addEventListener('DOMContentLoaded', function() {
     optimizeDOMOperations();
     initLazyLoadImages();
     
-    // Initialize non-critical functionality with delay
-    requestIdleCallback(() => {
+    // Use setTimeout for better main thread distribution
+    setTimeout(() => {
         initScrollAnimations();
         initContactVisual();
-    }, { timeout: 100 });
+    }, 100);
     
-    // Initialize medium priority functionality
-    requestIdleCallback(() => {
+    setTimeout(() => {
         initCounterAnimations();
         initMobileHeroCounters();
         initScrollUp();
-    }, { timeout: 200 });
+    }, 200);
     
-    // Initialize heavy functionality last with longer delays
-    requestIdleCallback(() => {
+    // Heavy functionality with longer delays
+    setTimeout(() => {
         initTeamCarousel();
-    }, { timeout: 1000 });
+    }, 1000);
     
     // Delay CTA video loading until user scrolls near it
     requestIdleCallback(() => {
@@ -113,9 +112,9 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }, { timeout: 500 });
     
-    requestIdleCallback(() => {
+    setTimeout(() => {
         initParallaxEffects();
-    }, { timeout: 2000 });
+    }, 2000);
 });
 
 // Mobile hero counters initialization

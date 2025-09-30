@@ -77,7 +77,11 @@
     <!-- Critical CSS inline for above-the-fold -->
     <style>
         /* Critical above-the-fold styles with CLS prevention */
-        .navbar { position:fixed;top:0;width:100%;background:rgba(255,255,255,0.1);backdrop-filter:blur(20px);z-index:1000;padding:1rem 0;height:70px;contain:layout style }
+        .navbar { position:fixed;top:0;width:100%;background:rgba(255,255,255,0.1);backdrop-filter:blur(20px);z-index:1000;padding:1rem 0;height:70px;contain:strict;overflow:hidden }
+        .nav-container { display:flex;justify-content:space-between;align-items:center;max-width:1200px;margin:0 auto;padding:0 1rem;height:38px;contain:layout }
+        .nav-logo { font-size:1.5rem;font-weight:700;color:#fff;min-width:120px;contain:layout }
+        .nav-menu { display:flex;gap:2rem;list-style:none;margin:0;padding:0;min-width:400px;justify-content:flex-end;contain:layout }
+        .nav-menu a { color:#fff;text-decoration:none;font-weight:500;white-space:nowrap }
         .mobile-hero { display:none;height:100vh;max-height:900px;position:relative;background:linear-gradient(135deg,#0f041f,#1a0659,#320a97,#5e2ced,#9333ea);contain:strict;overflow:hidden }
         .mobile-hero-content { position:absolute;top:50%;left:0;right:0;transform:translateY(-50%);z-index:4;padding:0 1.5rem;text-align:center;contain:layout style paint }
         .mobile-hero-title { font-size:clamp(2.2rem,7vw,3.2rem);font-weight:900;color:#fff;line-height:1.1;margin:0 0 0.5rem 0;min-height:160px;display:flex;flex-direction:column;align-items:center;justify-content:center;contain:layout }
@@ -96,11 +100,23 @@
     <!-- Preload critical font weights -->
     <link rel="preload" href="https://fonts.gstatic.com/s/inter/v12/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuLyfAZ9hiA.woff2" as="font" type="font/woff2" crossorigin>
     
-    <!-- Font Awesome - Load only used icons -->
+    <!-- Font Awesome - Only load used icons -->
     <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/webfonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/webfonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"></noscript>
+    
+    <!-- Inline only used Font Awesome icons CSS -->
+    <style>
+        /* Only used Font Awesome icons */
+        .fa-play::before{content:"\f04b"}
+        .fa-phone::before{content:"\f095"}
+        .fa-envelope::before{content:"\f0e0"}
+        .fa-arrow-up::before{content:"\f062"}
+        .fa-user::before{content:"\f007"}
+        .fa-home::before{content:"\f015"}
+        .fab.fa-whatsapp::before{content:"\f232"}
+        .fab.fa-facebook::before{content:"\f09a"}
+        .fab.fa-instagram::before{content:"\f16d"}
+    </style>
     
     <!-- Structured Data -->
     <script type="application/ld+json">

@@ -78,11 +78,23 @@ RewriteRule ^(.*)$ /lp.html [L]
         Header set Cache-Control "public, max-age=3600"
     </FilesMatch>
     
-    # YouTube thumbnails - cache for longer
-    <FilesMatch "\.(jpg|jpeg|png|gif|webp)$">
-        Header set Cache-Control "public, max-age=31536000"
+# YouTube thumbnails - cache for longer
+<FilesMatch "\.(jpg|jpeg|png|gif|webp)$">
+    Header set Cache-Control "public, max-age=31536000"
+    Header set Expires "access plus 1 year"
+</FilesMatch>
+
+# YouTube specific caching
+<IfModule mod_headers.c>
+    # Cache YouTube images for 1 year
+    <FilesMatch "maxresdefault\.jpg$|hqdefault\.jpg$|mqdefault\.jpg$|sddefault\.jpg$">
+        Header set Cache-Control "public, max-age=31536000, immutable"
         Header set Expires "access plus 1 year"
     </FilesMatch>
+    
+    # Cache external YouTube resources
+    Header always set Cache-Control "public, max-age=31536000" "expr=%{REQUEST_URI} =~ m#img\.youtube\.com#"
+</IfModule>
 </IfModule>
 
 # Security headers
