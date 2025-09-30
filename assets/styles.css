@@ -1022,7 +1022,7 @@ body {
     display: flex;
     align-items: center;
     white-space: nowrap;
-    animation: stripMove 25s linear infinite;
+    animation: stripMove 50s linear infinite;
     width: 200%;
     position: relative;
 }
