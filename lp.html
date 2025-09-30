@@ -104,29 +104,23 @@
     <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/webfonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/webfonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin>
     
-    <!-- Font Awesome CSS - Load only critical icons inline -->
-    <style>
-        /* Font Awesome icons - only used ones */
-        .fas, .fab { font-family: "Font Awesome 6 Free", "Font Awesome 6 Brands" !important; }
-        .fa-play::before { content: "\f04b"; }
-        .fa-phone::before { content: "\f095"; }
-        .fa-envelope::before { content: "\f0e0"; }
-        .fa-arrow-up::before { content: "\f062"; }
-        .fa-user::before { content: "\f007"; }
-        .fa-home::before { content: "\f015"; }
-        .fa-building::before { content: "\f1ad"; }
-        .fa-users::before { content: "\f0c0"; }
-        .fa-clock::before { content: "\f017"; }
-        .fa-check::before { content: "\f00c"; }
-        .fa-star::before { content: "\f005"; }
-        .fa-quote-left::before { content: "\f10d"; }
-        .fa-chevron-left::before { content: "\f053"; }
-        .fa-chevron-right::before { content: "\f054"; }
-        .fab.fa-whatsapp::before { content: "\f232"; }
-        .fab.fa-facebook::before { content: "\f09a"; }
-        .fab.fa-instagram::before { content: "\f16d"; }
-    </style>
+    <!-- Font Awesome CSS - Load asynchronously -->
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"></noscript>
     
+    <!-- Inline only used Font Awesome icons CSS -->
+    <style>
+        /* Only used Font Awesome icons */
+        .fa-play::before{content:"\f04b"}
+        .fa-phone::before{content:"\f095"}
+        .fa-envelope::before{content:"\f0e0"}
+        .fa-arrow-up::before{content:"\f062"}
+        .fa-user::before{content:"\f007"}
+        .fa-home::before{content:"\f015"}
+        .fab.fa-whatsapp::before{content:"\f232"}
+        .fab.fa-facebook::before{content:"\f09a"}
+        .fab.fa-instagram::before{content:"\f16d"}
+    </style>
     
     <!-- Structured Data -->
     <script type="application/ld+json">
@@ -265,7 +259,7 @@
                 <div class="video-wrapper">
                     <div class="youtube-placeholder" data-video-id="ChQbnx9KtRQ">
                         <div class="youtube-thumbnail">
-                            <img src="https://img.youtube.com/vi/ChQbnx9KtRQ/maxresdefault.jpg?version=1" alt="WebRoad - Agência Digital" fetchpriority="high" width="1280" height="720" crossorigin="anonymous">
+                            <img src="https://img.youtube.com/vi/ChQbnx9KtRQ/maxresdefault.jpg" alt="WebRoad - Agência Digital" fetchpriority="high" width="1280" height="720" crossorigin="anonymous">
                             <div class="play-button">
                                 <i class="fas fa-play"></i>
                             </div>
@@ -698,680 +692,93 @@
                                 <p>Um ambiente moderno e profissional onde suas ideias ganham vida através da tecnologia e criatividade.</p>
                             </div>
                         </div>
-                        <picture>
-                            <source srcset="assets/imgs/agencia.webp" type="image/webp">
-                            <source srcset="assets/imgs/agencia-550.jpg" type="image/jpeg" media="(max-width: 768px)">
-                            <img src="assets/imgs/agencia.jpg" alt="WebRoad - Nossa agência digital moderna" class="contact-image" width="550" height="450">
-                        </picture>
-                    </div>
-                    <div class="contact-highlights">
-                        <div class="highlight-item">
-                            <i class="fas fa-users"></i>
-                            <span>Equipe especializada</span>
-                        </div>
-                        <div class="highlight-item">
-                            <i class="fas fa-lightbulb"></i>
-                            <span>Inovação constante</span>
-                        </div>
-                        <div class="highlight-item">
-                            <i class="fas fa-handshake"></i>
-                            <span>Parceria de confiança</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Scroll Up Button -->
-    <button class="scroll-up" id="scrollUp" aria-label="Voltar ao topo">
-        <i class="fas fa-arrow-up"></i>
-    </button>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <div class="footer-logo">
-                        <img src="assets/imgs/logow.webp" alt="WebRoad Logo" class="footer-logo-img" width="120" height="50" loading="lazy">
-                    </div>
-                    <p>Transformando ideias em experiências digitais memoráveis.</p>
-                    <div class="social-links">
-                        <a href="https://www.facebook.com/profile.php?id=61555252693492" target="_blank"><i class="fab fa-facebook"></i></a>
-                        <a href="https://www.instagram.com/agenciawebroad/" target="_blank"><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
-                <div class="footer-section">
-                    <h4>Serviços</h4>
-                    <ul>
-                        <li><a href="#services">Websites & E-commerce</a></li>
-                        <li><a href="#services">Branding & Identidade</a></li>
-                        <li><a href="#services">Tráfego & Ads</a></li>
-                        <li><a href="#services">Dashboards & Automação</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4>Empresa</h4>
-                    <ul>
-                        <li><a href="#about">Sobre Nós</a></li>
-                        <li><a href="#team">Equipe</a></li>
-                        <li><a href="#contact">Contato</a></li>
-                        <li><a href="#">Blog</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4>Contato</h4>
-                    <div class="footer-contact-item">
-                        <i class="fab fa-whatsapp"></i>
-                        <a href="https://wa.me/5511971534673" target="_blank">(11) 97153-4673</a>
-                    </div>
-                    <div class="footer-contact-item">
-                        <i class="fas fa-phone"></i>
-                        <span>(11) 97153-4673</span>
-                    </div>
-                    <div class="footer-contact-item">
-                        <i class="fas fa-envelope"></i>
-                        <a href="mailto:contato@webroad.com.br">contato@webroad.com.br</a>
-                    </div>
-                    <div class="footer-contact-item">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <span>São Paulo, SP</span>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 WebRoad. Todos os direitos reservados.</p>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Mouse Follower - Moved to end for maximum z-index priority -->
-    <div class="mouse-follower"></div>
-    
-    <!-- JavaScript - Load with defer for better performance -->
-    <script src="assets/script.js" defer></script>
-    
-    <!-- Performance monitoring script -->
-    <script>
-        // Simple performance monitoring
-        window.addEventListener('load', function() {
-            setTimeout(function() {
-                const perfData = performance.getEntriesByType('navigation')[0];
-                if (perfData) {
-                    console.log('Page Load Performance:', {
-                        'DOM Content Loaded': Math.round(perfData.domContentLoadedEventEnd - perfData.domContentLoadedEventStart),
-                        'Load Complete': Math.round(perfData.loadEventEnd - perfData.loadEventStart),
-                        'Total Load Time': Math.round(perfData.loadEventEnd - perfData.fetchStart)
-                    });
-                }
-            }, 0);
-        });
-    </script>
-</body>
-</html>
-                                <div class="thumbnail-name-container">
-
-                                    <span class="thumbnail-name">CARLOS SANTOS</span>
-
-                        </div>
-
-                    </div>
-
-                            <div class="team-thumbnail" role="option" aria-selected="false" data-member="3" data-role="UX/UI Designer" data-linkedin="#" data-bio="Especialista em pesquisa de usuários e design de interfaces" data-photo-hd="assets/imgs/imgequipe.png" tabindex="0">
-
-                                <div class="thumbnail-image-container">
-
-                                    <img src="assets/imgs/imgequipe.png" alt="Maria Costa" class="thumbnail-image" width="295" height="455">
-                                </div>
-
-                                <div class="thumbnail-name-container">
-
-                                    <span class="thumbnail-name">MARIA COSTA</span>
-
-                        </div>
-
-                    </div>
-
-                            <div class="team-thumbnail" role="option" aria-selected="false" data-member="4" data-role="Gerente de Projetos" data-linkedin="#" data-bio="Especialista em gestão ágil e coordenação de equipes" data-photo-hd="assets/imgs/imgequipe.png" tabindex="0">
-
-                                <div class="thumbnail-image-container">
-
-                                    <img src="assets/imgs/imgequipe.png" alt="João Lima" class="thumbnail-image" width="295" height="455">
-                                </div>
-
-                                <div class="thumbnail-name-container">
-
-                                    <span class="thumbnail-name">JOÃO LIMA</span>
-
-                        </div>
-
-                    </div>
-
-                        </div>
-
-                        
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-
-    <!-- Testimonials Section -->
-
-    <section class="testimonials">
-
-        <div class="container">
-
-            <h2 class="section-title">O que nossos clientes dizem</h2>
-
-            <div class="testimonials-grid">
-
-                <div class="testimonial-card">
-
-                    <div class="testimonial-content">
-
-                        <p>"A WebRoad transformou completamente nossa presença digital. O resultado superou todas as expectativas!"</p>
-
-                    </div>
-
-                    <div class="testimonial-author">
-
-                        <div class="author-avatar">
-
-                            <i class="fas fa-user"></i>
-
-                        </div>
-
-                        <div class="author-info">
-
-                            <h4>Maria Silva</h4>
-
-                            <span>CEO, TechStart</span>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-                <div class="testimonial-card">
-
-                    <div class="testimonial-content">
-
-                        <p>"Profissionalismo e qualidade excepcionais. Nossa loja virtual aumentou 250% as vendas em 6 meses."</p>
-
-                    </div>
-
-                    <div class="testimonial-author">
-
-                        <div class="author-avatar">
-
-                            <i class="fas fa-user"></i>
-
-                        </div>
-
-                        <div class="author-info">
-
-                            <h4>João Santos</h4>
-
-                            <span>Diretor, Fashion Store</span>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-                <div class="testimonial-card">
-
-                    <div class="testimonial-content">
-
-                        <p>"Equipe dedicada e resultados incríveis. Recomendo a WebRoad para qualquer projeto digital."</p>
-
-                    </div>
-
-                    <div class="testimonial-author">
-
-                        <div class="author-avatar">
-
-                            <i class="fas fa-user"></i>
-
-                        </div>
-
-                        <div class="author-info">
-
-                            <h4>Ana Costa</h4>
-
-                            <span>Fundadora, EduTech</span>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-
-    <!-- CTA Section -->
-
-    <section class="cta-section">
-
-        <div class="cta-video-bg">
-
-            <video id="cta-video" muted loop playsinline webkit-playsinline preload="none" poster="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='640' height='360'%3E%3Crect width='100%25' height='100%25' fill='%230f041f'/%3E%3C/svg%3E">
-                <source data-src="assets/imgs/videobackground.mp4" type="video/mp4">
-                Seu navegador não suporta vídeos HTML5.
-
-            </video>
-
-            <!-- Fallback para mobile -->
-
-            <div class="cta-video-fallback" id="cta-video-fallback">
-
-                <div class="play-button" id="play-video-btn">
-
-                    <i class="fas fa-play"></i>
-
-                </div>
-
-            </div>
-
-        </div>
-
-        <div class="container">
-
-            <div class="cta-content">
-
-                <h2>Pronto para elevar sua marca ao próximo nível?</h2>
-
-                <p>Vamos conversar sobre como podemos transformar suas ideias em realidade digital.</p>
-
-                <a href="https://wa.me/5511971534673" target="_blank" class="btn btn-cta">
-
-                    <i class="fab fa-whatsapp"></i>
-
-                    <span>Fale Conosco no WhatsApp</span>
-
-                </a>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-
-    <!-- Animated Strip -->
-
-    <div class="animated-strip">
-
-        <div class="strip-content">
-
-            <span>WebRoad</span>
-
-            <span class="dot"> • </span>
-
-            <span>WebRoad</span>
-
-            <span class="dot"> • </span>
-
-            <span>WebRoad</span>
-
-            <span class="dot"> • </span>
-
-            <span>WebRoad</span>
-
-            <span class="dot"> • </span>
-
-            <span>WebRoad</span>
-
-            <span class="dot"> • </span>
-
-            <span>WebRoad</span>
-
-            <span class="dot"> • </span>
-
-            <span>WebRoad</span>
-
-            <span class="dot"> • </span>
-
-            <span>WebRoad</span>
-
-            <span class="dot"> • </span>
-
-            <span>WebRoad</span>
-
-            <span class="dot"> • </span>
-
-            <span>WebRoad</span>
-
-            <span class="dot"> • </span>
-
-            <span>WebRoad</span>
-
-            <span class="dot"> • </span>
-
-            <span>WebRoad</span>
-
-            <span class="dot"> • </span>
-
-            <span>WebRoad</span>
-
-            <span class="dot"> • </span>
-
-            <span>WebRoad</span>
-
-            <span class="dot"> • </span>
-
-            <span>WebRoad</span>
-
-            <span class="dot"> • </span>
-
-            <span>WebRoad</span>
-
-            <span class="dot"> • </span>
-
-            <span>WebRoad</span>
-
-            <span class="dot"> • </span>
-
-            <span>WebRoad</span>
-
-            <span class="dot"> • </span>
-
-            <span>WebRoad</span>
-
-            <span class="dot"> • </span>
-
-            <span>WebRoad</span>
-
-            <span class="dot"> • </span>
-
-        </div>
-
-    </div>
-
-
-
-    <!-- Contact Section -->
-
-    <section id="contact" class="contact">
-
-        <div class="container">
-
-            <div class="contact-content">
-
-                <div class="contact-info">
-
-                    <h2>Vamos conversar?</h2>
-
-                    <p class="contact-description">
-
-                        Entre em contato conosco e descubra como podemos ajudar sua empresa a crescer no mundo digital. 
-
-                        Nossa equipe está pronta para transformar suas ideias em soluções digitais de alta performance.
-
-                    </p>
-
-                    
-
-                    
-
-                    <div class="contact-methods">
-
-                        <div class="contact-method">
-
-                            <i class="fab fa-whatsapp"></i>
-
-                            <div class="contact-details">
-
-                                <span class="contact-label">WhatsApp</span>
-
-                                <a href="https://wa.me/5511971534673" target="_blank" class="contact-value">(11) 97153-4673</a>
-
-                            </div>
-
-                        </div>
-
-                        <div class="contact-method">
-
-                            <i class="fas fa-phone"></i>
-
-                            <div class="contact-details">
-
-                                <span class="contact-label">Telefone</span>
-
-                                <span class="contact-value">(11) 97153-4673</span>
-
-                            </div>
-
-                        </div>
-
-                        <div class="contact-method">
-
-                            <i class="fas fa-map-marker-alt"></i>
-
-                            <div class="contact-details">
-
-                                <span class="contact-label">Localização</span>
-
-                                <span class="contact-value">São Paulo, SP - Atendimento Nacional</span>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                    
-
-                </div>
-
-                <div class="contact-visual">
-
-                    <div class="contact-image-box">
-
-                        <div class="image-overlay">
-
-                            <div class="overlay-content">
-
-                                <i class="fas fa-building"></i>
-
-                                <h3>Nossa Agência</h3>
-
-                                <p>Um ambiente moderno e profissional onde suas ideias ganham vida através da tecnologia e criatividade.</p>
-
-                            </div>
-
-                        </div>
-
                         <img src="assets/imgs/agencia.jpg" alt="WebRoad - Nossa agência digital moderna" class="contact-image" width="550" height="450">
                     </div>
-
                     <div class="contact-highlights">
-
                         <div class="highlight-item">
-
                             <i class="fas fa-users"></i>
-
                             <span>Equipe especializada</span>
-
                         </div>
-
                         <div class="highlight-item">
-
                             <i class="fas fa-lightbulb"></i>
-
                             <span>Inovação constante</span>
-
                         </div>
-
                         <div class="highlight-item">
-
                             <i class="fas fa-handshake"></i>
-
                             <span>Parceria de confiança</span>
-
                         </div>
-
                     </div>
-
                 </div>
-
             </div>
-
         </div>
-
     </section>
 
-
-
     <!-- Scroll Up Button -->
-
     <button class="scroll-up" id="scrollUp" aria-label="Voltar ao topo">
-
         <i class="fas fa-arrow-up"></i>
-
     </button>
 
-
-
     <!-- Footer -->
-
     <footer class="footer">
-
         <div class="container">
-
             <div class="footer-content">
-
                 <div class="footer-section">
-
                     <div class="footer-logo">
-
                         <img src="assets/imgs/logow.webp" alt="WebRoad Logo" class="footer-logo-img" width="120" height="50" loading="lazy">
                     </div>
-
                     <p>Transformando ideias em experiências digitais memoráveis.</p>
-
                     <div class="social-links">
-
                         <a href="https://www.facebook.com/profile.php?id=61555252693492" target="_blank"><i class="fab fa-facebook"></i></a>
-
                         <a href="https://www.instagram.com/agenciawebroad/" target="_blank"><i class="fab fa-instagram"></i></a>
-
                     </div>
-
                 </div>
-
                 <div class="footer-section">
-
                     <h4>Serviços</h4>
-
                     <ul>
-
                         <li><a href="#services">Websites & E-commerce</a></li>
-
                         <li><a href="#services">Branding & Identidade</a></li>
-
                         <li><a href="#services">Tráfego & Ads</a></li>
-
                         <li><a href="#services">Dashboards & Automação</a></li>
-
                     </ul>
-
                 </div>
-
                 <div class="footer-section">
-
                     <h4>Empresa</h4>
-
                     <ul>
-
                         <li><a href="#about">Sobre Nós</a></li>
-
                         <li><a href="#team">Equipe</a></li>
-
                         <li><a href="#contact">Contato</a></li>
-
                         <li><a href="#">Blog</a></li>
-
                     </ul>
-
                 </div>
-
                 <div class="footer-section">
-
                     <h4>Contato</h4>
-
                     <div class="footer-contact-item">
-
                         <i class="fab fa-whatsapp"></i>
-
                         <a href="https://wa.me/5511971534673" target="_blank">(11) 97153-4673</a>
-
                     </div>
-
                     <div class="footer-contact-item">
-
                         <i class="fas fa-phone"></i>
-
                         <span>(11) 97153-4673</span>
-
                     </div>
-
                     <div class="footer-contact-item">
-
                         <i class="fas fa-envelope"></i>
-
                         <a href="mailto:contato@webroad.com.br">contato@webroad.com.br</a>
-
                     </div>
-
                     <div class="footer-contact-item">
-
                         <i class="fas fa-map-marker-alt"></i>
-
                         <span>São Paulo, SP</span>
-
                     </div>
-
                 </div>
-
             </div>
-
             <div class="footer-bottom">
-
                 <p>&copy; 2025 WebRoad. Todos os direitos reservados.</p>
-
             </div>
-
         </div>
-
     </footer>
 
-
-
     <!-- Mouse Follower - Moved to end for maximum z-index priority -->
-
     <div class="mouse-follower"></div>
-
     
-
     <!-- JavaScript - Load with defer for better performance -->
     <script src="assets/script.js" defer></script>
     
@@ -1392,5 +799,4 @@
         });
     </script>
 </body>
-
 </html>
