@@ -316,7 +316,7 @@ function initSmoothScrolling() {
     }, { passive: true });
 }
 
-// Scroll animations
+// Scroll animations - Optimized to reduce reflow
 function initScrollAnimations() {
     const observerOptions = {
         threshold: 0.1,
@@ -324,13 +324,16 @@ function initScrollAnimations() {
     };
     
     const observer = new IntersectionObserver(function(entries) {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('fade-in-up');
+        // Use requestAnimationFrame to batch style changes
+        requestAnimationFrame(() => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in-up');
                 
-                // Trigger counter animations for stats
-                if (entry.target.classList.contains('mission-stats')) {
-                    animateCounters();
+                    // Trigger counter animations for stats
+                    if (entry.target.classList.contains('mission-stats')) {
+                        animateCounters();
+                    }
                 }
             }
         });
@@ -414,25 +417,43 @@ function initCounterAnimations() {
     }
 }
 
-// Parallax effects for hero section
+// Parallax effects for hero section - Optimized
 function initParallaxEffects() {
     const shapes = document.querySelectorAll('.shape');
     const floatingCards = document.querySelectorAll('.floating-card');
     
-    window.addEventListener('scroll', function() {
+    let ticking = false;
+    let lastScrollY = 0;
+    
+    function updateParallax() {
         const scrolled = window.pageYOffset;
-        const rate = scrolled * -0.5;
         
-        shapes.forEach((shape, index) => {
-            const speed = 0.2 + (index * 0.1);
-            shape.style.transform = `translateY(${scrolled * speed}px) rotate(${scrolled * 0.02}deg)`;
-        });
+        // Only update if scroll is significant
+        if (Math.abs(scrolled - lastScrollY) > 5) {
+            shapes.forEach((shape, index) => {
+                const speed = 0.2 + (index * 0.1);
+                shape.style.transform = `translate3d(0, ${scrolled * speed}px, 0) rotate(${scrolled * 0.02}deg)`;
+            });
+            
+            floatingCards.forEach((card, index) => {
+                const speed = 0.1 + (index * 0.05);
+                card.style.transform = `translate3d(0, ${scrolled * speed}px, 0)`;
+            });
+            
+            lastScrollY = scrolled;
+        }
         
-        floatingCards.forEach((card, index) => {
-            const speed = 0.1 + (index * 0.05);
-            card.style.transform = `translateY(${scrolled * speed}px)`;
-        });
-    });
+        ticking = false;
+    }
+    
+    function requestTick() {
+        if (!ticking) {
+            requestAnimationFrame(updateParallax);
+            ticking = true;
+        }
+    }
+    
+    window.addEventListener('scroll', requestTick, { passive: true });
 }
 
 // Contact visual interactions

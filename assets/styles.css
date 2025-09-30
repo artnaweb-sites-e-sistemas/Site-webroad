@@ -33,6 +33,19 @@ img {
     transform: translateZ(0);
 }
 
+/* Fix mobile hero CLS */
+.mobile-hero-content {
+    min-height: 400px;
+    contain: layout style;
+    position: relative;
+    z-index: 4;
+}
+
+.mobile-hero-title {
+    min-height: 120px;
+    contain: layout;
+}
+
 /* Optimize image loading */
 img {
     height: auto;
@@ -73,6 +86,18 @@ video {
     .cta-video-bg {
         background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-purple) 50%, var(--accent-pink) 100%) !important;
     }
+}
+
+/* Optimize animations to reduce main thread work */
+.shape, .floating-card {
+    will-change: transform;
+    transform: translateZ(0);
+}
+
+/* Reduce paint complexity */
+.parallax {
+    contain: layout style paint;
+    will-change: transform;
 }
 
 /* Reduce paint complexity */

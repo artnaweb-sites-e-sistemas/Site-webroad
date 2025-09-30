@@ -93,6 +93,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
     <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"></noscript>
     
+    <!-- Preload critical font weights -->
+    <link rel="preload" href="https://fonts.gstatic.com/s/inter/v12/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuLyfAZ9hiA.woff2" as="font" type="font/woff2" crossorigin>
+    
     <!-- Font Awesome - Load only used icons -->
     <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/webfonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/webfonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin>
@@ -229,7 +232,7 @@
                     <div class="youtube-placeholder" data-video-id="ChQbnx9KtRQ">
                         <div class="youtube-thumbnail">
                             <div class="youtube-skeleton"></div>
-                            <img src="https://img.youtube.com/vi/ChQbnx9KtRQ/hqdefault.jpg" alt="WebRoad - Agência Digital" loading="lazy" width="480" height="360" style="width: 100%; height: 100%; object-fit: cover; position: absolute; top: 0; left: 0;">
+                            <img src="https://img.youtube.com/vi/ChQbnx9KtRQ/hqdefault.jpg" alt="WebRoad - Agência Digital" fetchpriority="high" width="480" height="360" style="width: 100%; height: 100%; object-fit: cover; position: absolute; top: 0; left: 0;">
                             <div class="play-button">
                                 <i class="fas fa-play"></i>
                             </div>
@@ -547,7 +550,7 @@
     <!-- CTA Section -->
     <section class="cta-section">
         <div class="cta-video-bg">
-            <video id="cta-video" autoplay muted loop playsinline webkit-playsinline preload="none">
+            <video id="cta-video" autoplay muted loop playsinline webkit-playsinline preload="none" poster="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='640' height='360'%3E%3Crect width='100%25' height='100%25' fill='%230f041f'/%3E%3C/svg%3E">
                 <source src="assets/imgs/videobackground.mp4" type="video/mp4">
                 Seu navegador não suporta vídeos HTML5.
             </video>
