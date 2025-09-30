@@ -1,126 +1,85 @@
-# WebRoad Performance Optimization - .htaccess
+# WordPress Compatibility - WebRoad Landing Page
+# This .htaccess is designed to work alongside WordPress
 
-# Enable compression
+# BEGIN WordPress
+# The directives (lines) between "BEGIN WordPress" and "END WordPress" are
+# dynamically generated, and should only be modified via WordPress filters.
+# Any changes to the directives between these markers will be overwritten.
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+RewriteBase /
+RewriteRule ^index\.php$ - [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /index.php [L]
+</IfModule>
+# END WordPress
+
+# WebRoad Landing Page Specific Rules
+# Allow direct access to landing page files
+<Files "lp.html">
+    Header set Cache-Control "public, max-age=86400"
+</Files>
+
+<Files "index.html">
+    Header set Cache-Control "public, max-age=86400"
+</Files>
+
+# Allow direct access to assets folder
+<Directory "assets">
+    Header set Cache-Control "public, max-age=2592000"
+</Directory>
+
+# Enable compression for WebRoad assets
 <IfModule mod_deflate.c>
-    # Compress HTML, CSS, JavaScript, Text, XML and fonts
-    AddOutputFilterByType DEFLATE application/javascript
-    AddOutputFilterByType DEFLATE application/rss+xml
-    AddOutputFilterByType DEFLATE application/vnd.ms-fontobject
-    AddOutputFilterByType DEFLATE application/x-font
-    AddOutputFilterByType DEFLATE application/x-font-opentype
-    AddOutputFilterByType DEFLATE application/x-font-otf
-    AddOutputFilterByType DEFLATE application/x-font-truetype
-    AddOutputFilterByType DEFLATE application/x-font-ttf
-    AddOutputFilterByType DEFLATE application/x-javascript
-    AddOutputFilterByType DEFLATE application/xhtml+xml
-    AddOutputFilterByType DEFLATE application/xml
-    AddOutputFilterByType DEFLATE font/opentype
-    AddOutputFilterByType DEFLATE font/otf
-    AddOutputFilterByType DEFLATE font/ttf
-    AddOutputFilterByType DEFLATE image/svg+xml
-    AddOutputFilterByType DEFLATE image/x-icon
-    AddOutputFilterByType DEFLATE text/css
-    AddOutputFilterByType DEFLATE text/html
-    AddOutputFilterByType DEFLATE text/javascript
-    AddOutputFilterByType DEFLATE text/plain
-    AddOutputFilterByType DEFLATE text/xml
+    # Compress WebRoad specific files
+    <FilesMatch "\.(css|js|html)$">
+        SetOutputFilter DEFLATE
+    </FilesMatch>
+    
+    # Compress images and fonts
+    <FilesMatch "\.(woff|woff2|ttf|eot|svg)$">
+        SetOutputFilter DEFLATE
+    </FilesMatch>
 </IfModule>
 
-# Leverage Browser Caching
+# Cache static assets
 <IfModule mod_expires.c>
     ExpiresActive on
     
-    # Images
-    ExpiresByType image/jpg "access plus 1 year"
-    ExpiresByType image/jpeg "access plus 1 year"
-    ExpiresByType image/gif "access plus 1 year"
-    ExpiresByType image/png "access plus 1 year"
-    ExpiresByType image/webp "access plus 1 year"
-    ExpiresByType image/svg+xml "access plus 1 year"
-    ExpiresByType image/x-icon "access plus 1 year"
+    # WebRoad assets
+    <FilesMatch "\.(css|js)$">
+        ExpiresDefault "access plus 1 month"
+    </FilesMatch>
     
-    # Video
-    ExpiresByType video/mp4 "access plus 1 month"
-    ExpiresByType video/webm "access plus 1 month"
+    <FilesMatch "\.(png|jpg|jpeg|gif|webp|svg)$">
+        ExpiresDefault "access plus 1 month"
+    </FilesMatch>
     
-    # CSS and JavaScript
-    ExpiresByType text/css "access plus 1 month"
-    ExpiresByType application/javascript "access plus 1 month"
-    ExpiresByType text/javascript "access plus 1 month"
-    
-    # Fonts
-    ExpiresByType font/woff "access plus 1 year"
-    ExpiresByType font/woff2 "access plus 1 year"
-    ExpiresByType application/font-woff "access plus 1 year"
-    ExpiresByType application/font-woff2 "access plus 1 year"
-    
-    # HTML
-    ExpiresByType text/html "access plus 1 day"
-    
-    # Default
-    ExpiresDefault "access plus 1 week"
+    <FilesMatch "\.(woff|woff2|ttf|eot)$">
+        ExpiresDefault "access plus 1 year"
+    </FilesMatch>
 </IfModule>
 
-# Cache-Control Headers
+# Security headers for WebRoad
 <IfModule mod_headers.c>
-    # Cache static assets
-    <FilesMatch "\.(css|js|png|jpg|jpeg|gif|webp|svg|woff|woff2|ttf|eot)$">
-        Header set Cache-Control "public, max-age=31536000, immutable"
-    </FilesMatch>
-    
-    # Cache HTML files
-    <FilesMatch "\.(html|htm)$">
-        Header set Cache-Control "public, max-age=86400"
-    </FilesMatch>
-    
-    # Cache video files
-    <FilesMatch "\.(mp4|webm)$">
-        Header set Cache-Control "public, max-age=2592000"
-    </FilesMatch>
-    
-    # Security headers
+    # Basic security headers
     Header always set X-Content-Type-Options nosniff
-    Header always set X-Frame-Options DENY
+    Header always set X-Frame-Options SAMEORIGIN
     Header always set X-XSS-Protection "1; mode=block"
-    Header always set Referrer-Policy "strict-origin-when-cross-origin"
     
-    # Remove server signature
-    Header unset Server
-    Header unset X-Powered-By
+    # CORS for external resources
+    <FilesMatch "\.(css|js|woff|woff2)$">
+        Header set Access-Control-Allow-Origin "*"
+    </FilesMatch>
 </IfModule>
 
-# MIME Types for modern formats
+# MIME types for WebRoad assets
 <IfModule mod_mime.c>
     AddType image/webp .webp
+    AddType font/woff .woff
     AddType font/woff2 .woff2
+    AddType application/font-woff .woff
     AddType application/font-woff2 .woff2
-    AddType video/mp4 .mp4
-    AddType video/webm .webm
 </IfModule>
-
-# Remove ETags
-<IfModule mod_headers.c>
-    Header unset ETag
-</IfModule>
-FileETag None
-
-# Prevent access to sensitive files
-<FilesMatch "\.(htaccess|htpasswd|ini|log|sh|inc|bak)$">
-    Order Allow,Deny
-    Deny from all
-</FilesMatch>
-
-# Redirect to HTTPS (uncomment if using HTTPS)
-# RewriteEngine On
-# RewriteCond %{HTTPS} off
-# RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
-
-# Remove trailing slashes
-RewriteEngine On
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteCond %{THE_REQUEST} /+[^?\s]*?/[\s?] [NC]
-RewriteRule ^(.*)/$ /$1 [R=301,L]
-
-# Custom error pages (optional)
-# ErrorDocument 404 /404.html
-# ErrorDocument 500 /500.html
