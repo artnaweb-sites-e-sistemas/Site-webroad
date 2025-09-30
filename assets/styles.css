@@ -75,17 +75,18 @@ img {
 .navbar {
     contain: strict !important;
     overflow: hidden !important;
-    height: 70px !important;
+    min-height: 70px !important;
 }
 
 .nav-container {
-    height: 38px !important;
+    height: 100% !important;
     contain: layout !important;
 }
 
 .nav-logo {
     min-width: 120px !important;
     contain: layout !important;
+    height: 40px !important;
 }
 
 .nav-menu {
@@ -187,12 +188,11 @@ picture img {
 
 /* Mobile logo optimization */
 @media (max-width: 768px) {
-    .nav-logo img {
-        width: 100px;
+    .nav-logo {
         height: 33px;
     }
     
-    picture {
+    .nav-logo img {
         width: 100px;
         height: 33px;
     }
@@ -445,24 +445,31 @@ body {
     backdrop-filter: blur(20px);
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
     z-index: 1000;
-    padding: var(--spacing-sm) 0;
+    padding: 1rem 0;
     transition: all 0.3s ease;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    min-height: 70px;
+    display: flex;
+    align-items: center;
 }
 
 .nav-container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 var(--spacing-md);
+    padding: 0 1.5rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    width: 100%;
+    height: 100%;
 }
 
 .nav-logo {
     position: relative;
     display: flex;
     align-items: center;
+    height: 40px;
+    z-index: 10;
 }
 
 .nav-logo img {
@@ -471,24 +478,32 @@ body {
     transition: opacity 0.3s ease;
     will-change: opacity;
     transform: translateZ(0);
+    display: block;
+    object-fit: contain;
 }
 
 /* Default logo state - show white logo initially */
 .logo-white {
     opacity: 1;
     display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
 }
 
 .logo-dark {
     opacity: 0;
     display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
 }
 
 .nav-menu {
     display: flex;
     list-style: none;
     gap: var(--spacing-lg);
-    min-height: 40px;
+    min-height: 0px;
     contain: layout;
 }
 

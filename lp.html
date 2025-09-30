@@ -77,9 +77,9 @@
     <!-- Critical CSS inline for above-the-fold -->
     <style>
         /* Critical above-the-fold styles with CLS prevention */
-        .navbar { position:fixed;top:0;width:100%;background:rgba(255,255,255,0.1);backdrop-filter:blur(20px);z-index:1000;padding:1rem 0;height:70px;contain:strict;overflow:hidden }
-        .nav-container { display:flex;justify-content:space-between;align-items:center;max-width:1200px;margin:0 auto;padding:0 1rem;height:38px;contain:layout }
-        .nav-logo { font-size:1.5rem;font-weight:700;color:#fff;min-width:120px;contain:layout }
+        .navbar { position:fixed;top:0;width:100%;background:rgba(255,255,255,0.1);backdrop-filter:blur(20px);z-index:1000;padding:1rem 0;min-height:70px;contain:strict;overflow:hidden;display:flex;align-items:center }
+        .nav-container { display:flex;justify-content:space-between;align-items:center;max-width:1200px;margin:0 auto;padding:0 1.5rem;height:100%;contain:layout;width:100% }
+        .nav-logo { min-width:120px;contain:layout;height:40px;position:relative;display:flex;align-items:center }
         .nav-menu { display:flex;gap:2rem;list-style:none;margin:0;padding:0;min-width:400px;justify-content:flex-end;contain:layout }
         .nav-menu a { color:#fff;text-decoration:none;font-weight:500;white-space:nowrap }
         .mobile-hero { display:none;height:100vh;max-height:900px;position:relative;background:linear-gradient(135deg,#0f041f,#1a0659,#320a97,#5e2ced,#9333ea);contain:strict;overflow:hidden }
@@ -137,16 +137,8 @@
     <nav class="navbar">
         <div class="nav-container">
             <div class="nav-logo">
-                <picture>
-                    <source srcset="assets/imgs/logow-120.webp" type="image/webp" media="(max-width: 768px)">
-                    <source srcset="assets/imgs/logow.webp" type="image/webp">
-                    <img src="assets/imgs/logow.webp" alt="WebRoad Logo" class="logo-white" id="logo-white" width="120" height="40" loading="lazy">
-                </picture>
-                <picture>
-                    <source srcset="assets/imgs/logod-120.webp" type="image/webp" media="(max-width: 768px)">
-                    <source srcset="assets/imgs/logod.webp" type="image/webp">
-                    <img src="assets/imgs/logod.webp" alt="WebRoad Logo" class="logo-dark" id="logo-dark" width="120" height="40" loading="lazy">
-                </picture>
+                <img src="assets/imgs/logow.webp" alt="WebRoad Logo" class="logo-white" id="logo-white" width="120" height="40" loading="eager">
+                <img src="assets/imgs/logod.webp" alt="WebRoad Logo" class="logo-dark" id="logo-dark" width="120" height="40" loading="eager">
             </div>
             <ul class="nav-menu">
                 <li><a href="#home" onclick="document.querySelector('.nav-menu').classList.remove('active'); document.querySelector('.nav-toggle').classList.remove('active'); document.body.style.overflow = '';">Início</a></li>
