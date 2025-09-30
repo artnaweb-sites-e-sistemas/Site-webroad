@@ -76,15 +76,15 @@
     
     <!-- Critical CSS inline for above-the-fold -->
     <style>
-        /* Critical above-the-fold styles */
-        .navbar { position:fixed;top:0;width:100%;background:rgba(255,255,255,0.1);backdrop-filter:blur(20px);z-index:1000;padding:1rem 0;height:70px }
-        .mobile-hero { display:none;min-height:60vh;max-height:70vh;position:relative;background:linear-gradient(135deg,#0f041f,#1a0659,#320a97,#5e2ced,#9333ea);contain:layout style }
-        .mobile-hero-content { position:relative;z-index:4;padding:40px 1.5rem;display:flex;flex-direction:column;justify-content:center;text-align:center;min-height:500px;contain:layout }
-        .mobile-hero-title { font-size:clamp(2rem,7vw,3rem);font-weight:900;color:#fff;line-height:1.05;margin-bottom:0.75rem;min-height:140px;display:flex;flex-direction:column;justify-content:center }
-        .mobile-hero-location { font-size:clamp(1.6rem,5vw,2.5rem);font-weight:800;color:#fff;margin-top:0.5rem;margin-bottom:2rem;min-height:80px }
-        .mobile-hero-buttons { display:flex;gap:1rem;justify-content:center;margin-top:0;margin-bottom:1rem;min-height:60px }
-        .mobile-hero-buttons .btn { min-width:140px;padding:0.875rem 1.25rem;font-size:0.9rem;font-weight:600;border-radius:12px;color:#fff;text-decoration:none;display:flex;align-items:center;justify-content:center;gap:0.625rem;transition:all 0.3s ease }
-        .btn-primary { background:var(--primary-purple);border:2px solid var(--primary-purple) }
+        /* Critical above-the-fold styles with CLS prevention */
+        .navbar { position:fixed;top:0;width:100%;background:rgba(255,255,255,0.1);backdrop-filter:blur(20px);z-index:1000;padding:1rem 0;height:70px;contain:layout style }
+        .mobile-hero { display:none;height:100vh;max-height:900px;position:relative;background:linear-gradient(135deg,#0f041f,#1a0659,#320a97,#5e2ced,#9333ea);contain:strict;overflow:hidden }
+        .mobile-hero-content { position:absolute;top:50%;left:0;right:0;transform:translateY(-50%);z-index:4;padding:0 1.5rem;text-align:center;contain:layout style paint }
+        .mobile-hero-title { font-size:clamp(2.2rem,7vw,3.2rem);font-weight:900;color:#fff;line-height:1.1;margin:0 0 0.5rem 0;min-height:160px;display:flex;flex-direction:column;align-items:center;justify-content:center;contain:layout }
+        .mobile-hero-location { font-size:clamp(1.8rem,5.5vw,2.8rem);font-weight:800;color:#fff;margin:0.3rem 0 1.5rem 0;min-height:100px;display:flex;align-items:center;justify-content:center;contain:layout }
+        .mobile-hero-buttons { display:flex;gap:1rem;justify-content:center;margin:1rem 0;min-height:70px;align-items:center;contain:layout }
+        .mobile-hero-buttons .btn { min-width:145px;height:50px;padding:0 1.25rem;font-size:0.9rem;font-weight:600;border-radius:12px;color:#fff;text-decoration:none;display:flex;align-items:center;justify-content:center;gap:0.625rem;transition:transform 0.3s ease;will-change:transform }
+        .btn-primary { background:#320a97;border:2px solid #320a97 }
         .btn-secondary { background:transparent;border:2px solid #fff }
         @media (max-width:768px) { .mobile-hero { display:block } }
     </style>
