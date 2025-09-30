@@ -1,23 +1,26 @@
-# WordPress Compatibility - WebRoad Landing Page
-# This .htaccess is designed to work alongside WordPress
+# WebRoad Landing Page - WordPress Compatible
 
-# BEGIN WordPress
-# The directives (lines) between "BEGIN WordPress" and "END WordPress" are
-# dynamically generated, and should only be modified via WordPress filters.
-# Any changes to the directives between these markers will be overwritten.
+# Rewrite rules for clean URLs (MUST come before WordPress rules)
 <IfModule mod_rewrite.c>
-RewriteEngine On
-RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
-RewriteBase /
-RewriteRule ^index\.php$ - [L]
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule . /index.php [L]
+    RewriteEngine On
+    
+    # Redirect lp.html to clean URL
+    RewriteCond %{THE_REQUEST} /lp\.html[\s?] [NC]
+    RewriteRule ^lp\.html$ /lp [R=301,L]
+    
+    # Serve lp.html when accessing /lp
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^lp$ lp.html [L]
+    
+    # Serve index.html when accessing root (if no WordPress index.php)
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_URI} ^/$
+    RewriteRule ^$ index.html [L]
 </IfModule>
-# END WordPress
 
 # WebRoad Landing Page Specific Rules
-# Allow direct access to landing page files
 <Files "lp.html">
     Header set Cache-Control "public, max-age=86400"
 </Files>
@@ -83,3 +86,18 @@ RewriteRule . /index.php [L]
     AddType application/font-woff .woff
     AddType application/font-woff2 .woff2
 </IfModule>
+
+# BEGIN WordPress
+# The directives (lines) between "BEGIN WordPress" and "END WordPress" are
+# dynamically generated, and should only be modified via WordPress filters.
+# Any changes to the directives between these markers will be overwritten.
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+RewriteBase /
+RewriteRule ^index\.php$ - [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /index.php [L]
+</IfModule>
+# END WordPress
