@@ -77,12 +77,12 @@
     <!-- Critical CSS inline for above-the-fold -->
     <style>
         /* Critical above-the-fold styles */
-        .navbar { position:fixed;top:0;width:100%;background:rgba(255,255,255,0.1);backdrop-filter:blur(20px);z-index:1000;padding:1rem 0 }
-        .mobile-hero { display:none;min-height:60vh;max-height:70vh;position:relative;background:linear-gradient(135deg,#0f041f,#1a0659,#320a97,#5e2ced,#9333ea) }
-        .mobile-hero-content { position:relative;z-index:4;padding:40px 1.5rem;display:flex;flex-direction:column;justify-content:center;text-align:center }
-        .mobile-hero-title { font-size:clamp(2rem,7vw,3rem);font-weight:900;color:#fff;line-height:1.05;margin-bottom:0.75rem }
-        .mobile-hero-location { font-size:clamp(1.6rem,5vw,2.5rem);font-weight:800;color:#fff;margin-top:0.5rem;margin-bottom:2rem }
-        .mobile-hero-buttons { display:flex;gap:1rem;justify-content:center;margin-top:0;margin-bottom:1rem }
+        .navbar { position:fixed;top:0;width:100%;background:rgba(255,255,255,0.1);backdrop-filter:blur(20px);z-index:1000;padding:1rem 0;height:70px }
+        .mobile-hero { display:none;min-height:60vh;max-height:70vh;position:relative;background:linear-gradient(135deg,#0f041f,#1a0659,#320a97,#5e2ced,#9333ea);contain:layout style }
+        .mobile-hero-content { position:relative;z-index:4;padding:40px 1.5rem;display:flex;flex-direction:column;justify-content:center;text-align:center;min-height:500px;contain:layout }
+        .mobile-hero-title { font-size:clamp(2rem,7vw,3rem);font-weight:900;color:#fff;line-height:1.05;margin-bottom:0.75rem;min-height:140px;display:flex;flex-direction:column;justify-content:center }
+        .mobile-hero-location { font-size:clamp(1.6rem,5vw,2.5rem);font-weight:800;color:#fff;margin-top:0.5rem;margin-bottom:2rem;min-height:80px }
+        .mobile-hero-buttons { display:flex;gap:1rem;justify-content:center;margin-top:0;margin-bottom:1rem;min-height:60px }
         .mobile-hero-buttons .btn { min-width:140px;padding:0.875rem 1.25rem;font-size:0.9rem;font-weight:600;border-radius:12px;color:#fff;text-decoration:none;display:flex;align-items:center;justify-content:center;gap:0.625rem;transition:all 0.3s ease }
         .btn-primary { background:var(--primary-purple);border:2px solid var(--primary-purple) }
         .btn-secondary { background:transparent;border:2px solid #fff }
@@ -231,8 +231,7 @@
                 <div class="video-wrapper">
                     <div class="youtube-placeholder" data-video-id="ChQbnx9KtRQ">
                         <div class="youtube-thumbnail">
-                            <div class="youtube-skeleton"></div>
-                            <img src="https://img.youtube.com/vi/ChQbnx9KtRQ/hqdefault.jpg" alt="WebRoad - Agência Digital" fetchpriority="high" width="480" height="360" style="width: 100%; height: 100%; object-fit: cover; position: absolute; top: 0; left: 0;">
+                            <img src="https://img.youtube.com/vi/ChQbnx9KtRQ/maxresdefault.jpg" alt="WebRoad - Agência Digital" fetchpriority="high" width="1280" height="720">
                             <div class="play-button">
                                 <i class="fas fa-play"></i>
                             </div>
@@ -550,8 +549,8 @@
     <!-- CTA Section -->
     <section class="cta-section">
         <div class="cta-video-bg">
-            <video id="cta-video" autoplay muted loop playsinline webkit-playsinline preload="none" poster="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='640' height='360'%3E%3Crect width='100%25' height='100%25' fill='%230f041f'/%3E%3C/svg%3E">
-                <source src="assets/imgs/videobackground.mp4" type="video/mp4">
+            <video id="cta-video" muted loop playsinline webkit-playsinline preload="none" poster="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='640' height='360'%3E%3Crect width='100%25' height='100%25' fill='%230f041f'/%3E%3C/svg%3E">
+                <source data-src="assets/imgs/videobackground.mp4" type="video/mp4">
                 Seu navegador não suporta vídeos HTML5.
             </video>
             <!-- Fallback para mobile -->

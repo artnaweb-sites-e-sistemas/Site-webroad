@@ -64,6 +64,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initSmoothScrolling();
     initYouTubeLazyLoad();
     optimizeDOMOperations();
+    initLazyLoadImages();
     
     // Initialize non-critical functionality with delay
     requestIdleCallback(() => {
@@ -83,9 +84,34 @@ document.addEventListener('DOMContentLoaded', function() {
         initTeamCarousel();
     }, { timeout: 1000 });
     
+    // Delay CTA video loading until user scrolls near it
     requestIdleCallback(() => {
-        initCTAVideo();
-    }, { timeout: 1500 });
+        const ctaSection = document.querySelector('.cta-section');
+        const ctaVideo = document.getElementById('cta-video');
+        
+        if (ctaSection && ctaVideo) {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        // Load video source on demand
+                        const source = ctaVideo.querySelector('source[data-src]');
+                        if (source) {
+                            source.src = source.getAttribute('data-src');
+                            source.removeAttribute('data-src');
+                            ctaVideo.load();
+                            ctaVideo.play().catch(() => {
+                                // Silently fail if autoplay is blocked
+                            });
+                        }
+                        initCTAVideo();
+                        observer.disconnect();
+                    }
+                });
+            }, { rootMargin: '300px' });
+            
+            observer.observe(ctaSection);
+        }
+    }, { timeout: 500 });
     
     requestIdleCallback(() => {
         initParallaxEffects();
@@ -335,7 +361,7 @@ function initScrollAnimations() {
                         animateCounters();
                     }
                 }
-            }
+            });
         });
     }, observerOptions);
     
@@ -1431,19 +1457,44 @@ function initCTAVideo() {
     }, 3000);
 }
 
+// Lazy Load Images - Optimized
+function initLazyLoadImages() {
+    const images = document.querySelectorAll('img[loading="lazy"]');
+    
+    if ('IntersectionObserver' in window) {
+        const imageObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const img = entry.target;
+                    if (img.dataset.src) {
+                        img.src = img.dataset.src;
+                        img.removeAttribute('data-src');
+                    }
+                    imageObserver.unobserve(img);
+                }
+            });
+        }, {
+            rootMargin: '50px 0px',
+            threshold: 0.01
+        });
+        
+        images.forEach(img => imageObserver.observe(img));
+    }
+}
+
 // YouTube Lazy Loading - Optimized
 function initYouTubeLazyLoad() {
     const placeholders = document.querySelectorAll('.youtube-placeholder');
     
     placeholders.forEach(placeholder => {
+        // Ensure thumbnail image loads
         const img = placeholder.querySelector('img');
-        const skeleton = placeholder.querySelector('.youtube-skeleton');
-        
-        if (img && skeleton) {
-            // Hide skeleton when image loads
-            img.onload = () => {
-                skeleton.style.opacity = '0';
-                setTimeout(() => skeleton.style.display = 'none', 300);
+        if (img && !img.complete) {
+            img.onerror = function() {
+                // Fallback to hqdefault if maxresdefault fails
+                if (this.src.includes('maxresdefault')) {
+                    this.src = this.src.replace('maxresdefault', 'hqdefault');
+                }
             };
         }
         
@@ -1456,22 +1507,22 @@ function initYouTubeLazyLoad() {
             iframe.frameBorder = '0';
             iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
             iframe.allowFullscreen = true;
-            iframe.style.position = 'absolute';
-            iframe.style.top = '0';
-            iframe.style.left = '0';
-            iframe.style.width = '100%';
-            iframe.style.height = '100%';
-            iframe.style.borderRadius = '12px';
-            iframe.style.border = 'none';
+            iframe.loading = 'lazy';
             
+            // Style iframe to fill container
+            iframe.style.cssText = `
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                border: none;
+                border-radius: 12px;
+            `;
+            
+            // Clear placeholder and add iframe
             this.innerHTML = '';
             this.appendChild(iframe);
-            
-            // Add loading state
-            this.style.opacity = '0.8';
-            iframe.onload = () => {
-                this.style.opacity = '1';
-            };
         });
     });
 }
