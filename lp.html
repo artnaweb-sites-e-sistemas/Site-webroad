@@ -100,27 +100,9 @@
     <!-- Preload critical font weights -->
     <link rel="preload" href="https://fonts.gstatic.com/s/inter/v12/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuLyfAZ9hiA.woff2" as="font" type="font/woff2" crossorigin>
     
-    <!-- Font Awesome - Only load used icons -->
-    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/webfonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/webfonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin>
+    <!-- Font Awesome fonts removed - using inline icons only -->
     
-    <!-- Font Awesome CSS - Load asynchronously -->
-    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"></noscript>
-    
-    <!-- Inline only used Font Awesome icons CSS -->
-    <style>
-        /* Only used Font Awesome icons */
-        .fa-play::before{content:"\f04b"}
-        .fa-phone::before{content:"\f095"}
-        .fa-envelope::before{content:"\f0e0"}
-        .fa-arrow-up::before{content:"\f062"}
-        .fa-user::before{content:"\f007"}
-        .fa-home::before{content:"\f015"}
-        .fab.fa-whatsapp::before{content:"\f232"}
-        .fab.fa-facebook::before{content:"\f09a"}
-        .fab.fa-instagram::before{content:"\f16d"}
-    </style>
+    <!-- Font Awesome icons are now inline in styles.css - no external CSS needed -->
     
     <!-- Structured Data -->
     <script type="application/ld+json">
@@ -466,7 +448,7 @@
                 <!-- Coluna Central: Imagem Principal -->
                 <div class="team-image-column">
                     <div class="team-main-image-container" data-aos="fade-up" data-aos-offset="0" data-aos-delay="200" data-aos-duration="600" data-aos-easing="ease-out" data-aos-mirror="false" data-aos-once="true" data-aos-anchor-placement="top-bottom">
-                        <img src="assets/imgs/imgequipe.png" alt="Retrato de Bira Oliveira, Designer" class="team-main-image" width="640" height="800" fetchpriority="high" decoding="async">
+                        <img src="assets/imgs/imgequipe.png" alt="Retrato de Bira Oliveira, Designer" class="team-main-image" width="640" height="800" fetchpriority="high" decoding="async" loading="eager">
                         </div>
                     </div>
                 
@@ -477,7 +459,7 @@
                         <div class="team-thumbnails-container" role="listbox" aria-label="Selecionar membro da equipe">
                             <div class="team-thumbnail active" role="option" aria-selected="true" data-member="0" data-role="Designer" data-linkedin="#" data-bio="Especialista em design estratégico e experiência do usuário" data-photo-hd="assets/imgs/imgequipe.png" tabindex="0">
                                 <div class="thumbnail-image-container">
-                                    <img src="assets/imgs/imgequipe.png" alt="Bira Oliveira" class="thumbnail-image" width="295" height="455">
+                                    <img src="assets/imgs/imgequipe.png" alt="Bira Oliveira" class="thumbnail-image" width="295" height="455" loading="lazy">
                 </div>
                                 <div class="thumbnail-name-container">
                                     <span class="thumbnail-name">BIRA OLIVEIRA</span>
@@ -485,7 +467,7 @@
                     </div>
                             <div class="team-thumbnail" role="option" aria-selected="false" data-member="1" data-role="Desenvolvedora Frontend" data-linkedin="#" data-bio="Especialista em React, Vue.js e desenvolvimento de interfaces modernas" data-photo-hd="assets/imgs/imgequipe.png" tabindex="0">
                                 <div class="thumbnail-image-container">
-                                    <img src="assets/imgs/imgequipe.png" alt="Ana Silva" class="thumbnail-image" width="295" height="455">
+                                    <img src="assets/imgs/imgequipe.png" alt="Ana Silva" class="thumbnail-image" width="295" height="455" loading="lazy">
                                 </div>
                                 <div class="thumbnail-name-container">
                                     <span class="thumbnail-name">ANA SILVA</span>
@@ -493,7 +475,7 @@
                 </div>
                             <div class="team-thumbnail" role="option" aria-selected="false" data-member="2" data-role="Desenvolvedor Backend" data-linkedin="#" data-bio="Especialista em Node.js, Python e arquiteturas escaláveis" data-photo-hd="assets/imgs/imgequipe.png" tabindex="0">
                                 <div class="thumbnail-image-container">
-                                    <img src="assets/imgs/imgequipe.png" alt="Carlos Santos" class="thumbnail-image" width="295" height="455">
+                                    <img src="assets/imgs/imgequipe.png" alt="Carlos Santos" class="thumbnail-image" width="295" height="455" loading="lazy">
                                 </div>
                                 <div class="thumbnail-name-container">
                                     <span class="thumbnail-name">CARLOS SANTOS</span>
@@ -501,7 +483,7 @@
                     </div>
                             <div class="team-thumbnail" role="option" aria-selected="false" data-member="3" data-role="UX/UI Designer" data-linkedin="#" data-bio="Especialista em pesquisa de usuários e design de interfaces" data-photo-hd="assets/imgs/imgequipe.png" tabindex="0">
                                 <div class="thumbnail-image-container">
-                                    <img src="assets/imgs/imgequipe.png" alt="Maria Costa" class="thumbnail-image" width="295" height="455">
+                                    <img src="assets/imgs/imgequipe.png" alt="Maria Costa" class="thumbnail-image" width="295" height="455" loading="lazy">
                                 </div>
                                 <div class="thumbnail-name-container">
                                     <span class="thumbnail-name">MARIA COSTA</span>
@@ -509,7 +491,7 @@
                     </div>
                             <div class="team-thumbnail" role="option" aria-selected="false" data-member="4" data-role="Gerente de Projetos" data-linkedin="#" data-bio="Especialista em gestão ágil e coordenação de equipes" data-photo-hd="assets/imgs/imgequipe.png" tabindex="0">
                                 <div class="thumbnail-image-container">
-                                    <img src="assets/imgs/imgequipe.png" alt="João Lima" class="thumbnail-image" width="295" height="455">
+                                    <img src="assets/imgs/imgequipe.png" alt="João Lima" class="thumbnail-image" width="295" height="455" loading="lazy">
                                 </div>
                                 <div class="thumbnail-name-container">
                                     <span class="thumbnail-name">JOÃO LIMA</span>
@@ -577,7 +559,7 @@
     <!-- CTA Section -->
     <section class="cta-section">
         <div class="cta-video-bg">
-            <video id="cta-video" muted loop playsinline webkit-playsinline preload="none" poster="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='640' height='360'%3E%3Crect width='100%25' height='100%25' fill='%230f041f'/%3E%3C/svg%3E">
+            <video id="cta-video" muted loop playsinline webkit-playsinline preload="metadata" poster="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='640' height='360'%3E%3Crect width='100%25' height='100%25' fill='%230f041f'/%3E%3C/svg%3E">
                 <source data-src="assets/imgs/videobackground.mp4" type="video/mp4">
                 Seu navegador não suporta vídeos HTML5.
             </video>
@@ -692,7 +674,7 @@
                                 <p>Um ambiente moderno e profissional onde suas ideias ganham vida através da tecnologia e criatividade.</p>
                             </div>
                         </div>
-                        <img src="assets/imgs/agencia.jpg" alt="WebRoad - Nossa agência digital moderna" class="contact-image" width="550" height="450">
+                        <img src="assets/imgs/agencia.jpg" alt="WebRoad - Nossa agência digital moderna" class="contact-image" width="550" height="450" loading="lazy">
                     </div>
                     <div class="contact-highlights">
                         <div class="highlight-item">

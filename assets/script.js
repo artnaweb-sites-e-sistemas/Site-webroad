@@ -15,7 +15,7 @@ function optimizeDOMOperations() {
         const elements = document.querySelectorAll('.fade-in-up, .fade-in-left, .fade-in-right');
         
         // Process in smaller chunks to avoid long tasks
-        const chunkSize = 5; // Reduced chunk size
+        const chunkSize = 3; // Further reduced chunk size
         let index = 0;
         
         function processChunk() {
@@ -26,11 +26,11 @@ function optimizeDOMOperations() {
             index = end;
             
             if (index < elements.length) {
-                setTimeout(processChunk, 16); // 60fps instead of requestIdleCallback
+                requestAnimationFrame(processChunk); // Use RAF for better performance
             }
         }
         
-        setTimeout(processChunk, 100); // Start after initial render
+        requestAnimationFrame(processChunk); // Start after initial render
         
         // Optimize scroll listener with throttling
         let ticking = false;
@@ -40,7 +40,7 @@ function optimizeDOMOperations() {
             ticking = false;
             const currentScrollY = window.pageYOffset;
             
-            if (Math.abs(currentScrollY - lastScrollY) > 5) { // Reduced threshold
+            if (Math.abs(currentScrollY - lastScrollY) > 10) { // Increased threshold for better performance
                 lastScrollY = currentScrollY;
             }
         }
@@ -80,7 +80,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Heavy functionality with longer delays
     setTimeout(() => {
         initTeamCarousel();
-    }, 1000);
+    }, 2000); // Increased delay to reduce initial load
     
     // Delay CTA video loading until user scrolls near it
     requestIdleCallback(() => {
@@ -113,7 +113,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     setTimeout(() => {
         initParallaxEffects();
-    }, 2000);
+    }, 3000); // Further delayed to reduce initial load
 });
 
 // Mobile hero counters initialization
@@ -793,9 +793,9 @@ function initParticlesCanvas(canvas) {
     
     function initParticlesArray() {
         particles = [];
-        // Reduce particle count for mobile
+        // Further reduce particle count for better performance
         const isMobile = canvas.id === 'mobile-particles-canvas';
-        const divisor = isMobile ? 25000 : 15000;
+        const divisor = isMobile ? 50000 : 30000; // Reduced particle count
         const particleCount = Math.floor((canvas.width * canvas.height) / divisor);
         for (let i = 0; i < particleCount; i++) {
             particles.push(createParticle());

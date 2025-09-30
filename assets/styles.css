@@ -1,24 +1,30 @@
 /* Reset e Base Styles - Optimized */
 html,body{overflow-x:hidden!important}*{margin:0;padding:0;box-sizing:border-box}
 
-/* Font Awesome optimization */
-@font-face {
-    font-family: "Font Awesome 6 Free";
-    font-weight: 900;
-    font-display: swap;
-    src: url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/webfonts/fa-solid-900.woff2") format("woff2");
-    unicode-range: U+f04b, U+f095, U+f0e0, U+f062, U+f007, U+f015; /* Only used icons */
-}
+/* Font Awesome optimization - Inline only used icons */
+.fa-play::before{content:"\f04b"}
+.fa-phone::before{content:"\f095"}
+.fa-envelope::before{content:"\f0e0"}
+.fa-arrow-up::before{content:"\f062"}
+.fa-user::before{content:"\f007"}
+.fa-home::before{content:"\f015"}
+.fa-chart-bar::before{content:"\f080"}
+.fa-rocket::before{content:"\f135"}
+.fa-paint-brush::before{content:"\f1fc"}
+.fa-cogs::before{content:"\f085"}
+.fa-handshake::before{content:"\f2b5"}
+.fa-code::before{content:"\f121"}
+.fa-palette::before{content:"\f53f"}
+.fa-bullhorn::before{content:"\f0a1"}
+.fa-building::before{content:"\f1ad"}
+.fa-users::before{content:"\f0c0"}
+.fa-lightbulb::before{content:"\f0eb"}
+.fa-map-marker-alt::before{content:"\f3c5"}
+.fab.fa-whatsapp::before{content:"\f232"}
+.fab.fa-facebook::before{content:"\f09a"}
+.fab.fa-instagram::before{content:"\f16d"}
 
-@font-face {
-    font-family: "Font Awesome 6 Brands";
-    font-weight: 400;
-    font-display: swap;
-    src: url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/webfonts/fa-brands-400.woff2") format("woff2");
-    unicode-range: U+f232, U+f09a, U+f16d; /* Only used icons */
-}
-
-/* Ensure Font Awesome icons display properly */
+/* Font Awesome base styles - optimized */
 .fas, .fab, .fa {
     font-family: "Font Awesome 6 Free", "Font Awesome 6 Brands", sans-serif !important;
     font-weight: 900;
@@ -26,6 +32,7 @@ html,body{overflow-x:hidden!important}*{margin:0;padding:0;box-sizing:border-box
     font-variant: normal;
     text-rendering: auto;
     line-height: 1;
+    display: inline-block;
 }
 
 .fab {
