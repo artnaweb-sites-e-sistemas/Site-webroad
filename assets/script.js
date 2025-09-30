@@ -15,7 +15,7 @@ function optimizeDOMOperations() {
         const elements = document.querySelectorAll('.fade-in-up, .fade-in-left, .fade-in-right');
         
         // Process in smaller chunks to avoid long tasks
-        const chunkSize = 10;
+        const chunkSize = 5; // Reduced chunk size
         let index = 0;
         
         function processChunk() {
@@ -26,11 +26,11 @@ function optimizeDOMOperations() {
             index = end;
             
             if (index < elements.length) {
-                requestIdleCallback(processChunk, { timeout: 50 });
+                setTimeout(processChunk, 16); // 60fps instead of requestIdleCallback
             }
         }
         
-        requestIdleCallback(processChunk, { timeout: 50 });
+        setTimeout(processChunk, 100); // Start after initial render
         
         // Optimize scroll listener with throttling
         let ticking = false;
@@ -40,8 +40,7 @@ function optimizeDOMOperations() {
             ticking = false;
             const currentScrollY = window.pageYOffset;
             
-            if (Math.abs(currentScrollY - lastScrollY) > 10) {
-                // Only update if scroll is significant
+            if (Math.abs(currentScrollY - lastScrollY) > 5) { // Reduced threshold
                 lastScrollY = currentScrollY;
             }
         }
@@ -1046,7 +1045,7 @@ function initTeamCarousel() {
     const memberName = document.querySelector('.team-member-name');
     const memberRole = document.querySelector('.team-member-role');
     const memberBio = document.querySelector('.team-member-bio');
-    const mainImage = document.querySelector('.team-main-image');
+    const mainImage = document.querySelector('.team-main-image-container');
     const thumbnails = document.querySelectorAll('.team-thumbnail');
     const thumbnailsContainer = document.querySelector('.team-thumbnails-container');
 
@@ -1070,8 +1069,22 @@ function initTeamCarousel() {
             memberBio.textContent = member.bioCurta;
             
             // Atualizar imagem
-            mainImage.src = member.foto;
-            mainImage.alt = `Retrato de ${member.nome}, ${member.funcao}`;
+            const imgElement = mainImage.querySelector('img');
+            if (imgElement) {
+                // Adicionar event listeners para fallback
+                imgElement.onload = function() {
+                    this.style.opacity = '1';
+                };
+                
+                imgElement.onerror = function() {
+                    // Fallback para imagem padrão se a específica falhar
+                    this.src = 'assets/imgs/imgequipe.png';
+                    this.alt = `Retrato de ${member.nome}, ${member.funcao}`;
+                };
+                
+                imgElement.src = member.foto;
+                imgElement.alt = `Retrato de ${member.nome}, ${member.funcao}`;
+            }
             
             // Remover fade e aplicar scale-in
             mainImage.classList.remove('fade-transition');
@@ -1165,7 +1178,7 @@ function initTeamCarousel() {
                 const newIndex = currentIndex > 0 ? currentIndex - 1 : teamData.length - 1;
                 updateMember(newIndex);
             }
-        });
+        }, { passive: false }); // Explicitly set passive: false since we need preventDefault
     }
 
     // Lazy loading de imagens
@@ -1465,19 +1478,46 @@ function initLazyLoadImages() {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     const img = entry.target;
-                    if (img.dataset.src) {
-                        img.src = img.dataset.src;
-                        img.removeAttribute('data-src');
+                    
+                    // Load image with proper error handling
+                    const loadImage = () => {
+                        if (img.dataset.src) {
+                            img.src = img.dataset.src;
+                            img.removeAttribute('data-src');
+                        }
+                        
+                        // Add error handling
+                        img.onerror = function() {
+                            this.style.display = 'none';
+                        };
+                        
+                        // Add load event
+                        img.onload = function() {
+                            this.style.opacity = '1';
+                        };
+                        
+                        imageObserver.unobserve(img);
+                    };
+                    
+                    // Use requestIdleCallback for better performance
+                    if ('requestIdleCallback' in window) {
+                        requestIdleCallback(loadImage, { timeout: 100 });
+                    } else {
+                        setTimeout(loadImage, 100);
                     }
-                    imageObserver.unobserve(img);
                 }
             });
         }, {
-            rootMargin: '50px 0px',
+            rootMargin: '100px 0px', // Increase margin for earlier loading
             threshold: 0.01
         });
         
-        images.forEach(img => imageObserver.observe(img));
+        images.forEach(img => {
+            // Set initial opacity for smooth loading
+            img.style.opacity = '0';
+            img.style.transition = 'opacity 0.3s ease';
+            imageObserver.observe(img);
+        });
     }
 }
 
@@ -1486,9 +1526,26 @@ function initYouTubeLazyLoad() {
     const placeholders = document.querySelectorAll('.youtube-placeholder');
     
     placeholders.forEach(placeholder => {
-        // Ensure thumbnail image loads
+        // Ensure thumbnail image loads with proper cache headers
         const img = placeholder.querySelector('img');
         if (img && !img.complete) {
+            // Force cache headers via fetch
+            const imgUrl = img.src;
+            fetch(imgUrl, {
+                method: 'HEAD',
+                cache: 'force-cache',
+                headers: {
+                    'Cache-Control': 'public, max-age=31536000, immutable'
+                }
+            }).then(() => {
+                img.src = imgUrl + '?v=' + Date.now(); // Force reload with cache
+            }).catch(() => {
+                // Fallback to hqdefault if maxresdefault fails
+                if (imgUrl.includes('maxresdefault')) {
+                    img.src = imgUrl.replace('maxresdefault', 'hqdefault');
+                }
+            });
+            
             img.onerror = function() {
                 // Fallback to hqdefault if maxresdefault fails
                 if (this.src.includes('maxresdefault')) {

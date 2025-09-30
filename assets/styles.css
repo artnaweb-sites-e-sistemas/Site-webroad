@@ -1,7 +1,37 @@
 /* Reset e Base Styles - Optimized */
 html,body{overflow-x:hidden!important}*{margin:0;padding:0;box-sizing:border-box}
 
-/* Font Awesome optimization - moved to inline CSS */
+/* Font Awesome optimization */
+@font-face {
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    font-display: swap;
+    src: url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/webfonts/fa-solid-900.woff2") format("woff2");
+    unicode-range: U+f04b, U+f095, U+f0e0, U+f062, U+f007, U+f015; /* Only used icons */
+}
+
+@font-face {
+    font-family: "Font Awesome 6 Brands";
+    font-weight: 400;
+    font-display: swap;
+    src: url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/webfonts/fa-brands-400.woff2") format("woff2");
+    unicode-range: U+f232, U+f09a, U+f16d; /* Only used icons */
+}
+
+/* Ensure Font Awesome icons display properly */
+.fas, .fab, .fa {
+    font-family: "Font Awesome 6 Free", "Font Awesome 6 Brands", sans-serif !important;
+    font-weight: 900;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    line-height: 1;
+}
+
+.fab {
+    font-family: "Font Awesome 6 Brands" !important;
+    font-weight: 400;
+}
 
 /* Prevent layout shift for all images */
 img {
@@ -110,15 +140,41 @@ img {
 .nav-logo img {
     width: 120px;
     height: 40px;
-    image-rendering: -webkit-optimize-contrast;
-    image-rendering: crisp-edges;
+    object-fit: contain;
+    content-visibility: auto;
 }
 
 .footer-logo-img {
     width: 120px;
     height: 50px;
-    image-rendering: -webkit-optimize-contrast;
-    image-rendering: crisp-edges;
+    object-fit: contain;
+    content-visibility: auto;
+}
+
+/* Picture element optimization */
+picture {
+    display: inline-block;
+    width: 120px;
+    height: 40px;
+}
+
+picture img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+/* Mobile logo optimization */
+@media (max-width: 768px) {
+    .nav-logo img {
+        width: 100px;
+        height: 33px;
+    }
+    
+    picture {
+        width: 100px;
+        height: 33px;
+    }
 }
 
 /* Optimize team image */
@@ -126,6 +182,38 @@ img {
     max-width: 640px;
     height: auto;
     content-visibility: auto;
+}
+
+/* Force thumbnail images to display */
+.thumbnail-image {
+    display: block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+}
+
+.thumbnail-image-container {
+    display: block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+/* Force contact image to display */
+.contact-image {
+    display: block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+}
+
+.contact-image-box {
+    display: block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
 }
 
 /* YouTube thumbnail optimization */
@@ -1879,6 +1967,9 @@ body {
     object-fit: cover;
     object-position: center;
     transition: all 0.3s ease;
+    display: block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
 }
 
 .team-main-image.fade-transition {

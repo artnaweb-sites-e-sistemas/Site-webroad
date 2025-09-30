@@ -104,6 +104,10 @@
     <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/webfonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/webfonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin>
     
+    <!-- Font Awesome CSS - Load asynchronously -->
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"></noscript>
+    
     <!-- Inline only used Font Awesome icons CSS -->
     <style>
         /* Only used Font Awesome icons */
@@ -151,8 +155,16 @@
     <nav class="navbar">
         <div class="nav-container">
             <div class="nav-logo">
-                <img src="assets/imgs/logow.webp" alt="WebRoad Logo" class="logo-white" id="logo-white" width="120" height="40" fetchpriority="high">
-                <img src="assets/imgs/logod.webp" alt="WebRoad Logo" class="logo-dark" id="logo-dark" width="120" height="40" fetchpriority="high">
+                <picture>
+                    <source srcset="assets/imgs/logow-120.webp" type="image/webp" media="(max-width: 768px)">
+                    <source srcset="assets/imgs/logow.webp" type="image/webp">
+                    <img src="assets/imgs/logow.webp" alt="WebRoad Logo" class="logo-white" id="logo-white" width="120" height="40" loading="lazy">
+                </picture>
+                <picture>
+                    <source srcset="assets/imgs/logod-120.webp" type="image/webp" media="(max-width: 768px)">
+                    <source srcset="assets/imgs/logod.webp" type="image/webp">
+                    <img src="assets/imgs/logod.webp" alt="WebRoad Logo" class="logo-dark" id="logo-dark" width="120" height="40" loading="lazy">
+                </picture>
             </div>
             <ul class="nav-menu">
                 <li><a href="#home" onclick="document.querySelector('.nav-menu').classList.remove('active'); document.querySelector('.nav-toggle').classList.remove('active'); document.body.style.overflow = '';">Início</a></li>
@@ -247,7 +259,7 @@
                 <div class="video-wrapper">
                     <div class="youtube-placeholder" data-video-id="ChQbnx9KtRQ">
                         <div class="youtube-thumbnail">
-                            <img src="https://img.youtube.com/vi/ChQbnx9KtRQ/maxresdefault.jpg" alt="WebRoad - Agência Digital" fetchpriority="high" width="1280" height="720">
+                            <img src="https://img.youtube.com/vi/ChQbnx9KtRQ/maxresdefault.jpg" alt="WebRoad - Agência Digital" fetchpriority="high" width="1280" height="720" crossorigin="anonymous">
                             <div class="play-button">
                                 <i class="fas fa-play"></i>
                             </div>
@@ -454,7 +466,7 @@
                 <!-- Coluna Central: Imagem Principal -->
                 <div class="team-image-column">
                     <div class="team-main-image-container" data-aos="fade-up" data-aos-offset="0" data-aos-delay="200" data-aos-duration="600" data-aos-easing="ease-out" data-aos-mirror="false" data-aos-once="true" data-aos-anchor-placement="top-bottom">
-                        <img src="assets/imgs/imgequipe.png" alt="Retrato de Bira Oliveira, Designer" class="team-main-image" width="640" height="800" loading="lazy" decoding="async">
+                        <img src="assets/imgs/imgequipe.png" alt="Retrato de Bira Oliveira, Designer" class="team-main-image" width="640" height="800" fetchpriority="high" decoding="async">
                         </div>
                     </div>
                 
@@ -465,7 +477,7 @@
                         <div class="team-thumbnails-container" role="listbox" aria-label="Selecionar membro da equipe">
                             <div class="team-thumbnail active" role="option" aria-selected="true" data-member="0" data-role="Designer" data-linkedin="#" data-bio="Especialista em design estratégico e experiência do usuário" data-photo-hd="assets/imgs/imgequipe.png" tabindex="0">
                                 <div class="thumbnail-image-container">
-                                    <img src="assets/imgs/imgequipe.png" alt="Bira Oliveira" class="thumbnail-image" width="295" height="455" loading="lazy">
+                                    <img src="assets/imgs/imgequipe.png" alt="Bira Oliveira" class="thumbnail-image" width="295" height="455">
                 </div>
                                 <div class="thumbnail-name-container">
                                     <span class="thumbnail-name">BIRA OLIVEIRA</span>
@@ -473,7 +485,7 @@
                     </div>
                             <div class="team-thumbnail" role="option" aria-selected="false" data-member="1" data-role="Desenvolvedora Frontend" data-linkedin="#" data-bio="Especialista em React, Vue.js e desenvolvimento de interfaces modernas" data-photo-hd="assets/imgs/imgequipe.png" tabindex="0">
                                 <div class="thumbnail-image-container">
-                                    <img src="assets/imgs/imgequipe.png" alt="Ana Silva" class="thumbnail-image" width="295" height="455" loading="lazy">
+                                    <img src="assets/imgs/imgequipe.png" alt="Ana Silva" class="thumbnail-image" width="295" height="455">
                                 </div>
                                 <div class="thumbnail-name-container">
                                     <span class="thumbnail-name">ANA SILVA</span>
@@ -481,7 +493,7 @@
                 </div>
                             <div class="team-thumbnail" role="option" aria-selected="false" data-member="2" data-role="Desenvolvedor Backend" data-linkedin="#" data-bio="Especialista em Node.js, Python e arquiteturas escaláveis" data-photo-hd="assets/imgs/imgequipe.png" tabindex="0">
                                 <div class="thumbnail-image-container">
-                                    <img src="assets/imgs/imgequipe.png" alt="Carlos Santos" class="thumbnail-image" width="295" height="455" loading="lazy">
+                                    <img src="assets/imgs/imgequipe.png" alt="Carlos Santos" class="thumbnail-image" width="295" height="455">
                                 </div>
                                 <div class="thumbnail-name-container">
                                     <span class="thumbnail-name">CARLOS SANTOS</span>
@@ -489,7 +501,7 @@
                     </div>
                             <div class="team-thumbnail" role="option" aria-selected="false" data-member="3" data-role="UX/UI Designer" data-linkedin="#" data-bio="Especialista em pesquisa de usuários e design de interfaces" data-photo-hd="assets/imgs/imgequipe.png" tabindex="0">
                                 <div class="thumbnail-image-container">
-                                    <img src="assets/imgs/imgequipe.png" alt="Maria Costa" class="thumbnail-image" width="295" height="455" loading="lazy">
+                                    <img src="assets/imgs/imgequipe.png" alt="Maria Costa" class="thumbnail-image" width="295" height="455">
                                 </div>
                                 <div class="thumbnail-name-container">
                                     <span class="thumbnail-name">MARIA COSTA</span>
@@ -497,7 +509,7 @@
                     </div>
                             <div class="team-thumbnail" role="option" aria-selected="false" data-member="4" data-role="Gerente de Projetos" data-linkedin="#" data-bio="Especialista em gestão ágil e coordenação de equipes" data-photo-hd="assets/imgs/imgequipe.png" tabindex="0">
                                 <div class="thumbnail-image-container">
-                                    <img src="assets/imgs/imgequipe.png" alt="João Lima" class="thumbnail-image" width="295" height="455" loading="lazy">
+                                    <img src="assets/imgs/imgequipe.png" alt="João Lima" class="thumbnail-image" width="295" height="455">
                                 </div>
                                 <div class="thumbnail-name-container">
                                     <span class="thumbnail-name">JOÃO LIMA</span>
@@ -680,7 +692,7 @@
                                 <p>Um ambiente moderno e profissional onde suas ideias ganham vida através da tecnologia e criatividade.</p>
                             </div>
                         </div>
-                        <img src="assets/imgs/agencia.jpg" alt="WebRoad - Nossa agência digital moderna" class="contact-image" width="550" height="450" loading="lazy">
+                        <img src="assets/imgs/agencia.jpg" alt="WebRoad - Nossa agência digital moderna" class="contact-image" width="550" height="450">
                     </div>
                     <div class="contact-highlights">
                         <div class="highlight-item">
