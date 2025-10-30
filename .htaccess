@@ -1,0 +1,103 @@
+# WebRoad Landing Page - WordPress Compatible
+
+# Rewrite rules for clean URLs (MUST come before WordPress rules)
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    
+    # Redirect lp.html to clean URL
+    RewriteCond %{THE_REQUEST} /lp\.html[\s?] [NC]
+    RewriteRule ^lp\.html$ /lp [R=301,L]
+    
+    # Serve lp.html when accessing /lp
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^lp$ lp.html [L]
+    
+    # Serve index.html when accessing root (if no WordPress index.php)
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_URI} ^/$
+    RewriteRule ^$ index.html [L]
+</IfModule>
+
+# WebRoad Landing Page Specific Rules
+<Files "lp.html">
+    Header set Cache-Control "public, max-age=86400"
+</Files>
+
+<Files "index.html">
+    Header set Cache-Control "public, max-age=86400"
+</Files>
+
+# Allow direct access to assets folder
+<Directory "assets">
+    Header set Cache-Control "public, max-age=2592000"
+</Directory>
+
+# Enable compression for WebRoad assets
+<IfModule mod_deflate.c>
+    # Compress WebRoad specific files
+    <FilesMatch "\.(css|js|html)$">
+        SetOutputFilter DEFLATE
+    </FilesMatch>
+    
+    # Compress images and fonts
+    <FilesMatch "\.(woff|woff2|ttf|eot|svg)$">
+        SetOutputFilter DEFLATE
+    </FilesMatch>
+</IfModule>
+
+# Cache static assets
+<IfModule mod_expires.c>
+    ExpiresActive on
+    
+    # WebRoad assets
+    <FilesMatch "\.(css|js)$">
+        ExpiresDefault "access plus 1 month"
+    </FilesMatch>
+    
+    <FilesMatch "\.(png|jpg|jpeg|gif|webp|svg)$">
+        ExpiresDefault "access plus 1 month"
+    </FilesMatch>
+    
+    <FilesMatch "\.(woff|woff2|ttf|eot)$">
+        ExpiresDefault "access plus 1 year"
+    </FilesMatch>
+</IfModule>
+
+# Security headers for WebRoad
+<IfModule mod_headers.c>
+    # Basic security headers
+    Header always set X-Content-Type-Options nosniff
+    Header always set X-Frame-Options SAMEORIGIN
+    Header always set X-XSS-Protection "1; mode=block"
+    
+    # CORS for external resources
+    <FilesMatch "\.(css|js|woff|woff2)$">
+        Header set Access-Control-Allow-Origin "*"
+    </FilesMatch>
+</IfModule>
+
+# MIME types for WebRoad assets
+<IfModule mod_mime.c>
+    AddType image/webp .webp
+    AddType font/woff .woff
+    AddType font/woff2 .woff2
+    AddType application/font-woff .woff
+    AddType application/font-woff2 .woff2
+</IfModule>
+
+# BEGIN WordPress
+# The directives (lines) between "BEGIN WordPress" and "END WordPress" are
+# dynamically generated, and should only be modified via WordPress filters.
+# Any changes to the directives between these markers will be overwritten.
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+RewriteBase /
+RewriteRule ^index\.php$ - [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /index.php [L]
+</IfModule>
+# END WordPress
