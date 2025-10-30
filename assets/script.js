@@ -1,119 +1,18 @@
-// WebRoad Landing Page JavaScript - Optimized
-
-// Fallback for requestIdleCallback
-if (!window.requestIdleCallback) {
-    window.requestIdleCallback = function(callback, options) {
-        return setTimeout(callback, options?.timeout || 0);
-    };
-}
-
-// Optimize DOM operations to reduce forced reflow
-function optimizeDOMOperations() {
-    // Use requestIdleCallback with longer timeout to avoid blocking main thread
-    requestIdleCallback(() => {
-        // Batch DOM operations
-        const elements = document.querySelectorAll('.fade-in-up, .fade-in-left, .fade-in-right');
-        
-        // Process in smaller chunks to avoid long tasks
-        const chunkSize = 3; // Further reduced chunk size
-        let index = 0;
-        
-        function processChunk() {
-            const end = Math.min(index + chunkSize, elements.length);
-            for (let i = index; i < end; i++) {
-                elements[i].style.willChange = 'transform, opacity';
-            }
-            index = end;
-            
-            if (index < elements.length) {
-                requestAnimationFrame(processChunk); // Use RAF for better performance
-            }
-        }
-        
-        requestAnimationFrame(processChunk); // Start after initial render
-        
-        // Optimize scroll listener with throttling
-        let ticking = false;
-        let lastScrollY = 0;
-        
-        function updateScroll() {
-            ticking = false;
-            const currentScrollY = window.pageYOffset;
-            
-            if (Math.abs(currentScrollY - lastScrollY) > 10) { // Increased threshold for better performance
-                lastScrollY = currentScrollY;
-            }
-        }
-        
-        function requestTick() {
-            if (!ticking) {
-                requestAnimationFrame(updateScroll);
-                ticking = true;
-            }
-        }
-        
-        window.addEventListener('scroll', requestTick, { passive: true });
-    }, { timeout: 200 });
-}
+// WebRoad Landing Page JavaScript
 
 document.addEventListener('DOMContentLoaded', function() {
-    // Initialize critical functionality first
+    // Initialize all functionality
     initNavigation();
-    initMobileMenu();
+    initScrollAnimations();
+    initContactVisual();
     initSmoothScrolling();
-    initYouTubeLazyLoad();
-    optimizeDOMOperations();
-    initLazyLoadImages();
-    
-    // Use setTimeout for better main thread distribution
-    setTimeout(() => {
-        initScrollAnimations();
-        initContactVisual();
-    }, 100);
-    
-    setTimeout(() => {
-        initCounterAnimations();
-        initMobileHeroCounters();
-        initScrollUp();
-    }, 200);
-    
-    // Heavy functionality with longer delays
-    setTimeout(() => {
-        initTeamCarousel();
-    }, 2000); // Increased delay to reduce initial load
-    
-    // Delay CTA video loading until user scrolls near it
-    requestIdleCallback(() => {
-        const ctaSection = document.querySelector('.cta-section');
-        const ctaVideo = document.getElementById('cta-video');
-        
-        if (ctaSection && ctaVideo) {
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        // Load video source on demand
-                        const source = ctaVideo.querySelector('source[data-src]');
-                        if (source) {
-                            source.src = source.getAttribute('data-src');
-                            source.removeAttribute('data-src');
-                            ctaVideo.load();
-                            ctaVideo.play().catch(() => {
-                                // Silently fail if autoplay is blocked
-                            });
-                        }
-                        initCTAVideo();
-                        observer.disconnect();
-                    }
-                });
-            }, { rootMargin: '300px' });
-            
-            observer.observe(ctaSection);
-        }
-    }, { timeout: 500 });
-    
-    setTimeout(() => {
-        initParallaxEffects();
-    }, 3000); // Further delayed to reduce initial load
+    initMobileMenu();
+    initParallaxEffects();
+    initCounterAnimations();
+    initMobileHeroCounters();
+    initTeamCarousel();
+    initScrollUp();
+    initCTAVideo();
 });
 
 // Mobile hero counters initialization
@@ -271,37 +170,21 @@ function initMobileMenu() {
     const navToggle = document.querySelector('.nav-toggle');
     const navMenu = document.querySelector('.nav-menu');
     
-    if (!navToggle || !navMenu) {
-        return;
-    }
-    
-    // Simple toggle function
-    function toggleMenu() {
-        navMenu.classList.toggle('active');
-        navToggle.classList.toggle('active');
+    if (navToggle && navMenu) {
+        navToggle.addEventListener('click', function() {
+            navMenu.classList.toggle('active');
+            navToggle.classList.toggle('active');
+        });
         
-        if (navMenu.classList.contains('active')) {
-            document.body.style.overflow = 'hidden';
-        } else {
-            document.body.style.overflow = '';
-        }
+        // Close menu when clicking on a link
+        const navLinks = document.querySelectorAll('.nav-menu a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                navMenu.classList.remove('active');
+                navToggle.classList.remove('active');
+            });
+        });
     }
-    
-    // Add click event
-    navToggle.onclick = function(e) {
-        e.preventDefault();
-        toggleMenu();
-    };
-    
-    // Close menu when clicking on links
-    const navLinks = navMenu.querySelectorAll('a');
-    navLinks.forEach(link => {
-        link.onclick = function() {
-            navMenu.classList.remove('active');
-            navToggle.classList.remove('active');
-            document.body.style.overflow = '';
-        };
-    });
 }
 
 // Smooth scrolling for navigation links
@@ -323,24 +206,11 @@ function initSmoothScrolling() {
                     behavior: 'smooth'
                 });
             }
-        }, { passive: false });
-    });
-    
-    // Add passive scroll listeners for performance
-    window.addEventListener('scroll', function() {
-        // Scroll-based animations
-        const scrolled = window.pageYOffset;
-        const parallax = document.querySelectorAll('.parallax');
-        
-        parallax.forEach(element => {
-            const speed = element.dataset.speed || 0.5;
-            const yPos = -(scrolled * speed);
-            element.style.transform = `translateY(${yPos}px)`;
         });
-    }, { passive: true });
+    });
 }
 
-// Scroll animations - Optimized to reduce reflow
+// Scroll animations
 function initScrollAnimations() {
     const observerOptions = {
         threshold: 0.1,
@@ -348,18 +218,15 @@ function initScrollAnimations() {
     };
     
     const observer = new IntersectionObserver(function(entries) {
-        // Use requestAnimationFrame to batch style changes
-        requestAnimationFrame(() => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('fade-in-up');
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('fade-in-up');
                 
-                    // Trigger counter animations for stats
-                    if (entry.target.classList.contains('mission-stats')) {
-                        animateCounters();
-                    }
+                // Trigger counter animations for stats
+                if (entry.target.classList.contains('mission-stats')) {
+                    animateCounters();
                 }
-            });
+            }
         });
     }, observerOptions);
     
@@ -441,43 +308,25 @@ function initCounterAnimations() {
     }
 }
 
-// Parallax effects for hero section - Optimized
+// Parallax effects for hero section
 function initParallaxEffects() {
     const shapes = document.querySelectorAll('.shape');
     const floatingCards = document.querySelectorAll('.floating-card');
     
-    let ticking = false;
-    let lastScrollY = 0;
-    
-    function updateParallax() {
+    window.addEventListener('scroll', function() {
         const scrolled = window.pageYOffset;
+        const rate = scrolled * -0.5;
         
-        // Only update if scroll is significant
-        if (Math.abs(scrolled - lastScrollY) > 5) {
-            shapes.forEach((shape, index) => {
-                const speed = 0.2 + (index * 0.1);
-                shape.style.transform = `translate3d(0, ${scrolled * speed}px, 0) rotate(${scrolled * 0.02}deg)`;
-            });
-            
-            floatingCards.forEach((card, index) => {
-                const speed = 0.1 + (index * 0.05);
-                card.style.transform = `translate3d(0, ${scrolled * speed}px, 0)`;
-            });
-            
-            lastScrollY = scrolled;
-        }
+        shapes.forEach((shape, index) => {
+            const speed = 0.2 + (index * 0.1);
+            shape.style.transform = `translateY(${scrolled * speed}px) rotate(${scrolled * 0.02}deg)`;
+        });
         
-        ticking = false;
-    }
-    
-    function requestTick() {
-        if (!ticking) {
-            requestAnimationFrame(updateParallax);
-            ticking = true;
-        }
-    }
-    
-    window.addEventListener('scroll', requestTick, { passive: true });
+        floatingCards.forEach((card, index) => {
+            const speed = 0.1 + (index * 0.05);
+            card.style.transform = `translateY(${scrolled * speed}px)`;
+        });
+    });
 }
 
 // Contact visual interactions
@@ -668,6 +517,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initLoadingScreen();
     initRotatingText();
     initParticles();
+    initParticlesOn('services-particles-canvas');
     initCounters();
     initMouseFollower();
 });
@@ -752,23 +602,9 @@ function initRotatingText() {
     }, 2000);
 }
 
-// Particles Animation
-function initParticles() {
-    const canvas = document.getElementById('particles-canvas');
-    const mobileCanvas = document.getElementById('mobile-particles-canvas');
-    
-    // Initialize desktop particles
-    if (canvas) {
-        initParticlesCanvas(canvas);
-    }
-    
-    // Initialize mobile particles
-    if (mobileCanvas) {
-        initParticlesCanvas(mobileCanvas);
-    }
-}
-
-function initParticlesCanvas(canvas) {
+// Particles Animation (reusable for multiple canvases)
+function initParticlesOn(canvasId) {
+    const canvas = document.getElementById(canvasId);
     if (!canvas) return;
     
     const ctx = canvas.getContext('2d');
@@ -780,23 +616,19 @@ function initParticlesCanvas(canvas) {
     }
     
     function createParticle() {
-        const isMobile = canvas.id === 'mobile-particles-canvas';
         return {
             x: Math.random() * canvas.width,
             y: Math.random() * canvas.height,
             vx: (Math.random() - 0.5) * 0.5,
             vy: (Math.random() - 0.5) * 0.5,
-            size: isMobile ? Math.random() * 3 + 2 : Math.random() * 2 + 1,
-            opacity: isMobile ? Math.random() * 0.7 + 0.3 : Math.random() * 0.5 + 0.2
+            size: Math.random() * 2 + 1,
+            opacity: Math.random() * 0.5 + 0.2
         };
     }
     
     function initParticlesArray() {
         particles = [];
-        // Further reduce particle count for better performance
-        const isMobile = canvas.id === 'mobile-particles-canvas';
-        const divisor = isMobile ? 50000 : 30000; // Reduced particle count
-        const particleCount = Math.floor((canvas.width * canvas.height) / divisor);
+        const particleCount = Math.floor((canvas.width * canvas.height) / 15000);
         for (let i = 0; i < particleCount; i++) {
             particles.push(createParticle());
         }
@@ -855,6 +687,11 @@ function initParticlesCanvas(canvas) {
         resizeCanvas();
         initParticlesArray();
     });
+}
+
+// Backward-compatible init for hero
+function initParticles() {
+    initParticlesOn('particles-canvas');
 }
 
 // Animated Counter
@@ -1045,7 +882,7 @@ function initTeamCarousel() {
     const memberName = document.querySelector('.team-member-name');
     const memberRole = document.querySelector('.team-member-role');
     const memberBio = document.querySelector('.team-member-bio');
-    const mainImage = document.querySelector('.team-main-image-container');
+    const mainImage = document.querySelector('.team-main-image');
     const thumbnails = document.querySelectorAll('.team-thumbnail');
     const thumbnailsContainer = document.querySelector('.team-thumbnails-container');
 
@@ -1069,22 +906,8 @@ function initTeamCarousel() {
             memberBio.textContent = member.bioCurta;
             
             // Atualizar imagem
-            const imgElement = mainImage.querySelector('img');
-            if (imgElement) {
-                // Adicionar event listeners para fallback
-                imgElement.onload = function() {
-                    this.style.opacity = '1';
-                };
-                
-                imgElement.onerror = function() {
-                    // Fallback para imagem padrão se a específica falhar
-                    this.src = 'assets/imgs/imgequipe.png';
-                    this.alt = `Retrato de ${member.nome}, ${member.funcao}`;
-                };
-                
-                imgElement.src = member.foto;
-                imgElement.alt = `Retrato de ${member.nome}, ${member.funcao}`;
-            }
+            mainImage.src = member.foto;
+            mainImage.alt = `Retrato de ${member.nome}, ${member.funcao}`;
             
             // Remover fade e aplicar scale-in
             mainImage.classList.remove('fade-transition');
@@ -1144,6 +967,8 @@ function initTeamCarousel() {
     thumbnails.forEach((thumbnail, index) => {
         thumbnail.addEventListener('click', () => {
             updateMember(index);
+            // Ao interagir por clique, retomar autoplay
+            startAutoPlay();
         });
 
         // Navegação por teclado
@@ -1178,7 +1003,26 @@ function initTeamCarousel() {
                 const newIndex = currentIndex > 0 ? currentIndex - 1 : teamData.length - 1;
                 updateMember(newIndex);
             }
-        }, { passive: false }); // Explicitly set passive: false since we need preventDefault
+            // Ao usar a roda do mouse, retomar autoplay
+            startAutoPlay();
+        });
+
+        // Pausar autoplay quando o mouse estiver sobre o carrossel (miniaturas)
+        thumbnailsContainer.addEventListener('mouseenter', () => {
+            stopAutoPlay();
+        });
+
+        // Retomar autoplay quando o mouse sair do carrossel
+        thumbnailsContainer.addEventListener('mouseleave', () => {
+            if (isSectionVisible) {
+                startAutoPlay();
+            }
+        });
+
+        // Qualquer clique dentro do carrossel deve retomar o autoplay
+        thumbnailsContainer.addEventListener('click', () => {
+            startAutoPlay();
+        });
     }
 
     // Lazy loading de imagens
@@ -1271,6 +1115,10 @@ function initTeamCarousel() {
             if (isSectionVisible) {
                 startAutoPlay();
             }
+        });
+        // Clique na imagem principal também retoma o autoplay
+        mainImageContainer.addEventListener('click', () => {
+            startAutoPlay();
         });
     }
 
@@ -1469,124 +1317,9 @@ function initCTAVideo() {
     }, 3000);
 }
 
-// Lazy Load Images - Optimized
-function initLazyLoadImages() {
-    const images = document.querySelectorAll('img[loading="lazy"]');
-    
-    if ('IntersectionObserver' in window) {
-        const imageObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const img = entry.target;
-                    
-                    // Load image with proper error handling
-                    const loadImage = () => {
-                        if (img.dataset.src) {
-                            img.src = img.dataset.src;
-                            img.removeAttribute('data-src');
-                        }
-                        
-                        // Add error handling
-                        img.onerror = function() {
-                            this.style.display = 'none';
-                        };
-                        
-                        // Add load event
-                        img.onload = function() {
-                            this.style.opacity = '1';
-                        };
-                        
-                        imageObserver.unobserve(img);
-                    };
-                    
-                    // Use requestIdleCallback for better performance
-                    if ('requestIdleCallback' in window) {
-                        requestIdleCallback(loadImage, { timeout: 100 });
-                    } else {
-                        setTimeout(loadImage, 100);
-                    }
-                }
-            });
-        }, {
-            rootMargin: '100px 0px', // Increase margin for earlier loading
-            threshold: 0.01
-        });
-        
-        images.forEach(img => {
-            // Set initial opacity for smooth loading
-            img.style.opacity = '0';
-            img.style.transition = 'opacity 0.3s ease';
-            imageObserver.observe(img);
-        });
-    }
-}
-
-// YouTube Lazy Loading - Optimized
-function initYouTubeLazyLoad() {
-    const placeholders = document.querySelectorAll('.youtube-placeholder');
-    
-    placeholders.forEach(placeholder => {
-        // Ensure thumbnail image loads with proper cache headers
-        const img = placeholder.querySelector('img');
-        if (img && !img.complete) {
-            // Force cache headers via fetch
-            const imgUrl = img.src;
-            fetch(imgUrl, {
-                method: 'HEAD',
-                cache: 'force-cache',
-                headers: {
-                    'Cache-Control': 'public, max-age=31536000, immutable'
-                }
-            }).then(() => {
-                img.src = imgUrl + '?v=' + Date.now(); // Force reload with cache
-            }).catch(() => {
-                // Fallback to hqdefault if maxresdefault fails
-                if (imgUrl.includes('maxresdefault')) {
-                    img.src = imgUrl.replace('maxresdefault', 'hqdefault');
-                }
-            });
-            
-            img.onerror = function() {
-                // Fallback to hqdefault if maxresdefault fails
-                if (this.src.includes('maxresdefault')) {
-                    this.src = this.src.replace('maxresdefault', 'hqdefault');
-                }
-            };
-        }
-        
-        placeholder.addEventListener('click', function() {
-            const videoId = this.dataset.videoId;
-            const iframe = document.createElement('iframe');
-            
-            iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1&showinfo=0`;
-            iframe.title = 'WebRoad - Agência Digital';
-            iframe.frameBorder = '0';
-            iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
-            iframe.allowFullscreen = true;
-            iframe.loading = 'lazy';
-            
-            // Style iframe to fill container
-            iframe.style.cssText = `
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                border: none;
-                border-radius: 12px;
-            `;
-            
-            // Clear placeholder and add iframe
-            this.innerHTML = '';
-            this.appendChild(iframe);
-        });
-    });
-}
-
 // Export functions for external use if needed
 window.WebRoad = {
     showNotification,
     debounce,
-    throttle,
-    initYouTubeLazyLoad
+    throttle
 };

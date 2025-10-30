@@ -353,6 +353,11 @@
 
     <!-- Services Section -->
     <section id="services" class="services">
+        <div class="services-background">
+            <div class="services-gradient"></div>
+            <div class="services-overlay"></div>
+            <canvas id="services-particles-canvas" class="particles-canvas"></canvas>
+        </div>
         <div class="container">
             <h2 class="section-title">Nossos Serviços</h2>
             <div class="services-grid">
@@ -432,15 +437,15 @@
                         <p class="team-section-subtitle" data-aos="fade-up" data-aos-offset="0" data-aos-delay="100" data-aos-duration="600" data-aos-easing="ease-out" data-aos-mirror="false" data-aos-once="true" data-aos-anchor-placement="top-bottom">Profissionais apaixonados por criar experiências digitais excepcionais</p>
                     </div>
                     
-                    <h2 class="team-member-name" data-aos="fade-up" data-aos-offset="0" data-aos-delay="200" data-aos-duration="600" data-aos-easing="ease-out" data-aos-mirror="false" data-aos-once="true" data-aos-anchor-placement="top-bottom">Bira Oliveira</h2>
-                    <p class="team-member-role" data-aos="fade-up" data-aos-offset="0" data-aos-delay="300" data-aos-duration="600" data-aos-easing="ease-out" data-aos-mirror="false" data-aos-once="true" data-aos-anchor-placement="top-bottom">Designer</p>
-                    <p class="team-member-bio" data-aos="fade-up" data-aos-offset="0" data-aos-delay="400" data-aos-duration="600" data-aos-easing="ease-out" data-aos-mirror="false" data-aos-once="true" data-aos-anchor-placement="top-bottom">Especialista em design estratégico e experiência do usuário</p>
+                    <h2 class="team-member-name" data-aos="fade-up" data-aos-offset="0" data-aos-delay="200" data-aos-duration="600" data-aos-easing="ease-out" data-aos-mirror="false" data-aos-once="true" data-aos-anchor-placement="top-bottom">Lucas Königsberger</h2>
+                    <p class="team-member-role" data-aos="fade-up" data-aos-offset="0" data-aos-delay="300" data-aos-duration="600" data-aos-easing="ease-out" data-aos-mirror="false" data-aos-once="true" data-aos-anchor-placement="top-bottom">CEO</p>
+                    <p class="team-member-bio" data-aos="fade-up" data-aos-offset="0" data-aos-delay="400" data-aos-duration="600" data-aos-easing="ease-out" data-aos-mirror="false" data-aos-once="true" data-aos-anchor-placement="top-bottom">Lidera estratégia e crescimento da WebRoad, foco em resultados e clientes-chave</p>
                 </div>
                 
                 <!-- Coluna Central: Imagem Principal -->
                 <div class="team-image-column">
                     <div class="team-main-image-container" data-aos="fade-up" data-aos-offset="0" data-aos-delay="200" data-aos-duration="600" data-aos-easing="ease-out" data-aos-mirror="false" data-aos-once="true" data-aos-anchor-placement="top-bottom">
-                        <img src="assets/imgs/imgequipe.png" alt="Retrato de Bira Oliveira, Designer" class="team-main-image" width="640" height="800" fetchpriority="high" decoding="async" loading="eager">
+                        <img src="assets/imgs/Lucas-Königsberger.png" alt="Retrato de Lucas Königsberger, CEO" class="team-main-image">
                         </div>
                     </div>
                 
@@ -449,44 +454,36 @@
                     <div class="team-carousel-container">
                         
                         <div class="team-thumbnails-container" role="listbox" aria-label="Selecionar membro da equipe">
-                            <div class="team-thumbnail active" role="option" aria-selected="true" data-member="0" data-role="Designer" data-linkedin="#" data-bio="Especialista em design estratégico e experiência do usuário" data-photo-hd="assets/imgs/imgequipe.png" tabindex="0">
+                            <div class="team-thumbnail active" role="option" aria-selected="true" data-member="0" data-role="CEO" data-linkedin="#" data-bio="Lidera estratégia e crescimento da WebRoad, foco em resultados e clientes-chave" data-photo-hd="assets/imgs/Lucas-Königsberger.png" tabindex="0">
                                 <div class="thumbnail-image-container">
-                                    <img src="assets/imgs/imgequipe.png" alt="Bira Oliveira" class="thumbnail-image" width="295" height="455" loading="lazy">
+                                    <img src="assets/imgs/Lucas-Königsberger.png" alt="Lucas Königsberger" class="thumbnail-image">
                 </div>
+                                <div class="thumbnail-name-container">
+                                    <span class="thumbnail-name">LUCAS KÖNIGSBERGER</span>
+                        </div>
+                    </div>
+                            <div class="team-thumbnail" role="option" aria-selected="false" data-member="1" data-role="Web Designer" data-linkedin="#" data-bio="Cria interfaces e identidades visuais focadas em conversão e usabilidade" data-photo-hd="assets/imgs/bira-oliveira.png" tabindex="0">
+                                <div class="thumbnail-image-container">
+                                    <img src="assets/imgs/bira-oliveira.png" alt="Bira Oliveira" class="thumbnail-image">
+                                </div>
                                 <div class="thumbnail-name-container">
                                     <span class="thumbnail-name">BIRA OLIVEIRA</span>
-                        </div>
-                    </div>
-                            <div class="team-thumbnail" role="option" aria-selected="false" data-member="1" data-role="Desenvolvedora Frontend" data-linkedin="#" data-bio="Especialista em React, Vue.js e desenvolvimento de interfaces modernas" data-photo-hd="assets/imgs/imgequipe.png" tabindex="0">
-                                <div class="thumbnail-image-container">
-                                    <img src="assets/imgs/imgequipe.png" alt="Ana Silva" class="thumbnail-image" width="295" height="455" loading="lazy">
-                                </div>
-                                <div class="thumbnail-name-container">
-                                    <span class="thumbnail-name">ANA SILVA</span>
                     </div>
                 </div>
-                            <div class="team-thumbnail" role="option" aria-selected="false" data-member="2" data-role="Desenvolvedor Backend" data-linkedin="#" data-bio="Especialista em Node.js, Python e arquiteturas escaláveis" data-photo-hd="assets/imgs/imgequipe.png" tabindex="0">
+                            <div class="team-thumbnail" role="option" aria-selected="false" data-member="2" data-role="Designer" data-linkedin="#" data-bio="Especialista em design estratégico e experiência do usuário" data-photo-hd="assets/imgs/equipe4.png" tabindex="0">
                                 <div class="thumbnail-image-container">
-                                    <img src="assets/imgs/imgequipe.png" alt="Carlos Santos" class="thumbnail-image" width="295" height="455" loading="lazy">
+                                    <img src="assets/imgs/equipe4.png" alt="NOME AQUI" class="thumbnail-image">
                                 </div>
                                 <div class="thumbnail-name-container">
-                                    <span class="thumbnail-name">CARLOS SANTOS</span>
+                                    <span class="thumbnail-name">NOME AQUI</span>
                         </div>
                     </div>
-                            <div class="team-thumbnail" role="option" aria-selected="false" data-member="3" data-role="UX/UI Designer" data-linkedin="#" data-bio="Especialista em pesquisa de usuários e design de interfaces" data-photo-hd="assets/imgs/imgequipe.png" tabindex="0">
+                            <div class="team-thumbnail" role="option" aria-selected="false" data-member="3" data-role="Designer" data-linkedin="#" data-bio="Especialista em design estratégico e experiência do usuário" data-photo-hd="assets/imgs/equipe3.png" tabindex="0">
                                 <div class="thumbnail-image-container">
-                                    <img src="assets/imgs/imgequipe.png" alt="Maria Costa" class="thumbnail-image" width="295" height="455" loading="lazy">
+                                    <img src="assets/imgs/equipe3.png" alt="NOME AQUI" class="thumbnail-image">
                                 </div>
                                 <div class="thumbnail-name-container">
-                                    <span class="thumbnail-name">MARIA COSTA</span>
-                        </div>
-                    </div>
-                            <div class="team-thumbnail" role="option" aria-selected="false" data-member="4" data-role="Gerente de Projetos" data-linkedin="#" data-bio="Especialista em gestão ágil e coordenação de equipes" data-photo-hd="assets/imgs/imgequipe.png" tabindex="0">
-                                <div class="thumbnail-image-container">
-                                    <img src="assets/imgs/imgequipe.png" alt="João Lima" class="thumbnail-image" width="295" height="455" loading="lazy">
-                                </div>
-                                <div class="thumbnail-name-container">
-                                    <span class="thumbnail-name">JOÃO LIMA</span>
+                                    <span class="thumbnail-name">NOME AQUI</span>
                         </div>
                     </div>
                         </div>
