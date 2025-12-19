@@ -1,20 +1,16 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!-- Performance Meta Tags -->
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="theme-color" content="#320a97">
-    <meta name="robots" content="index, follow">
-    <meta name="googlebot" content="index, follow">
+    <title>WebRoad - Transformamos ideias em experiências digitais memoráveis</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     
     <!-- SEO Meta Tags -->
-    <title>WebRoad - Transformamos ideias em experiências digitais memoráveis</title>
     <meta name="description" content="Agência digital WebRoad - Desenvolvemos websites, e-commerce, branding e gestão de tráfego. Transformamos ideias em experiências digitais memoráveis com foco em resultados.">
     <meta name="keywords" content="agência digital, web design, desenvolvimento web, e-commerce, branding, marketing digital, gestão de tráfego">
     <meta name="author" content="WebRoad">
+    <meta name="theme-color" content="#08D665">
     
     <!-- Open Graph Meta Tags -->
     <meta property="og:title" content="WebRoad - Transformamos ideias em experiências digitais memoráveis">
@@ -30,79 +26,23 @@
     <meta name="twitter:description" content="Agência digital especializada em desenvolvimento web, branding e marketing digital.">
     <meta name="twitter:image" content="assets/imgs/agencia.jpg">
     
-    <!-- Preconnect para recursos externos -->
+    <!-- ALL CSS CALLING -->
+    <link rel="stylesheet" href="novo-tema/glint/assets/css/plugins/animate.min.css">
+    <link rel="stylesheet" href="novo-tema/glint/assets/css/plugins/bootstrap.min.css">
+    <link rel="stylesheet" href="novo-tema/glint/assets/css/plugins/fontawesome.css">
+    <link rel="stylesheet" href="novo-tema/glint/assets/css/plugins/modal-video.min.css">
+    <link rel="stylesheet" href="novo-tema/glint/assets/css/plugins/stellarnav.css">
+    <link rel="stylesheet" href="novo-tema/glint/assets/css/plugins/owl.carousel.css">
+    <link rel="stylesheet" href="novo-tema/glint/assets/css/typography.css">
+    <link rel="stylesheet" href="novo-tema/glint/assets/css/theme.css">
+    <link rel="stylesheet" href="novo-tema/glint/assets/css/button.css">
+    <link rel="stylesheet" href="novo-tema/glint/assets/css/inner.css">
+    <link rel="stylesheet" href="novo-tema/glint/assets/css/responsive.css">
+    
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
-    <link rel="preconnect" href="https://www.youtube.com">
-    <link rel="dns-prefetch" href="https://img.youtube.com">
-    <link rel="dns-prefetch" href="//fonts.googleapis.com">
-    <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    
-    <!-- DNS Prefetch -->
-    <link rel="dns-prefetch" href="//wa.me">
-    <link rel="dns-prefetch" href="//www.youtube.com">
-    
-    <!-- Resource hints for better performance -->
-    <link rel="prefetch" href="assets/imgs/videobackground.mp4">
-    <link rel="prefetch" href="assets/imgs/imgequipe.png">
-    
-    <!-- Critical CSS inline -->
-    <style>
-        /* Critical CSS - Above the fold styles */
-        *{margin:0;padding:0;box-sizing:border-box}
-        html{scroll-behavior:smooth}
-        body{font-family:Inter,sans-serif;line-height:1.6;color:#1e293b;overflow-x:hidden}
-        .navbar{position:fixed;top:0;width:100%;background:rgba(255,255,255,0.1);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,0.2);z-index:1000;padding:1rem 0;transition:all 0.3s ease}
-        .nav-container{max-width:1200px;margin:0 auto;padding:0 1.5rem;display:flex;justify-content:space-between;align-items:center}
-        .nav-logo img{height:40px;width:auto;transition:opacity 0.3s ease}
-        .hero{min-height:70vh;display:flex;flex-direction:column;justify-content:center;position:relative;overflow:hidden;background:#000;z-index:0}
-        .hero-background{position:absolute;top:0;left:0;width:100%;height:100%;z-index:1}
-        .hero-gradient{position:absolute;top:0;left:0;width:100%;height:100%;background:linear-gradient(45deg,#0f041f,#320a97,#5e2ced,#9333ea);background-size:400% 400%;animation:gradientAnimation 15s ease infinite;z-index:1}
-        @keyframes gradientAnimation{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
-        .hero-overlay{position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.67);z-index:2}
-        .hero-content{position:relative;z-index:4;max-width:1400px;margin:0 auto;padding:0 1.5rem;display:flex;flex-direction:column;justify-content:center;height:70vh;min-height:70vh}
-        .hero-main{display:flex;flex-direction:column;justify-content:center;text-align:center;color:#fff;padding:2rem 0;max-width:800px;flex:1;margin:0 auto;align-items:center;position:relative;z-index:5}
-        .hero-title{font-size:clamp(3rem,8vw,5rem);font-weight:800;line-height:1;margin-bottom:1rem;color:#fff;opacity:0;transform:translateY(50px) scale(0.8);animation:heroTitleEntrance 1.2s ease-out 0.3s forwards;text-shadow:0 2px 4px rgba(0,0,0,0.2)}
-        @keyframes heroTitleEntrance{0%{opacity:0;transform:translateY(50px) scale(0.8)}50%{opacity:0.7;transform:translateY(-10px) scale(1.02)}100%{opacity:1;transform:translateY(0) scale(1)}}
-        @media (max-width:768px){.nav-toggle{display:flex;flex-direction:column;cursor:pointer}.nav-toggle span{width:25px;height:3px;background:#ffffff;margin:3px 0;transition:0.3s;border-radius:2px}.hero{display:none}}
-        .mobile-hero{display:none}
-        @media (max-width:768px){.mobile-hero{display:block;min-height:60vh;max-height:70vh;position:relative;overflow:hidden;background:linear-gradient(135deg,#0f041f,#1a0659,#320a97,#5e2ced,#9333ea);z-index:0}}
-    </style>
-    
-    <!-- Non-critical CSS - Load asynchronously -->
-    <link rel="preload" href="assets/styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="assets/styles.css"></noscript>
-    
-    <!-- Critical CSS inline for above-the-fold -->
-    <style>
-        /* Critical above-the-fold styles with CLS prevention */
-        .navbar { position:fixed;top:0;width:100%;background:rgba(255,255,255,0.1);backdrop-filter:blur(20px);z-index:1000;padding:1rem 0;min-height:70px;contain:strict;overflow:hidden;display:flex;align-items:center }
-        .nav-container { display:flex;justify-content:space-between;align-items:center;max-width:1200px;margin:0 auto;padding:0 1.5rem;height:100%;contain:layout;width:100% }
-        .nav-logo { min-width:120px;contain:layout;height:40px;position:relative;display:flex;align-items:center }
-        .nav-menu { display:flex;gap:2rem;list-style:none;margin:0;padding:0;min-width:400px;justify-content:flex-end;contain:layout }
-        .nav-menu a { color:#fff;text-decoration:none;font-weight:500;white-space:nowrap }
-        .mobile-hero { display:none;height:100vh;max-height:900px;position:relative;background:linear-gradient(135deg,#0f041f,#1a0659,#320a97,#5e2ced,#9333ea);contain:strict;overflow:hidden }
-        .mobile-hero-content { position:absolute;top:50%;left:0;right:0;transform:translateY(-50%);z-index:4;padding:0 1.5rem;text-align:center;contain:layout style paint }
-        .mobile-hero-title { font-size:clamp(2.2rem,7vw,3.2rem);font-weight:900;color:#fff;line-height:1.1;margin:0 0 0.5rem 0;min-height:160px;display:flex;flex-direction:column;align-items:center;justify-content:center;contain:layout }
-        .mobile-hero-location { font-size:clamp(1.8rem,5.5vw,2.8rem);font-weight:800;color:#fff;margin:0.3rem 0 1.5rem 0;min-height:100px;display:flex;align-items:center;justify-content:center;contain:layout }
-        .mobile-hero-buttons { display:flex;gap:1rem;justify-content:center;margin:1rem 0;min-height:70px;align-items:center;contain:layout }
-        .mobile-hero-buttons .btn { min-width:145px;height:50px;padding:0 1.25rem;font-size:0.9rem;font-weight:600;border-radius:12px;color:#fff;text-decoration:none;display:flex;align-items:center;justify-content:center;gap:0.625rem;transition:transform 0.3s ease;will-change:transform }
-        .btn-primary { background:#320a97;border:2px solid #320a97 }
-        .btn-secondary { background:transparent;border:2px solid #fff }
-        @media (max-width:768px) { .mobile-hero { display:block } }
-    </style>
-    
-    <!-- Fonts - Load asynchronously to avoid render blocking -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
-    <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"></noscript>
-    
-    <!-- Preload critical font weights -->
-    <link rel="preload" href="https://fonts.gstatic.com/s/inter/v12/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuLyfAZ9hiA.woff2" as="font" type="font/woff2" crossorigin>
-    
-    <!-- Font Awesome fonts removed - using inline icons only -->
-    
-    <!-- Font Awesome icons are now inline in styles.css - no external CSS needed -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     
     <!-- Structured Data -->
     <script type="application/ld+json">
@@ -131,605 +71,989 @@
         ]
     }
     </script>
+    
+    <style>
+        /* Custom WebRoad Overrides */
+        :root {
+            --primary-color: #08D665;
+            --secondary-color: #320a97;
+            --dark-bg: #0a0a0a;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .cbtn:hover,
+        .cbtn.cbnt1:hover {
+            background: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+        
+        .heading h2 span,
+        .wlc-title h1 span {
+            color: var(--primary-color);
+        }
+        
+        .single-service:hover,
+        .single-service.active {
+            border-color: var(--primary-color);
+        }
+        
+        .single-service:hover .service-icon img,
+        .single-service.active .service-icon img {
+            filter: brightness(0) saturate(100%) invert(67%) sepia(52%) saturate(5094%) hue-rotate(109deg) brightness(98%) contrast(94%);
+        }
+        
+        .stat-box {
+            background: rgba(255,255,255,0.05);
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .stat-box:hover {
+            transform: translateY(-5px);
+            background: rgba(8, 214, 101, 0.1);
+        }
+        
+        .stat-box h3 {
+            font-size: 48px;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+        
+        .stat-box p {
+            color: #fff;
+            font-size: 16px;
+            margin: 0;
+        }
+        
+        .team-member-card {
+            background: rgba(255,255,255,0.03);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .team-member-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(8, 214, 101, 0.2);
+        }
+        
+        .team-member-card img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            object-position: top;
+        }
+        
+        .team-member-card img[alt="Lucas Königsberger"] {
+            object-position: center top;
+            object-fit: cover;
+        }
+        
+        .team-member-info {
+            padding: 25px;
+            text-align: center;
+        }
+        
+        .team-member-info h4 {
+            color: #fff;
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        
+        .team-member-info span {
+            color: var(--primary-color);
+            font-size: 14px;
+        }
+        
+        .team-member-info p {
+            color: rgba(255,255,255,0.7);
+            font-size: 14px;
+            margin-top: 10px;
+        }
+        
+        .contact-method-card {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            background: rgba(255,255,255,0.05);
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+        
+        .contact-method-card:hover {
+            background: rgba(8, 214, 101, 0.1);
+            transform: translateX(10px);
+        }
+        
+        .contact-method-card i {
+            font-size: 30px;
+            color: var(--primary-color);
+            width: 60px;
+            height: 60px;
+            min-width: 60px;
+            min-height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(8, 214, 101, 0.1);
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+        
+        .contact-method-card .contact-info span {
+            display: block;
+            color: rgba(255,255,255,0.6);
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+        
+        .contact-method-card .contact-info a,
+        .contact-method-card .contact-info p {
+            color: #fff;
+            font-size: 18px;
+            font-weight: 500;
+            margin: 0;
+            text-decoration: none;
+        }
+        
+        .contact-method-card .contact-info a:hover {
+            color: var(--primary-color);
+        }
+        
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: #25D366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 30px;
+            box-shadow: 0 5px 20px rgba(37, 211, 102, 0.4);
+            z-index: 9999;
+            transition: all 0.3s ease;
+        }
+        
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            color: #fff;
+            box-shadow: 0 8px 30px rgba(37, 211, 102, 0.6);
+        }
+        
+        .hero-video-section {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+        }
+        
+        .hero-video-section img {
+            width: 100%;
+            display: block;
+        }
+        
+        .hero-video-section .play-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0,0,0,0.3);
+            cursor: pointer;
+        }
+        
+        .hero-video-section .play-btn {
+            width: 80px;
+            height: 80px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 24px;
+            transition: all 0.3s ease;
+        }
+        
+        .hero-video-section .play-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 40px rgba(8, 214, 101, 0.5);
+        }
+        
+        .differential-box {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 15px;
+            padding: 40px 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+        
+        .differential-box:hover {
+            border-color: var(--primary-color);
+            transform: translateY(-10px);
+            background: rgba(8, 214, 101, 0.05);
+        }
+        
+        .differential-box i {
+            font-size: 50px;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+        
+        .differential-box h4 {
+            color: #fff;
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        
+        .differential-box p {
+            color: rgba(255,255,255,0.7);
+            font-size: 15px;
+            margin: 0;
+        }
+
+        /* Footer customizations */
+        .footer-contact-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+            color: rgba(255,255,255,0.8);
+        }
+        
+        .footer-contact-item i {
+            color: var(--primary-color);
+            font-size: 18px;
+            width: 24px;
+        }
+        
+        .footer-contact-item a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-contact-item a:hover {
+            color: var(--primary-color);
+        }
+        
+        .footer-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-links a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--primary-color);
+            padding-left: 10px;
+        }
+        
+        .footer-title {
+            color: #fff;
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .footer-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background: var(--primary-color);
+        }
+        
+        /* Ajustes para card de depoimento com background verde */
+        .single-service.active .service-icon i {
+            color: #000 !important;
+        }
+        
+        .single-service.active .service-text h5 {
+            color: #000 !important;
+        }
+        
+        .single-service.active .service-text small {
+            color: #fff !important;
+        }
+        
+        /* Ajustes no hover dos cards de depoimento */
+        .single-service:hover .service-icon i {
+            color: #000 !important;
+        }
+        
+        .single-service:hover .service-text h5 {
+            color: #000 !important;
+        }
+        
+        .single-service:hover .service-text small {
+            color: #fff !important;
+        }
+        
+        /* Ajustes específicos para botão WhatsApp */
+        .whatsapp-btn {
+            display: inline-flex !important;
+            align-items: center !important;
+            padding: 15px 40px !important;
+        }
+        
+        .whatsapp-btn i {
+            position: static !important;
+            margin-left: 0 !important;
+            margin-right: 15px !important;
+            background: transparent !important;
+            color: #fff !important;
+            height: auto !important;
+            width: auto !important;
+            line-height: normal !important;
+            margin-top: 0 !important;
+            font-size: 20px !important;
+        }
+        
+        /* Hover escuro no botão WhatsApp */
+        .whatsapp-btn:hover {
+            background: #000 !important;
+            border-color: #000 !important;
+            color: #fff !important;
+        }
+        
+        .whatsapp-btn:hover i {
+            color: #fff !important;
+        }
+        
+        /* Hero alinhado à esquerda no mobile */
+        @media (max-width: 768px) {
+            .single-welcome-area {
+                text-align: left !important;
+                height: 200px !important;
+                padding: 60px 0 !important;
+            }
+            
+            .welcome-area-wrap {
+                min-height: 400px !important;
+            }
+            
+            .wlc-title {
+                text-align: left !important;
+            }
+            
+            .wlc-title h1 {
+                text-align: left !important;
+            }
+            
+            .wlc-title p {
+                text-align: left !important;
+            }
+        }
+    </style>
+
 </head>
-<body>   
-     <!-- Navigation -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <div class="nav-logo">
-                <img src="assets/imgs/logow.webp" alt="WebRoad Logo" class="logo-white" id="logo-white" width="120" height="40" loading="eager">
-                <img src="assets/imgs/logod.webp" alt="WebRoad Logo" class="logo-dark" id="logo-dark" width="120" height="40" loading="eager">
-            </div>
-            <ul class="nav-menu">
-                <li><a href="#home" onclick="document.querySelector('.nav-menu').classList.remove('active'); document.querySelector('.nav-toggle').classList.remove('active'); document.body.style.overflow = '';">Início</a></li>
-                <li><a href="#about" onclick="document.querySelector('.nav-menu').classList.remove('active'); document.querySelector('.nav-toggle').classList.remove('active'); document.body.style.overflow = '';">Sobre</a></li>
-                <li><a href="#services" onclick="document.querySelector('.nav-menu').classList.remove('active'); document.querySelector('.nav-toggle').classList.remove('active'); document.body.style.overflow = '';">Serviços</a></li>
-                <li><a href="#team" onclick="document.querySelector('.nav-menu').classList.remove('active'); document.querySelector('.nav-toggle').classList.remove('active'); document.body.style.overflow = '';">Equipe</a></li>
-                <li><a href="#contact" onclick="document.querySelector('.nav-menu').classList.remove('active'); document.querySelector('.nav-toggle').classList.remove('active'); document.body.style.overflow = '';">Contato</a></li>
-            </ul>
-            <div class="nav-toggle" onclick="document.querySelector('.nav-menu').classList.toggle('active'); document.querySelector('.nav-toggle').classList.toggle('active'); document.body.style.overflow = document.querySelector('.nav-menu').classList.contains('active') ? 'hidden' : '';">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-        </div>
-    </nav>
 
-    <!-- Mobile Hero Section -->
-    <section class="mobile-hero">
-        <div class="mobile-hero-background">
-            <div class="mobile-hero-gradient"></div>
-            <div class="mobile-hero-overlay"></div>
-            <canvas id="mobile-particles-canvas" class="mobile-particles-canvas"></canvas>
+<body>
+
+    <!-- PRELOADER -->
+    <div class="preloader">
+        <div class="lds-dual-ring"></div>
         </div>
         
-        <div class="mobile-hero-content">
-            
-            <h1 class="mobile-hero-title">
-                Conduzindo<br>negócios ao
-                <br><span class="mobile-hero-location">sucesso digital</span>
-            </h1>
-            
-            
-            <div class="mobile-hero-buttons">
-                <a href="#services" class="btn btn-primary">
-                    <i class="fas fa-chart-bar"></i>
-                    <span>Ver nossos resultados</span>
-                </a>
-                <a href="https://wa.me/5511971534673" target="_blank" class="btn btn-secondary">
-                    <i class="fab fa-whatsapp"></i>
-                    <span>Fale Conosco</span>
-                </a>
-            </div>
-            
-            
-        </div>
-    </section>
-
-    <!-- Desktop Hero Section -->
-    <section id="home" class="hero">
-        <!-- Background Video -->
-        <div class="hero-background">
-            <div class="hero-gradient"></div>
-            <div class="hero-overlay"></div>
-            <canvas id="particles-canvas" class="particles-canvas"></canvas>
-        </div>
+    <div class="site site-black">
         
-        <!-- Hero Content -->
-        <div class="hero-content">
-            <!-- Main Content Area -->
-            <div class="hero-main">
-                <h1 class="hero-title">
-                    Conduzindo<br>negócios ao
-                    <br><span class="hero-location">sucesso digital</span>
-                </h1>
-                <div class="hero-buttons">
-                    <a href="#services" class="btn btn-primary">
-                        <i class="fas fa-chart-bar"></i>
-                        <span>Ver nossos resultados</span>
-                    </a>
-                    <a href="https://wa.me/5511971534673" target="_blank" class="btn btn-secondary">
-                        <i class="fab fa-whatsapp"></i>
-                        <span>Fale Conosco</span>
-                    </a>
+        <!-- BANNER AREA -->
+        <div class="header-banner-area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-5 align-self-center">
+                        <div class="banner-comments">
+                            <div class="banner-icon">
+                                <i class="fal fa-comments-alt"></i>
+                            </div>
+                            <div class="banner-carousel owl-carousel">
+                                <div class="banner-single-carousel">
+                                    <p>Transformamos ideias em resultados</p>
+                                </div>
+                                <div class="banner-single-carousel">
+                                    <p>Sua marca no mundo digital</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-7 text-right align-self-center">
+                        <div class="banner-social-wrap">
+                            <div class="banner-social">
+                                <ul>
+                                    <li><a href="https://www.facebook.com/profile.php?id=61555252693492" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
+                                    <li><a href="https://www.instagram.com/agenciawebroad/" target="_blank"><i class="fab fa-instagram"></i></a></li>
+                                    <li><a href="https://wa.me/5511971534673" target="_blank"><i class="fab fa-whatsapp"></i></a></li>
+                                </ul>
+                            </div>
+                            <div class="banner-contact">
+                                <a href="#contact" class="contact-btn"><i class="fal fa-angle-double-right"></i> Fale Conosco</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 </div>
             </div>
 
-        </div>
-        
-        <!-- Large Text Overlay -->
-        <div class="hero-large-text">
-            <h2 class="large-text-word">RESULTADOS</h2>
-        </div>
-        
-        
-    </section>
-
-    <!-- Mission Section -->
-    <section id="about" class="mission">
-        <div class="container">
-            <!-- Video Container -->
-            <div class="mission-video-container">
-                <div class="video-wrapper">
-                    <div class="youtube-placeholder" data-video-id="ChQbnx9KtRQ">
-                        <div class="youtube-thumbnail">
-                            <img src="https://img.youtube.com/vi/ChQbnx9KtRQ/maxresdefault.jpg" alt="WebRoad - Agência Digital" fetchpriority="high" width="1280" height="720" crossorigin="anonymous">
-                            <div class="play-button">
-                                <i class="fas fa-play"></i>
+        <!-- HEADER AREA -->
+        <div class="header-area header-main" id="header">
+            <a href="#" class="up-btn"><i class="fal fa-angle-up"></i></a>
+            <div class="container">
+                <div class="row">
+                    <div class="col-6 col-lg-3 align-self-center">
+                        <a href="index.html" class="logo"><img src="assets/imgs/logow.webp" alt="WebRoad Logo" style="max-height: 45px;"></a>
+                    </div>
+                    <div class="col-6 text-center align-self-center">
+                        <div class="main-menu">
+                            <div class="stellarnav">
+                                <ul class="navbarmneuclass">
+                                    <li class="current"><a href="#home">Início</a></li>
+                                    <li><a href="#about">Sobre</a></li>
+                                    <li><a href="#services">Serviços</a></li>
+                                    <li><a href="#team">Equipe</a></li>
+                                    <li><a href="#contact">Contato</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-none d-lg-block col-lg-3 align-self-center text-right">
+                        <div class="search-area">
+                            <div class="grid-menu" id="grid-side">
+                                <img src="novo-tema/glint/assets/img/icon/hamburger.svg" alt="">
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+            <div class="slide-widgest-wrap" id="slide-widgest">
+                <div class="side-widgest" id="side-content">
+                    <div class="side-close" id="close-btn">
+                        <i class="fal fa-times"></i>
+                    </div>
+                    <div class="logo">
+                        <a href="#"><img src="assets/imgs/logow.webp" alt="WebRoad" style="max-height: 45px;"></a>
+                    </div>
+                    <div class="side-content">
+                        <p>Na WebRoad, acreditamos que cada projeto é uma jornada única. Nossa missão é transformar desafios em oportunidades, criando soluções digitais que não apenas impressionam, mas também geram resultados reais para nossos clientes.</p>
+                    </div>
+                    <div class="side-social">
+                        <ul>
+                            <li><a href="https://www.facebook.com/profile.php?id=61555252693492" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
+                            <li><a href="https://www.instagram.com/agenciawebroad/" target="_blank"><i class="fab fa-instagram"></i></a></li>
+                            <li><a href="https://wa.me/5511971534673" target="_blank"><i class="fab fa-whatsapp"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- WELCOME/HERO AREA -->
+        <div class="welcome-area-wrap welcome__wrap1" id="home">
+            <div class="single-welcome-area home_1">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-10">
+                            <div class="wlc-title white">
+                                <h1 class="fadeInDown animated">Conduzindo <span>negócios</span> ao sucesso digital</h1>
+                                <p class="fadeInDown animated">Transformamos ideias em experiências digitais memoráveis. <br>Sua marca merece o melhor do mundo digital.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- ABOUT AREA -->
+        <div class="about-area about-area1 section-padding" id="about">
+        <div class="container">
+                <div class="row">
+                    <div class="col-lg-5 align-self-center">
+                        <div class="about-shape">
+                            <div class="hero-video-section">
+                                <img src="https://img.youtube.com/vi/ChQbnx9KtRQ/maxresdefault.jpg" alt="WebRoad - Agência Digital">
+                                <div class="play-overlay" id="play-video-btn" data-video="https://www.youtube.com/watch?v=ChQbnx9KtRQ">
+                                    <div class="play-btn">
+                                <i class="fas fa-play"></i>
+                            </div>
+                        </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 offset-lg-1 align-self-center">
+                        <div class="heading white">
+                            <strong class="filltext">Sobre nós</strong>
+                            <h2>Conectar <span>marcas & pessoas</span> através da inovação digital</h2>
+                            <p>Na WebRoad, acreditamos que cada projeto é uma jornada única. Nossa missão é transformar desafios em oportunidades, criando soluções digitais que não apenas impressionam, mas também geram resultados reais para nossos clientes.</p>
+                            <a href="https://wa.me/5511971534673" target="_blank" class="cbtn cbnt1 fadeInDown animated"><i class="fab fa-whatsapp"></i> Fale Conosco <i class="fal fa-angle-right"></i></a>
+                    </div>
+                </div>
+            </div>
             
-            <div class="mission-content">
-                <h2 class="section-title">
-                    Conectar <span class="highlight">marcas & pessoas</span> 
-                    através da inovação digital
-                </h2>
-                <p class="mission-text">
-                    Na WebRoad, acreditamos que cada projeto é uma jornada única. 
-                    Nossa missão é transformar desafios em oportunidades, criando 
-                    soluções digitais que não apenas impressionam, mas também 
-                    geram resultados reais para nossos clientes.
-                </p>
-                <div class="mission-stats">
-                    <div class="stat-item">
+                <!-- Stats Section -->
+                <div class="space-60"></div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="stat-box">
                         <h3>150+</h3>
                         <p>Projetos Entregues</p>
                     </div>
-                    <div class="stat-item">
+                    </div>
+                    <div class="col-md-4">
+                        <div class="stat-box">
                         <h3>98%</h3>
                         <p>Satisfação dos Clientes</p>
                     </div>
-                    <div class="stat-item">
+                    </div>
+                    <div class="col-md-4">
+                        <div class="stat-box">
                         <h3>5+</h3>
                         <p>Anos de Experiência</p>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
-
-    <!-- Animated Strip -->
-    <div class="animated-strip">
-        <div class="strip-content">
-            <span>WebRoad</span>
-            <span class="dot"> • </span>
-            <span>WebRoad</span>
-            <span class="dot"> • </span>
-            <span>WebRoad</span>
-            <span class="dot"> • </span>
-            <span>WebRoad</span>
-            <span class="dot"> • </span>
-            <span>WebRoad</span>
-            <span class="dot"> • </span>
-            <span>WebRoad</span>
-            <span class="dot"> • </span>
-            <span>WebRoad</span>
-            <span class="dot"> • </span>
-            <span>WebRoad</span>
-            <span class="dot"> • </span>
-            <span>WebRoad</span>
-            <span class="dot"> • </span>
-            <span>WebRoad</span>
-            <span class="dot"> • </span>
-            <span>WebRoad</span>
-            <span class="dot"> • </span>
-            <span>WebRoad</span>
-            <span class="dot"> • </span>
-            <span>WebRoad</span>
-            <span class="dot"> • </span>
-            <span>WebRoad</span>
-            <span class="dot"> • </span>
-            <span>WebRoad</span>
-            <span class="dot"> • </span>
-            <span>WebRoad</span>
-            <span class="dot"> • </span>
-            <span>WebRoad</span>
-            <span class="dot"> • </span>
-            <span>WebRoad</span>
-            <span class="dot"> • </span>
-            <span>WebRoad</span>
-            <span class="dot"> • </span>
-        </div>
     </div>
 
-    <!-- Differentials Section -->
-    <section class="differentials">
+        <!-- DIFFERENTIALS AREA -->
+        <div class="skill-area section-padding">
         <div class="container">
-            <div class="differentials-grid">
-                <div class="differential-card">
-                    <div class="card-icon">
-                        <i class="fas fa-rocket"></i>
+                <div class="row">
+                    <div class="col-lg-6 align-self-center">
+                        <div class="heading white">
+                            <strong class="filltext">diferenciais</strong>
+                            <small>POR QUE NOS ESCOLHER</small>
+                            <h2>Nossos <span>Diferenciais</span></h2>
                     </div>
-                    <h3>Performance Digital</h3>
+                    </div>
+                    <div class="col-lg-6 align-self-center">
+                        <div class="info-content">
+                            <p>Combinamos tecnologia de ponta com estratégia para entregar resultados excepcionais</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="space-60"></div>
+                <div class="row">
+                    <div class="col-sm-6 col-lg-3 mb-4">
+                        <div class="differential-box">
+                            <i class="fas fa-rocket"></i>
+                            <h4>Performance Digital</h4>
                     <p>Desenvolvemos soluções otimizadas para máxima velocidade e conversão.</p>
                 </div>
-                <div class="differential-card">
-                    <div class="card-icon">
-                        <i class="fas fa-paint-brush"></i>
                     </div>
-                    <h3>Design Estratégico</h3>
+                    <div class="col-sm-6 col-lg-3 mb-4">
+                        <div class="differential-box">
+                            <i class="fas fa-paint-brush"></i>
+                            <h4>Design Estratégico</h4>
                     <p>Cada elemento visual é pensado para gerar impacto e resultados.</p>
                 </div>
-                <div class="differential-card">
-                    <div class="card-icon">
-                        <i class="fas fa-cogs"></i>
                     </div>
-                    <h3>Tecnologia Atualizada</h3>
+                    <div class="col-sm-6 col-lg-3 mb-4">
+                        <div class="differential-box">
+                            <i class="fas fa-cogs"></i>
+                            <h4>Tecnologia Atualizada</h4>
                     <p>Utilizamos as mais modernas ferramentas e frameworks do mercado.</p>
                 </div>
-                <div class="differential-card">
-                    <div class="card-icon">
-                        <i class="fas fa-handshake"></i>
                     </div>
-                    <h3>Atendimento Próximo</h3>
+                    <div class="col-sm-6 col-lg-3 mb-4">
+                        <div class="differential-box">
+                            <i class="fas fa-handshake"></i>
+                            <h4>Atendimento Próximo</h4>
                     <p>Relacionamento transparente e comunicação constante durante todo o projeto.</p>
                 </div>
             </div>
         </div>
-    </section>
-
-    <!-- Services Section -->
-    <section id="services" class="services">
-        <div class="services-background">
-            <div class="services-gradient"></div>
-            <div class="services-overlay"></div>
-            <canvas id="services-particles-canvas" class="particles-canvas"></canvas>
         </div>
+        </div>
+
+        <!-- SERVICES AREA -->
+        <div class="service-area padding-bottom" id="services">
         <div class="container">
-            <h2 class="section-title">Nossos Serviços</h2>
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-code"></i>
+                <div class="row">
+                    <div class="col-lg-6 align-self-center">
+                        <div class="heading white">
+                            <strong class="filltext">serviços</strong>
+                            <small>O QUE FAZEMOS</small>
+                            <h2>Nossos <span>Serviços</span></h2>
+                        </div>
                     </div>
-                    <div class="service-content">
-                        <h3>Websites & E-commerce</h3>
+                    <div class="col-lg-6 align-self-center">
+                        <div class="info-content">
+                            <p>Soluções completas para transformar sua presença digital e gerar resultados reais</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="space-60"></div>
+                <div class="row">
+                    <div class="col-lg-6 mb-4">
+                        <div class="single-service">
+                    <div class="service-icon">
+                                <img src="novo-tema/glint/assets/img/icon/service1.svg" alt="">
+                    </div>
+                            <div class="service-text">
+                                <h4>Websites & E-commerce</h4>
                         <p>Sites institucionais, lojas virtuais e plataformas personalizadas com foco em conversão e experiência do usuário.</p>
-                        <ul>
+                                <ul style="color: rgba(255,255,255,0.7); margin-top: 15px; padding-left: 20px;">
                             <li>Sites Responsivos</li>
                             <li>E-commerce Completo</li>
                             <li>Landing Pages</li>
                             <li>Sistemas Web</li>
                         </ul>
                     </div>
+                            <div class="circles-wrap">
+                                <div class="circles">
+                                    <span class="circle circle-1"></span>
+                                    <span class="circle circle-2"></span>
+                                    <span class="circle circle-3"></span>
+                                    <span class="circle circle-4"></span>
                 </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-palette"></i>
+                            </div>
+                        </div>
                     </div>
-                    <div class="service-content">
-                        <h3>Branding & Identidade Visual</h3>
+                    <div class="col-lg-6 mb-4">
+                        <div class="single-service active">
+                    <div class="service-icon">
+                                <img src="novo-tema/glint/assets/img/icon/service2.svg" alt="">
+                    </div>
+                            <div class="service-text">
+                                <h4>Branding & Identidade Visual</h4>
                         <p>Criação e desenvolvimento de marcas memoráveis que se conectam com seu público-alvo.</p>
-                        <ul>
+                                <ul style="color: rgba(255,255,255,0.7); margin-top: 15px; padding-left: 20px;">
                             <li>Logotipos</li>
                             <li>Manual da Marca</li>
                             <li>Papelaria Corporativa</li>
                             <li>Redesign de Marca</li>
                         </ul>
                     </div>
+                            <div class="circles-wrap">
+                                <div class="circles">
+                                    <span class="circle circle-1"></span>
+                                    <span class="circle circle-2"></span>
+                                    <span class="circle circle-3"></span>
+                                    <span class="circle circle-4"></span>
                 </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-bullhorn"></i>
+                            </div>
+                        </div>
                     </div>
-                    <div class="service-content">
-                        <h3>Gestão de Tráfego & Ads</h3>
+                    <div class="col-lg-6 mb-4">
+                        <div class="single-service">
+                    <div class="service-icon">
+                                <img src="novo-tema/glint/assets/img/icon/service3.svg" alt="">
+                    </div>
+                            <div class="service-text">
+                                <h4>Gestão de Tráfego & Ads</h4>
                         <p>Campanhas estratégicas para aumentar sua visibilidade e gerar mais leads qualificados.</p>
-                        <ul>
+                                <ul style="color: rgba(255,255,255,0.7); margin-top: 15px; padding-left: 20px;">
                             <li>Google Ads</li>
                             <li>Facebook & Instagram Ads</li>
                             <li>SEO & SEM</li>
                             <li>Analytics & Relatórios</li>
                         </ul>
                     </div>
+                            <div class="circles-wrap">
+                                <div class="circles">
+                                    <span class="circle circle-1"></span>
+                                    <span class="circle circle-2"></span>
+                                    <span class="circle circle-3"></span>
+                                    <span class="circle circle-4"></span>
                 </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-chart-bar"></i>
+                            </div>
+                        </div>
                     </div>
-                    <div class="service-content">
-                        <h3>Dashboards & Automação</h3>
+                    <div class="col-lg-6 mb-4">
+                        <div class="single-service">
+                    <div class="service-icon">
+                                <img src="novo-tema/glint/assets/img/icon/service1.svg" alt="">
+                    </div>
+                            <div class="service-text">
+                                <h4>Dashboards & Automação</h4>
                         <p>Painéis inteligentes e automações que otimizam processos e facilitam a tomada de decisões.</p>
-                        <ul>
+                                <ul style="color: rgba(255,255,255,0.7); margin-top: 15px; padding-left: 20px;">
                             <li>Dashboards Personalizados</li>
                             <li>Automação de Marketing</li>
                             <li>Integração de Sistemas</li>
                             <li>Relatórios Automatizados</li>
                         </ul>
                     </div>
+                            <div class="circles-wrap">
+                                <div class="circles">
+                                    <span class="circle circle-1"></span>
+                                    <span class="circle circle-2"></span>
+                                    <span class="circle circle-3"></span>
+                                    <span class="circle circle-4"></span>
                 </div>
             </div>
         </div>
-    </section>
-
-    <!-- Team Section -->
-    <section id="team" class="team" aria-labelledby="team-title">
-        <div class="team-container">
-            <div class="team-layout">
-                <!-- Coluna Esquerda: Texto + CTA -->
-                <div class="team-text-column">
-                    <!-- Título da Seção -->
-                    <div class="team-section-header">
-                        <h2 class="team-section-title" data-aos="fade-up" data-aos-offset="0" data-aos-delay="0" data-aos-duration="600" data-aos-easing="ease-out" data-aos-mirror="false" data-aos-once="true" data-aos-anchor-placement="top-bottom">Nossa Equipe</h2>
-                        <p class="team-section-subtitle" data-aos="fade-up" data-aos-offset="0" data-aos-delay="100" data-aos-duration="600" data-aos-easing="ease-out" data-aos-mirror="false" data-aos-once="true" data-aos-anchor-placement="top-bottom">Profissionais apaixonados por criar experiências digitais excepcionais</p>
                     </div>
-                    
-                    <h2 class="team-member-name" data-aos="fade-up" data-aos-offset="0" data-aos-delay="200" data-aos-duration="600" data-aos-easing="ease-out" data-aos-mirror="false" data-aos-once="true" data-aos-anchor-placement="top-bottom">Lucas Königsberger</h2>
-                    <p class="team-member-role" data-aos="fade-up" data-aos-offset="0" data-aos-delay="300" data-aos-duration="600" data-aos-easing="ease-out" data-aos-mirror="false" data-aos-once="true" data-aos-anchor-placement="top-bottom">CEO</p>
-                    <p class="team-member-bio" data-aos="fade-up" data-aos-offset="0" data-aos-delay="400" data-aos-duration="600" data-aos-easing="ease-out" data-aos-mirror="false" data-aos-once="true" data-aos-anchor-placement="top-bottom">Lidera estratégia e crescimento da WebRoad, foco em resultados e clientes-chave</p>
                 </div>
-                
-                <!-- Coluna Central: Imagem Principal -->
-                <div class="team-image-column">
-                    <div class="team-main-image-container" data-aos="fade-up" data-aos-offset="0" data-aos-delay="200" data-aos-duration="600" data-aos-easing="ease-out" data-aos-mirror="false" data-aos-once="true" data-aos-anchor-placement="top-bottom">
-                        <img src="assets/imgs/Lucas-Königsberger.png" alt="Retrato de Lucas Königsberger, CEO" class="team-main-image">
                         </div>
                     </div>
                 
-                <!-- Coluna Direita: Carrossel de Miniaturas -->
-                <div class="team-carousel-column">
-                    <div class="team-carousel-container">
-                        
-                        <div class="team-thumbnails-container" role="listbox" aria-label="Selecionar membro da equipe">
-                            <div class="team-thumbnail active" role="option" aria-selected="true" data-member="0" data-role="CEO" data-linkedin="#" data-bio="Lidera estratégia e crescimento da WebRoad, foco em resultados e clientes-chave" data-photo-hd="assets/imgs/Lucas-Königsberger.png" tabindex="0">
-                                <div class="thumbnail-image-container">
-                                    <img src="assets/imgs/Lucas-Königsberger.png" alt="Lucas Königsberger" class="thumbnail-image">
+        <!-- TEAM AREA -->
+        <div class="testimonials-area testimonials-area1 section-padding" id="team">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-5 align-self-center">
+                        <div class="heading white">
+                            <strong class="filltext">equipe</strong>
+                            <small>CONHEÇA NOSSO TIME</small>
+                            <h2>Nossa <span>Equipe</span></h2>
                 </div>
-                                <div class="thumbnail-name-container">
-                                    <span class="thumbnail-name">LUCAS KÖNIGSBERGER</span>
                         </div>
+                    <div class="col-lg-5 align-self-center">
+                        <div class="info-content">
+                            <p>Profissionais apaixonados por criar experiências digitais excepcionais</p>
                     </div>
-                            <div class="team-thumbnail" role="option" aria-selected="false" data-member="1" data-role="Web Designer" data-linkedin="#" data-bio="Cria interfaces e identidades visuais focadas em conversão e usabilidade" data-photo-hd="assets/imgs/bira-oliveira.png" tabindex="0">
-                                <div class="thumbnail-image-container">
-                                    <img src="assets/imgs/bira-oliveira.png" alt="Bira Oliveira" class="thumbnail-image">
                                 </div>
-                                <div class="thumbnail-name-container">
-                                    <span class="thumbnail-name">BIRA OLIVEIRA</span>
                     </div>
+                <div class="space-60"></div>
+                <div class="row">
+                    <div class="col-lg-3 col-md-6 mb-4">
+                        <div class="team-member-card">
+                            <img src="assets/imgs/Lucas-Königsberger.png" alt="Lucas Königsberger">
+                            <div class="team-member-info">
+                                <h4>Lucas Königsberger</h4>
+                                <span>CEO</span>
+                                <p>Lidera estratégia e crescimento da WebRoad com foco em resultados.</p>
                 </div>
-                            <div class="team-thumbnail" role="option" aria-selected="false" data-member="2" data-role="Designer" data-linkedin="#" data-bio="Especialista em design estratégico e experiência do usuário" data-photo-hd="assets/imgs/equipe4.png" tabindex="0">
-                                <div class="thumbnail-image-container">
-                                    <img src="assets/imgs/equipe4.png" alt="NOME AQUI" class="thumbnail-image">
                                 </div>
-                                <div class="thumbnail-name-container">
-                                    <span class="thumbnail-name">NOME AQUI</span>
                         </div>
+                    <div class="col-lg-3 col-md-6 mb-4">
+                        <div class="team-member-card">
+                            <img src="assets/imgs/bira-oliveira.png" alt="Bira Oliveira">
+                            <div class="team-member-info">
+                                <h4>Bira Oliveira</h4>
+                                <span>Web Designer</span>
+                                <p>Cria interfaces e identidades visuais focadas em conversão e usabilidade</p>
                     </div>
-                            <div class="team-thumbnail" role="option" aria-selected="false" data-member="3" data-role="Designer" data-linkedin="#" data-bio="Especialista em design estratégico e experiência do usuário" data-photo-hd="assets/imgs/equipe3.png" tabindex="0">
-                                <div class="thumbnail-image-container">
-                                    <img src="assets/imgs/equipe3.png" alt="NOME AQUI" class="thumbnail-image">
                                 </div>
-                                <div class="thumbnail-name-container">
-                                    <span class="thumbnail-name">NOME AQUI</span>
                         </div>
+                    <div class="col-lg-3 col-md-6 mb-4">
+                        <div class="team-member-card">
+                            <img src="assets/imgs/equipe4.png" alt="Membro da Equipe">
+                            <div class="team-member-info">
+                                <h4>Designer</h4>
+                                <span>Designer</span>
+                                <p>Especialista em design estratégico e experiência do usuário</p>
                     </div>
                         </div>
-                        
                     </div>
+                    <div class="col-lg-3 col-md-6 mb-4">
+                        <div class="team-member-card">
+                            <img src="assets/imgs/equipe3.png" alt="Membro da Equipe">
+                            <div class="team-member-info">
+                                <h4>Designer</h4>
+                                <span>Designer</span>
+                                <p>Especialista em design estratégico e experiência do usuário</p>
                 </div>
             </div>
         </div>
-    </section>
+                    </div>
+                        </div>
+                        </div>
 
-    <!-- Testimonials Section -->
-    <section class="testimonials">
-        <div class="container">
-            <h2 class="section-title">O que nossos clientes dizem</h2>
-            <div class="testimonials-grid">
-                <div class="testimonial-card">
-                    <div class="testimonial-content">
-                        <p>"A WebRoad transformou completamente nossa presença digital. O resultado superou todas as expectativas!"</p>
-                    </div>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">
-                            <i class="fas fa-user"></i>
-                        </div>
-                        <div class="author-info">
-                            <h4>Maria Silva</h4>
-                            <span>CEO, TechStart</span>
-                        </div>
+        <!-- TESTIMONIALS AREA -->
+        <div class="pricing-area pricing-area1 section-padding">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 align-self-center">
+                        <div class="heading white">
+                            <strong class="filltext">depoimentos</strong>
+                            <small>FEEDBACK DOS CLIENTES</small>
+                            <h2>O que nossos <span>clientes</span> dizem</h2>
                     </div>
                 </div>
-                <div class="testimonial-card">
-                    <div class="testimonial-content">
-                        <p>"Profissionalismo e qualidade excepcionais. Nossa loja virtual aumentou 250% as vendas em 6 meses."</p>
+                    <div class="col-lg-6 align-self-center">
+                        <div class="info-content">
+                            <p>A satisfação dos nossos clientes é o nosso maior orgulho</p>
                     </div>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">
-                            <i class="fas fa-user"></i>
                         </div>
-                        <div class="author-info">
-                            <h4>João Santos</h4>
-                            <span>Diretor, Fashion Store</span>
                         </div>
+                <div class="space-60"></div>
+                <div class="row">
+                    <div class="col-lg-4 mb-4">
+                        <div class="single-service">
+                            <div class="service-icon">
+                                <i class="fas fa-quote-left" style="font-size: 30px; color: #08D665;"></i>
                     </div>
+                            <div class="service-text">
+                                <p style="font-style: italic;">"A WebRoad transformou completamente nossa presença digital. O resultado superou todas as expectativas!"</p>
+                                <div class="space-20"></div>
+                                <h5 style="color: #08D665;">Maria Silva</h5>
+                                <small>CEO, TechStart</small>
                 </div>
-                <div class="testimonial-card">
-                    <div class="testimonial-content">
-                        <p>"Equipe dedicada e resultados incríveis. Recomendo a WebRoad para qualquer projeto digital."</p>
+                            <div class="circles-wrap">
+                                <div class="circles">
+                                    <span class="circle circle-1"></span>
+                                    <span class="circle circle-2"></span>
+                                    <span class="circle circle-3"></span>
+                                    <span class="circle circle-4"></span>
                     </div>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">
-                            <i class="fas fa-user"></i>
                         </div>
-                        <div class="author-info">
-                            <h4>Ana Costa</h4>
-                            <span>Fundadora, EduTech</span>
                         </div>
                     </div>
+                    <div class="col-lg-4 mb-4">
+                        <div class="single-service active">
+                            <div class="service-icon">
+                                <i class="fas fa-quote-left" style="font-size: 30px;"></i>
+                </div>
+                            <div class="service-text">
+                                <p style="font-style: italic;">"Profissionalismo e qualidade excepcionais. Nossa loja virtual aumentou 250% as vendas em 6 meses."</p>
+                                <div class="space-20"></div>
+                                <h5>João Santos</h5>
+                                <small>Diretor, Fashion Store</small>
+            </div>
+                            <div class="circles-wrap">
+                                <div class="circles">
+                                    <span class="circle circle-1"></span>
+                                    <span class="circle circle-2"></span>
+                                    <span class="circle circle-3"></span>
+                                    <span class="circle circle-4"></span>
+        </div>
                 </div>
             </div>
         </div>
-    </section>
-
-    <!-- CTA Section -->
-    <section class="cta-section">
-        <div class="cta-video-bg">
-            <video id="cta-video" muted loop playsinline webkit-playsinline preload="metadata" poster="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='640' height='360'%3E%3Crect width='100%25' height='100%25' fill='%230f041f'/%3E%3C/svg%3E">
-                <source data-src="assets/imgs/videobackground.mp4" type="video/mp4">
-                Seu navegador não suporta vídeos HTML5.
-            </video>
-            <!-- Fallback para mobile -->
-            <div class="cta-video-fallback" id="cta-video-fallback">
-                <div class="play-button" id="play-video-btn">
-                    <i class="fas fa-play"></i>
-                </div>
+                    <div class="col-lg-4 mb-4">
+                        <div class="single-service">
+                            <div class="service-icon">
+                                <i class="fas fa-quote-left" style="font-size: 30px; color: #08D665;"></i>
             </div>
+                            <div class="service-text">
+                                <p style="font-style: italic;">"Equipe dedicada e resultados incríveis. Recomendo a WebRoad para qualquer projeto digital."</p>
+                                <div class="space-20"></div>
+                                <h5 style="color: #08D665;">Ana Costa</h5>
+                                <small>Fundadora, EduTech</small>
         </div>
-        <div class="container">
-            <div class="cta-content">
-                <h2>Pronto para elevar sua marca ao próximo nível?</h2>
-                <p>Vamos conversar sobre como podemos transformar suas ideias em realidade digital.</p>
-                <a href="https://wa.me/5511971534673" target="_blank" class="btn btn-cta">
-                    <i class="fab fa-whatsapp"></i>
-                    <span>Fale Conosco no WhatsApp</span>
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Animated Strip -->
-    <div class="animated-strip">
-        <div class="strip-content">
-            <span>WebRoad</span>
-            <span class="dot"> • </span>
-            <span>WebRoad</span>
-            <span class="dot"> • </span>
-            <span>WebRoad</span>
-            <span class="dot"> • </span>
-            <span>WebRoad</span>
-            <span class="dot"> • </span>
-            <span>WebRoad</span>
-            <span class="dot"> • </span>
-            <span>WebRoad</span>
-            <span class="dot"> • </span>
-            <span>WebRoad</span>
-            <span class="dot"> • </span>
-            <span>WebRoad</span>
-            <span class="dot"> • </span>
-            <span>WebRoad</span>
-            <span class="dot"> • </span>
-            <span>WebRoad</span>
-            <span class="dot"> • </span>
-            <span>WebRoad</span>
-            <span class="dot"> • </span>
-            <span>WebRoad</span>
-            <span class="dot"> • </span>
-            <span>WebRoad</span>
-            <span class="dot"> • </span>
-            <span>WebRoad</span>
-            <span class="dot"> • </span>
-            <span>WebRoad</span>
-            <span class="dot"> • </span>
-            <span>WebRoad</span>
-            <span class="dot"> • </span>
-            <span>WebRoad</span>
-            <span class="dot"> • </span>
-            <span>WebRoad</span>
-            <span class="dot"> • </span>
-            <span>WebRoad</span>
-            <span class="dot"> • </span>
-            <span>WebRoad</span>
-            <span class="dot"> • </span>
+                            <div class="circles-wrap">
+                                <div class="circles">
+                                    <span class="circle circle-1"></span>
+                                    <span class="circle circle-2"></span>
+                                    <span class="circle circle-3"></span>
+                                    <span class="circle circle-4"></span>
         </div>
     </div>
+                            </div>
+                        </div>
+                            </div>
+                        </div>
+                            </div>
 
-    <!-- Contact Section -->
-    <section id="contact" class="contact">
-        <div class="container">
-            <div class="contact-content">
-                <div class="contact-info">
-                    <h2>Vamos conversar?</h2>
-                    <p class="contact-description">
-                        Entre em contato conosco e descubra como podemos ajudar sua empresa a crescer no mundo digital. 
-                        Nossa equipe está pronta para transformar suas ideias em soluções digitais de alta performance.
-                    </p>
+        <!-- CTA AREA -->
+        <div class="cta-area cta-area1 padding-top" id="contact">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 m-auto text-center">
+                        <div class="heading cta-heading white">
+                            <small>Entre em Contato</small>
+                            <div class="space-20"></div>
+                            <h2>Pronto para elevar sua marca ao <span>próximo nível?</span></h2>
+                            <p style="margin-top: 20px;">Vamos conversar sobre como podemos transformar suas ideias em realidade digital.</p>
+                        </div>
+                        <div class="space-40"></div>
+                        <a href="https://wa.me/5511971534673" target="_blank" class="cbtn cbnt1 whatsapp-btn" style="background: #25D366; border-color: #25D366; font-size: 18px;">
+                            <i class="fab fa-whatsapp"></i> Fale Conosco no WhatsApp
+                        </a>
+                        </div>
+                    </div>
                     
-                    
-                    <div class="contact-methods">
-                        <div class="contact-method">
+                <!-- Contact Info -->
+                <div class="space-80"></div>
+                <div class="row">
+                    <div class="col-lg-4 mb-4">
+                        <div class="contact-method-card">
                             <i class="fab fa-whatsapp"></i>
-                            <div class="contact-details">
-                                <span class="contact-label">WhatsApp</span>
-                                <a href="https://wa.me/5511971534673" target="_blank" class="contact-value">(11) 97153-4673</a>
-                            </div>
-                        </div>
-                        <div class="contact-method">
-                            <i class="fas fa-phone"></i>
-                            <div class="contact-details">
-                                <span class="contact-label">Telefone</span>
-                                <span class="contact-value">(11) 97153-4673</span>
-                            </div>
-                        </div>
-                        <div class="contact-method">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <div class="contact-details">
-                                <span class="contact-label">Localização</span>
-                                <span class="contact-value">São Paulo, SP - Atendimento Nacional</span>
-                            </div>
-                        </div>
-                    </div>
-                    
+                            <div class="contact-info">
+                                <span>WhatsApp</span>
+                                <a href="https://wa.me/5511971534673" target="_blank">(11) 97153-4673</a>
                 </div>
-                <div class="contact-visual">
-                    <div class="contact-image-box">
-                        <div class="image-overlay">
-                            <div class="overlay-content">
-                                <i class="fas fa-building"></i>
-                                <h3>Nossa Agência</h3>
-                                <p>Um ambiente moderno e profissional onde suas ideias ganham vida através da tecnologia e criatividade.</p>
                             </div>
                         </div>
-                        <img src="assets/imgs/agencia.jpg" alt="WebRoad - Nossa agência digital moderna" class="contact-image" width="550" height="450" loading="lazy">
+                    <div class="col-lg-4 mb-4">
+                        <div class="contact-method-card">
+                            <i class="fas fa-envelope"></i>
+                            <div class="contact-info">
+                                <span>Email</span>
+                                <a href="mailto:contato@webroad.com.br">contato@webroad.com.br</a>
                     </div>
-                    <div class="contact-highlights">
-                        <div class="highlight-item">
-                            <i class="fas fa-users"></i>
-                            <span>Equipe especializada</span>
                         </div>
-                        <div class="highlight-item">
-                            <i class="fas fa-lightbulb"></i>
-                            <span>Inovação constante</span>
                         </div>
-                        <div class="highlight-item">
-                            <i class="fas fa-handshake"></i>
-                            <span>Parceria de confiança</span>
+                    <div class="col-lg-4 mb-4">
+                        <div class="contact-method-card">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div class="contact-info">
+                                <span>Localização</span>
+                                <p>São Paulo, SP</p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+        </div>
 
-    <!-- Scroll Up Button -->
-    <button class="scroll-up" id="scrollUp" aria-label="Voltar ao topo">
-        <i class="fas fa-arrow-up"></i>
-    </button>
-
-    <!-- Footer -->
-    <footer class="footer">
+        <!-- FOOTER AREA -->
+        <div class="footer-area footer-area1 section-padding">
         <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <div class="footer-logo">
-                        <img src="assets/imgs/logow.webp" alt="WebRoad Logo" class="footer-logo-img" width="120" height="50" loading="lazy">
+                <div class="row">
+                    <div class="col-lg-4 mb-4">
+                        <img src="assets/imgs/logow.webp" alt="WebRoad Logo" style="max-height: 50px; margin-bottom: 25px;">
+                        <p style="color: rgba(255,255,255,0.7); margin-bottom: 25px;">Transformando ideias em experiências digitais memoráveis.</p>
+                        <div class="side-social" style="margin-top: 20px;">
+                            <ul style="display: flex; gap: 15px; list-style: none; padding: 0; margin: 0;">
+                                <li><a href="https://www.facebook.com/profile.php?id=61555252693492" target="_blank" style="color: #fff; font-size: 20px;"><i class="fab fa-facebook-f"></i></a></li>
+                                <li><a href="https://www.instagram.com/agenciawebroad/" target="_blank" style="color: #fff; font-size: 20px;"><i class="fab fa-instagram"></i></a></li>
+                                <li><a href="https://wa.me/5511971534673" target="_blank" style="color: #fff; font-size: 20px;"><i class="fab fa-whatsapp"></i></a></li>
+                            </ul>
                     </div>
-                    <p>Transformando ideias em experiências digitais memoráveis.</p>
-                    <div class="social-links">
-                        <a href="https://www.facebook.com/profile.php?id=61555252693492" target="_blank"><i class="fab fa-facebook"></i></a>
-                        <a href="https://www.instagram.com/agenciawebroad/" target="_blank"><i class="fab fa-instagram"></i></a>
                     </div>
-                </div>
-                <div class="footer-section">
-                    <h4>Serviços</h4>
-                    <ul>
-                        <li><a href="#services">Websites & E-commerce</a></li>
-                        <li><a href="#services">Branding & Identidade</a></li>
-                        <li><a href="#services">Tráfego & Ads</a></li>
-                        <li><a href="#services">Dashboards & Automação</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4>Empresa</h4>
-                    <ul>
-                        <li><a href="#about">Sobre Nós</a></li>
-                        <li><a href="#team">Equipe</a></li>
-                        <li><a href="#contact">Contato</a></li>
-                        <li><a href="#">Blog</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4>Contato</h4>
+                    <div class="col-lg-4 mb-4">
+                        <h5 class="footer-title">Serviços</h5>
+                        <ul class="footer-links">
+                            <li><a href="#services">Websites & E-commerce</a></li>
+                            <li><a href="#services">Branding & Identidade</a></li>
+                            <li><a href="#services">Tráfego & Ads</a></li>
+                            <li><a href="#services">Dashboards & Automação</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-4 mb-4">
+                        <h5 class="footer-title">Contato</h5>
                     <div class="footer-contact-item">
                         <i class="fab fa-whatsapp"></i>
                         <a href="https://wa.me/5511971534673" target="_blank">(11) 97153-4673</a>
                     </div>
                     <div class="footer-contact-item">
-                        <i class="fas fa-phone"></i>
-                        <span>(11) 97153-4673</span>
+                        <i class="fas fa-clock"></i>
+                        <span>Segunda a Sexta, 9h às 18h</span>
                     </div>
                     <div class="footer-contact-item">
                         <i class="fas fa-envelope"></i>
@@ -741,30 +1065,70 @@
                     </div>
                 </div>
             </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 WebRoad. Todos os direitos reservados.</p>
+                <div class="space-40"></div>
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <div class="copyright">
+                            <p style="color: rgba(255,255,255,0.6);">© 2025 WebRoad. Todos os direitos reservados.</p>
             </div>
         </div>
-    </footer>
+                </div>
+            </div>
+        </div>
 
-    <!-- Mouse Follower - Moved to end for maximum z-index priority -->
-    <div class="mouse-follower"></div>
+    </div>
+
+    <!-- WhatsApp Float Button -->
+    <a href="https://wa.me/5511971534673" target="_blank" class="whatsapp-float">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- JavaScript -->
+    <script src="novo-tema/glint/assets/js/plugins/jQuery.2.1.0.min.js"></script>
+    <script src="novo-tema/glint/assets/js/plugins/bootstrap.min.js"></script>
+    <script src="novo-tema/glint/assets/js/plugins/jquery.nav.js"></script>
+    <script src="novo-tema/glint/assets/js/plugins/jquery.waypoints.min.js"></script>
+    <script src="novo-tema/glint/assets/js/plugins/jquery-modal-video.min.js"></script>
+    <script src="novo-tema/glint/assets/js/plugins/stellarnav.js"></script>
+    <script src="novo-tema/glint/assets/js/plugins/popper.min.js"></script>
+    <script src="novo-tema/glint/assets/js/plugins/owl.carousel.js"></script>
+    <script src="novo-tema/glint/assets/js/plugins/wow.min.js"></script>
+    <script src="novo-tema/glint/assets/js/plugins/easypiechart.min.js"></script>
+    <script src="novo-tema/glint/assets/js/plugins/animatenumber.min.js"></script>
+    <script src="novo-tema/glint/assets/js/plugins/circle-progress.js"></script>
+    <script src="novo-tema/glint/assets/js/plugins/bars.js"></script>
+    <script src="novo-tema/glint/assets/js/plugins/appear.js"></script>
+    <script src="novo-tema/glint/assets/js/plugins/jquery.hoverdir.js"></script>
+    <script src="novo-tema/glint/assets/js/plugins/isotop.v3.0.4.min.js"></script>
+    <script src="novo-tema/glint/assets/js/main.js"></script>
     
-    <!-- JavaScript - Load with defer for better performance -->
-    <script src="assets/script.js" defer></script>
-    
-    <!-- Performance monitoring script -->
+    <!-- Custom Script for Video -->
     <script>
-        // Simple performance monitoring
-        window.addEventListener('load', function() {
-            setTimeout(function() {
-                const perfData = performance.getEntriesByType('navigation')[0];
-                if (perfData) {
-                    console.log('Page Load Performance:', {
-                        'DOM Content Loaded': Math.round(perfData.domContentLoadedEventEnd - perfData.domContentLoadedEventStart),
-                        'Load Complete': Math.round(perfData.loadEventEnd - perfData.loadEventStart),
-                        'Total Load Time': Math.round(perfData.loadEventEnd - perfData.fetchStart)
+        document.addEventListener('DOMContentLoaded', function() {
+            // Video play button
+            const playBtn = document.getElementById('play-video-btn');
+            if (playBtn) {
+                playBtn.addEventListener('click', function() {
+                    const videoUrl = this.getAttribute('data-video');
+                    if (videoUrl) {
+                        window.open(videoUrl, '_blank');
+                    }
+                });
+            }
+        });
+    </script>
+
+</body>
+
+</html>
+
                     });
+                }
+            }, 0);
+        });
+    </script>
+</body>
+</html>
                 }
             }, 0);
         });
