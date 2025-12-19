@@ -10,7 +10,7 @@
     <meta name="description" content="Agência digital WebRoad - Desenvolvemos websites, e-commerce, branding e gestão de tráfego. Transformamos ideias em experiências digitais memoráveis com foco em resultados.">
     <meta name="keywords" content="agência digital, web design, desenvolvimento web, e-commerce, branding, marketing digital, gestão de tráfego">
     <meta name="author" content="WebRoad">
-    <meta name="theme-color" content="#08D665">
+    <meta name="theme-color" content="#6E18BE">
     
     <!-- Open Graph Meta Tags -->
     <meta property="og:title" content="WebRoad - Transformamos ideias em experiências digitais memoráveis">
@@ -75,8 +75,8 @@
     <style>
         /* Custom WebRoad Overrides */
         :root {
-            --primary-color: #08D665;
-            --secondary-color: #320a97;
+            --primary-color: #6E18BE;
+            --secondary-color: #37059A;
             --dark-bg: #0a0a0a;
         }
         
@@ -95,14 +95,54 @@
             color: var(--primary-color);
         }
         
+        /* Seção de Serviços - Mudando verde para roxo */
+        .service-text h4 {
+            color: #6E18BE !important;
+        }
+        
+        /* Ícones roxos no estado normal */
+        .single-service .service-icon img,
+        .single-service .service-icon i {
+            filter: brightness(0) saturate(100%) invert(27%) sepia(95%) saturate(3000%) hue-rotate(250deg) brightness(95%) contrast(90%);
+            font-size: 50px;
+            transition: all 0.3s ease;
+        }
+        
+        /* Títulos brancos no hover e active */
+        .single-service:hover .service-text h4,
+        .single-service.active .service-text h4 {
+            color: #fff !important;
+        }
+        
         .single-service:hover,
         .single-service.active {
             border-color: var(--primary-color);
+            background: #6E18BE !important;
         }
         
         .single-service:hover .service-icon img,
-        .single-service.active .service-icon img {
-            filter: brightness(0) saturate(100%) invert(67%) sepia(52%) saturate(5094%) hue-rotate(109deg) brightness(98%) contrast(94%);
+        .single-service.active .service-icon img,
+        .single-service:hover .service-icon i,
+        .single-service.active .service-icon i {
+            filter: brightness(0) invert(1) !important;
+            color: #fff !important;
+        }
+        
+        /* Círculos decorativos dos cards de serviços - tons sutis e minimalistas de roxo */
+        .single-service span.circle.circle-1 {
+            background: rgba(110, 24, 190, 0.15) !important;
+        }
+        
+        .single-service span.circle.circle-2 {
+            background: rgba(110, 24, 190, 0.12) !important;
+        }
+        
+        .single-service span.circle.circle-3 {
+            background: rgba(110, 24, 190, 0.10) !important;
+        }
+        
+        .single-service span.circle.circle-4 {
+            background: rgba(110, 24, 190, 0.08) !important;
         }
         
         .stat-box {
@@ -115,7 +155,7 @@
         
         .stat-box:hover {
             transform: translateY(-5px);
-            background: rgba(8, 214, 101, 0.1);
+            background: rgba(110, 24, 190, 0.1);
         }
         
         .stat-box h3 {
@@ -140,7 +180,7 @@
         
         .team-member-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(8, 214, 101, 0.2);
+            box-shadow: 0 20px 40px rgba(110, 24, 190, 0.2);
         }
         
         .team-member-card img {
@@ -190,7 +230,7 @@
         }
         
         .contact-method-card:hover {
-            background: rgba(8, 214, 101, 0.1);
+            background: rgba(110, 24, 190, 0.1);
             transform: translateX(10px);
         }
         
@@ -204,7 +244,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background: rgba(8, 214, 101, 0.1);
+            background: rgba(110, 24, 190, 0.1);
             border-radius: 50%;
             flex-shrink: 0;
         }
@@ -245,6 +285,13 @@
             box-shadow: 0 5px 20px rgba(37, 211, 102, 0.4);
             z-index: 9999;
             transition: all 0.3s ease;
+        }
+        
+        /* Ajuste do botão WhatsApp no desktop */
+        @media (min-width: 769px) {
+            .whatsapp-float {
+                bottom: 47px;
+            }
         }
         
         .whatsapp-float:hover {
@@ -293,7 +340,7 @@
         
         .hero-video-section .play-btn:hover {
             transform: scale(1.1);
-            box-shadow: 0 0 40px rgba(8, 214, 101, 0.5);
+            box-shadow: 0 0 40px rgba(110, 24, 190, 0.5);
         }
         
         .differential-box {
@@ -309,7 +356,7 @@
         .differential-box:hover {
             border-color: var(--primary-color);
             transform: translateY(-10px);
-            background: rgba(8, 214, 101, 0.05);
+            background: rgba(110, 24, 190, 0.05);
         }
         
         .differential-box i {
@@ -451,6 +498,159 @@
         
         .whatsapp-btn:hover i {
             color: #fff !important;
+        }
+        
+        /* Substituir todos os verdes restantes por roxo (exceto WhatsApp) */
+        .heading small,
+        .primery-heading small,
+        .cta-heading small {
+            color: #6E18BE !important;
+        }
+        
+        .heading strong.filltext {
+            -webkit-text-stroke: 1px #6E18BE !important;
+            opacity: 0.5 !important;
+        }
+        
+        /* Botão Fale Conosco na seção Sobre */
+        .about-area .cbtn.cbnt1 {
+            color: #000 !important;
+            background: #25D366 !important;
+            padding-right: 70px !important;
+        }
+        
+        .about-area .cbtn.cbnt1 i {
+            position: absolute !important;
+            top: 50% !important;
+            right: 15px !important;
+            height: 30px !important;
+            width: 30px !important;
+            text-align: center !important;
+            line-height: 30px !important;
+            font-size: 20px !important;
+            background: #fff !important;
+            color: #000 !important;
+            border-radius: 4px !important;
+            margin-top: -15px !important;
+        }
+        
+        .about-area .cbtn.cbnt1:hover {
+            color: #25D366 !important;
+            background: transparent !important;
+            border-color: #25D366 !important;
+        }
+        
+        .about-area .cbtn.cbnt1:hover i {
+            color: #25D366 !important;
+            background: #fff !important;
+        }
+        
+        /* Botão Fale Conosco na seção CTA (Entre em Contato) */
+        .cta-area .cbtn.cbnt1 {
+            color: #000 !important;
+            background: #25D366 !important;
+            padding-right: 70px !important;
+        }
+        
+        .cta-area .cbtn.cbnt1 i {
+            position: absolute !important;
+            top: 50% !important;
+            right: 15px !important;
+            height: 30px !important;
+            width: 30px !important;
+            text-align: center !important;
+            line-height: 30px !important;
+            font-size: 20px !important;
+            background: #fff !important;
+            color: #000 !important;
+            border-radius: 4px !important;
+            margin-top: -15px !important;
+        }
+        
+        .cta-area .cbtn.cbnt1:hover {
+            color: #25D366 !important;
+            background: transparent !important;
+            border-color: #25D366 !important;
+        }
+        
+        .cta-area .cbtn.cbnt1:hover i {
+            color: #25D366 !important;
+            background: #fff !important;
+        }
+        
+        .wlc-title p {
+            border-left-color: #6E18BE !important;
+        }
+        
+        .info-content {
+            border-left-color: #6E18BE !important;
+        }
+        
+        .heading h2 span {
+            color: #6E18BE !important;
+        }
+        
+        .banner-social li a:hover {
+            color: #6E18BE !important;
+        }
+        
+        a.contact-btn {
+            background: #6E18BE !important;
+        }
+        
+        a.contact-btn:hover {
+            background: #37059A !important;
+        }
+        
+        /* Header banner - substituir verde por roxo */
+        .banner-icon {
+            background: #6E18BE !important;
+        }
+        
+        .header-banner-area .owl-nav > div:hover {
+            color: #6E18BE !important;
+        }
+        
+        /* SVG hamburger - mudar de verde para roxo */
+        .grid-menu img[src*="hamburger.svg"] {
+            filter: brightness(0) saturate(100%) invert(27%) sepia(95%) saturate(2000%) hue-rotate(250deg) brightness(1.2) contrast(1.1);
+        }
+        
+        /* Menu lateral - substituir verde por roxo */
+        .side-social li a:hover,
+        .side-close:hover {
+            background: #6E18BE !important;
+            border-color: #6E18BE !important;
+        }
+        
+        /* Menu header - substituir verde por roxo */
+        .stellarnav > ul > li:after {
+            background: #6E18BE !important;
+        }
+        
+        .stellarnav > ul > li:hover:after,
+        .stellarnav > ul > li.current:after {
+            background: #6E18BE !important;
+        }
+        
+        .stellarnav.light.mobile.active li a:hover,
+        .stellarnav.light li li a:hover {
+            color: #6E18BE !important;
+        }
+        
+        .stellarnav.dark li a:hover {
+            color: #6E18BE !important;
+        }
+        
+        /* Botão scroll to top - substituir verde por roxo */
+        a.up-btn {
+            background: #6E18BE !important;
+        }
+        
+        a.up-btn:hover {
+            color: #6E18BE !important;
+            background: #fff !important;
+            border-color: #6E18BE !important;
         }
         
         /* Hero alinhado à esquerda no mobile */
@@ -602,8 +802,8 @@
                     <div class="col-lg-5 align-self-center">
                         <div class="about-shape">
                             <div class="hero-video-section">
-                                <img src="https://img.youtube.com/vi/ChQbnx9KtRQ/maxresdefault.jpg" alt="WebRoad - Agência Digital">
-                                <div class="play-overlay" id="play-video-btn" data-video="https://www.youtube.com/watch?v=ChQbnx9KtRQ">
+                                <img src="https://img.youtube.com/vi/wCblIPQZxfY/maxresdefault.jpg" alt="WebRoad - Agência Digital">
+                                <div class="play-overlay" id="play-video-btn" data-video="https://www.youtube.com/watch?v=wCblIPQZxfY">
                                     <div class="play-btn">
                                 <i class="fas fa-play"></i>
                             </div>
@@ -616,7 +816,7 @@
                             <strong class="filltext">Sobre nós</strong>
                             <h2>Conectar <span>marcas & pessoas</span> através da inovação digital</h2>
                             <p>Na WebRoad, acreditamos que cada projeto é uma jornada única. Nossa missão é transformar desafios em oportunidades, criando soluções digitais que não apenas impressionam, mas também geram resultados reais para nossos clientes.</p>
-                            <a href="https://wa.me/5511971534673" target="_blank" class="cbtn cbnt1 fadeInDown animated"><i class="fab fa-whatsapp"></i> Fale Conosco <i class="fal fa-angle-right"></i></a>
+                            <a href="https://wa.me/5511971534673" target="_blank" class="cbtn cbnt1 fadeInDown animated">Fale Conosco <i class="fab fa-whatsapp"></i></a>
                     </div>
                 </div>
             </div>
@@ -719,7 +919,7 @@
                     <div class="col-lg-6 mb-4">
                         <div class="single-service">
                     <div class="service-icon">
-                                <img src="novo-tema/glint/assets/img/icon/service1.svg" alt="">
+                                <i class="fal fa-browser"></i>
                     </div>
                             <div class="service-text">
                                 <h4>Websites & E-commerce</h4>
@@ -742,9 +942,9 @@
                         </div>
                     </div>
                     <div class="col-lg-6 mb-4">
-                        <div class="single-service active">
+                        <div class="single-service">
                     <div class="service-icon">
-                                <img src="novo-tema/glint/assets/img/icon/service2.svg" alt="">
+                                <i class="fal fa-palette"></i>
                     </div>
                             <div class="service-text">
                                 <h4>Branding & Identidade Visual</h4>
@@ -769,7 +969,7 @@
                     <div class="col-lg-6 mb-4">
                         <div class="single-service">
                     <div class="service-icon">
-                                <img src="novo-tema/glint/assets/img/icon/service3.svg" alt="">
+                                <i class="fal fa-rocket"></i>
                     </div>
                             <div class="service-text">
                                 <h4>Gestão de Tráfego & Ads</h4>
@@ -794,7 +994,7 @@
                     <div class="col-lg-6 mb-4">
                         <div class="single-service">
                     <div class="service-icon">
-                                <img src="novo-tema/glint/assets/img/icon/service1.svg" alt="">
+                                <i class="fal fa-microchip"></i>
                     </div>
                             <div class="service-text">
                                 <h4>Dashboards & Automação</h4>
@@ -905,12 +1105,12 @@
                     <div class="col-lg-4 mb-4">
                         <div class="single-service">
                             <div class="service-icon">
-                                <i class="fas fa-quote-left" style="font-size: 30px; color: #08D665;"></i>
+                                <i class="fas fa-quote-left" style="font-size: 30px; color: #6E18BE;"></i>
                     </div>
                             <div class="service-text">
                                 <p style="font-style: italic;">"A WebRoad transformou completamente nossa presença digital. O resultado superou todas as expectativas!"</p>
                                 <div class="space-20"></div>
-                                <h5 style="color: #08D665;">Maria Silva</h5>
+                                <h5 style="color: #6E18BE;">Maria Silva</h5>
                                 <small>CEO, TechStart</small>
                 </div>
                             <div class="circles-wrap">
@@ -947,12 +1147,12 @@
                     <div class="col-lg-4 mb-4">
                         <div class="single-service">
                             <div class="service-icon">
-                                <i class="fas fa-quote-left" style="font-size: 30px; color: #08D665;"></i>
+                                <i class="fas fa-quote-left" style="font-size: 30px; color: #6E18BE;"></i>
             </div>
                             <div class="service-text">
                                 <p style="font-style: italic;">"Equipe dedicada e resultados incríveis. Recomendo a WebRoad para qualquer projeto digital."</p>
                                 <div class="space-20"></div>
-                                <h5 style="color: #08D665;">Ana Costa</h5>
+                                <h5 style="color: #6E18BE;">Ana Costa</h5>
                                 <small>Fundadora, EduTech</small>
         </div>
                             <div class="circles-wrap">
@@ -981,9 +1181,7 @@
                             <p style="margin-top: 20px;">Vamos conversar sobre como podemos transformar suas ideias em realidade digital.</p>
                         </div>
                         <div class="space-40"></div>
-                        <a href="https://wa.me/5511971534673" target="_blank" class="cbtn cbnt1 whatsapp-btn" style="background: #25D366; border-color: #25D366; font-size: 18px;">
-                            <i class="fab fa-whatsapp"></i> Fale Conosco no WhatsApp
-                        </a>
+                        <a href="https://wa.me/5511971534673" target="_blank" class="cbtn cbnt1 fadeInDown animated">Fale conosco no Whatsapp <i class="fab fa-whatsapp"></i></a>
                         </div>
                     </div>
                     
@@ -1039,12 +1237,12 @@
                     <div class="col-lg-4 mb-4">
                         <h5 class="footer-title">Serviços</h5>
                         <ul class="footer-links">
-                            <li><a href="#services">Websites & E-commerce</a></li>
-                            <li><a href="#services">Branding & Identidade</a></li>
-                            <li><a href="#services">Tráfego & Ads</a></li>
-                            <li><a href="#services">Dashboards & Automação</a></li>
-                        </ul>
-                    </div>
+                        <li><a href="#services">Websites & E-commerce</a></li>
+                        <li><a href="#services">Branding & Identidade</a></li>
+                        <li><a href="#services">Tráfego & Ads</a></li>
+                        <li><a href="#services">Dashboards & Automação</a></li>
+                    </ul>
+                </div>
                     <div class="col-lg-4 mb-4">
                         <h5 class="footer-title">Contato</h5>
                     <div class="footer-contact-item">
@@ -1120,18 +1318,4 @@
 
 </body>
 
-</html>
-
-                    });
-                }
-            }, 0);
-        });
-    </script>
-</body>
-</html>
-                }
-            }, 0);
-        });
-    </script>
-</body>
 </html>
