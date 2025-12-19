@@ -349,13 +349,13 @@ a.contact-btn:hover{
 
 
 .welcome__wrap1{
-    background: url(../img/bg/wlc-bg1.jpg);
+    background: url(../../img/bg/wlc-bg1.jpg);
     background-size: cover;
     background-position: center
 }
 
 .welcome__wrap2{
-    background: url(../img/bg/Header.png);
+    background: url(../../img/bg/Header.png);
     background-size: cover;
     background-position: center
 }
@@ -482,12 +482,12 @@ h1.wlc-filltext {
     padding: 240px 0;
 }
 .about-area1{
-    background-image: url(assets/img/bg/about-bg.png);
+    background-image: url(../../img/bg/about-bg.png);
     background-position: center;
     background-size: cover;
 }
 .about-img-section1{
-    background-image: url(../img/about/about1.png);
+    background-image: url(../../img/about/about1.png);
     background-size: cover;
     background-position: center
 }
@@ -511,28 +511,28 @@ a.about-video {
     content          : "";
     height           : 100%;
     width            : 130%;
-    background       : url(../img/about/about-bg-shape.png);
+    background       : url(../../img/about/about-bg-shape.png);
     z-index          : -1;
     left             : -15%;
     background-repeat: no-repeat;
     top              : 0%;
 }
 .about-area-primery .about-shape:after{
-    background       : url(../img/about/about-bg-shape2.png) no-repeat;
+    background       : url(../../img/about/about-bg-shape2.png) no-repeat;
 }
 .about-shape:before {
     position         : absolute;
     content          : "";
     height           : 300px;
     width            : 300px;
-    background       : url(../img/about/about-shape.svg) no-repeat;
+    background       : url(../../img/about/about-shape.svg) no-repeat;
     background-repeat: no-repeat;
     bottom           : -20%;
     left             : -15%;
     z-index          : -1;
 }
 .about-area-primery .about-shape:before {
-    background       : url(../img/about/about-shape2.svg) no-repeat;
+    background       : url(../../img/about/about-shape2.svg) no-repeat;
 }
 .video-play-button {
   position: absolute;
@@ -630,7 +630,7 @@ a.about-video {
     width: 400px;
     right: 0;
     top: 0;
-    background: url(../img/bg/about-bg.svg);
+    background: url(../../img/bg/about-bg.svg);
     opacity: .1;
 }
 
@@ -692,7 +692,7 @@ a.about-video {
     content: "";
     height: 500px;
     width: 500px;
-    background: url(../img/bg/skill-bg1.svg);
+    background: url(../../img/bg/skill-bg1.svg);
     bottom: -30%;
     z-index: -1;
     background-position: right;
@@ -1098,7 +1098,7 @@ span.circle.circle-4 {
     width: 400px;
     right: 0;
     top: 0;
-    background: url(../img/bg/service-bg.svg);
+    background: url(../../img/bg/service-bg.svg);
 }
 
 .pricing2 {
@@ -1208,7 +1208,7 @@ span.circle.circle-4 {
 }
 
 .project-area {
-    background         : url(../img/bg/project-bg.jpg);
+    background         : url(../../img/bg/project-bg.jpg);
     background-size    : cover;
     background-position: center;
 }
@@ -1228,7 +1228,7 @@ span.circle.circle-4 {
     width: 700px;
     left: -10%;
     bottom: 0;
-    background: url(../img/bg/portfolio-bg.svg);
+    background: url(../../img/bg/portfolio-bg.svg);
     z-index: -1;
     background-position: right;
     background-size: contain;
@@ -1242,7 +1242,7 @@ span.circle.circle-4 {
 
 
 .pricing-area1{
-    background-image: url(../img/bg/about-bg.png);
+    background-image: url(../../img/bg/about-bg.png);
     background-position: center;
     background-size: cover
 }
@@ -1373,7 +1373,7 @@ span.circle.circle-4 {
 }
 
 .testimonials-area1{
-    background: url(../img/bg/testimonials-bg.png);
+    background: url(../../img/bg/testimonials-bg.png);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -1515,7 +1515,7 @@ a.readmore-btn {
 
 
 .cta-area1{
-    background-image: url(../img/bg/map.png);
+    background-image: url(../../img/bg/map.png);
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat
@@ -1724,7 +1724,7 @@ span.single-social-icon i {
 ==========================
 */
 .footer-area1{
-    background-image: url(../img/bg/footer-bg.png);
+    background-image: url(../../img/bg/footer-bg.png);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat
