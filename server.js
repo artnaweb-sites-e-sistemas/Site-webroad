@@ -23,6 +23,15 @@ const mimeTypes = {
     '.mp3': 'audio/mpeg'
 };
 
+/** Cabeçalhos para HTML — Referrer-Policy compatível com embed do YouTube (evita erro 153). */
+function htmlResponseHeaders(contentType) {
+    return {
+        'Content-Type': contentType || 'text/html; charset=utf-8',
+        'Referrer-Policy': 'strict-origin-when-cross-origin',
+        'Cache-Control': 'public, max-age=3600'
+    };
+}
+
 const server = http.createServer((req, res) => {
     let filePath = req.url === '/' ? '/lp.html' : req.url;
     filePath = path.join(__dirname, filePath);
@@ -58,10 +67,14 @@ const server = http.createServer((req, res) => {
             return;
         }
         
-        res.writeHead(200, { 
-            'Content-Type': contentType,
-            'Cache-Control': 'public, max-age=3600'
-        });
+        if (ext === '.html' || contentType === 'text/html') {
+            res.writeHead(200, htmlResponseHeaders('text/html; charset=utf-8'));
+        } else {
+            res.writeHead(200, {
+                'Content-Type': contentType,
+                'Cache-Control': 'public, max-age=3600'
+            });
+        }
         res.end(data);
     });
 });

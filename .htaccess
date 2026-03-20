@@ -71,6 +71,8 @@
     Header always set X-Content-Type-Options nosniff
     Header always set X-Frame-Options SAMEORIGIN
     Header always set X-XSS-Protection "1; mode=block"
+    # YouTube embed (erro 153): não usar same-origin; alinhar ao iframe/meta do YouTube
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
     
     # CORS for external resources
     <FilesMatch "\.(css|js|woff|woff2)$">

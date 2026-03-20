@@ -5,6 +5,8 @@
     <title>WebRoad - Transformamos ideias em experiências digitais memoráveis</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Alinhado ao iframe oficial do YouTube (Compartilhar → Incorporar): strict-origin-when-cross-origin -->
+    <meta name="referrer" content="strict-origin-when-cross-origin">
     
     <!-- SEO Meta Tags -->
     <meta name="description" content="Agência digital WebRoad - Desenvolvemos websites, e-commerce, branding e gestão de tráfego. Transformamos ideias em experiências digitais memoráveis com foco em resultados.">
@@ -84,25 +86,154 @@
             font-family: 'Poppins', sans-serif;
         }
         
-        /* LightRays Container */
-        .light-rays-container {
+        .welcome-area-wrap {
+            position: relative;
+        }
+
+        /* Hero: degradê estático (mesma paleta do antigo LightRays — sem animação) */
+        .welcome-area-wrap.welcome__wrap1 {
+            background-color: #0c0614 !important;
+            background-image:
+                radial-gradient(ellipse 130% 88% at 50% 0%, rgba(110, 24, 190, 0.5) 0%, rgba(110, 24, 190, 0.14) 42%, transparent 68%),
+                linear-gradient(168deg, #1a0f2e 0%, #12081f 45%, #08050f 100%) !important;
+            background-size: cover, cover !important;
+            background-position: center top, center !important;
+            background-repeat: no-repeat !important;
+        }
+
+        /* Ondas na hero: topo + base, traços sutis */
+        .hero-waves {
             position: absolute;
-            top: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
+            right: 0;
             pointer-events: none;
             z-index: 1;
             overflow: hidden;
         }
-        
-        .welcome-area-wrap {
+
+        .hero-waves--bottom {
+            bottom: 0;
+            height: 56%;
+            min-height: 200px;
+            max-height: 400px;
+            -webkit-mask-image: linear-gradient(to top, #000 0%, #000 22%, rgba(0, 0, 0, 0.45) 52%, rgba(0, 0, 0, 0.12) 76%, transparent 100%);
+            mask-image: linear-gradient(to top, #000 0%, #000 22%, rgba(0, 0, 0, 0.45) 52%, rgba(0, 0, 0, 0.12) 76%, transparent 100%);
+        }
+
+        .hero-waves--top {
+            top: 0;
+            height: 48%;
+            min-height: 170px;
+            max-height: 340px;
+            -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 22%, rgba(0, 0, 0, 0.45) 52%, rgba(0, 0, 0, 0.12) 76%, transparent 100%);
+            mask-image: linear-gradient(to bottom, #000 0%, #000 22%, rgba(0, 0, 0, 0.45) 52%, rgba(0, 0, 0, 0.12) 76%, transparent 100%);
+        }
+
+        .hero-waves--bottom .hero-waves-svg {
+            bottom: -5%;
+            top: auto;
+        }
+
+        .hero-waves--top .hero-waves-svg {
+            top: -5%;
+            bottom: auto;
+        }
+
+        .hero-waves-svg {
+            position: absolute;
+            left: -12%;
+            width: 124%;
+            height: 100%;
+            display: block;
+            filter: drop-shadow(0 0 22px rgba(110, 24, 190, 0.11));
+        }
+
+        .hero-waves--top .hero-waves-flip {
             position: relative;
+            width: 100%;
+            height: 100%;
+            transform: scaleY(-1);
+            transform-origin: center center;
+        }
+
+        .hero-wave-layer {
+            transform-origin: 50% 100%;
+            will-change: transform;
+        }
+
+        .hero-waves--top .hero-wave-layer {
+            transform-origin: 50% 0%;
+        }
+
+        .hero-waves--bottom .hero-wave-layer--1 {
+            animation: heroWaveDriftA 36s ease-in-out infinite alternate;
+        }
+
+        .hero-waves--bottom .hero-wave-layer--2 {
+            animation: heroWaveDriftB 44s ease-in-out infinite alternate-reverse;
+            opacity: 0.92;
+        }
+
+        .hero-waves--bottom .hero-wave-layer--3 {
+            animation: heroWaveDriftC 32s ease-in-out infinite alternate;
+            opacity: 0.88;
+        }
+
+        .hero-waves--top .hero-wave-layer--1 {
+            animation: heroWaveDriftA 36s ease-in-out infinite alternate;
+            animation-delay: -9s;
+        }
+
+        .hero-waves--top .hero-wave-layer--2 {
+            animation: heroWaveDriftB 44s ease-in-out infinite alternate-reverse;
+            animation-delay: -14s;
+            opacity: 0.88;
+        }
+
+        .hero-waves--top .hero-wave-layer--3 {
+            animation: heroWaveDriftC 32s ease-in-out infinite alternate;
+            animation-delay: -5s;
+            opacity: 0.84;
+        }
+
+        @keyframes heroWaveDriftA {
+            0% { transform: translate3d(-3%, 0, 0); }
+            100% { transform: translate3d(3%, 0, 0); }
+        }
+
+        @keyframes heroWaveDriftB {
+            0% { transform: translate3d(3.2%, -6px, 0); }
+            100% { transform: translate3d(-3.2%, 7px, 0); }
+        }
+
+        @keyframes heroWaveDriftC {
+            0% { transform: translate3d(-2.4%, 8px, 0); }
+            100% { transform: translate3d(2.4%, -5px, 0); }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .hero-wave-layer--1,
+            .hero-wave-layer--2,
+            .hero-wave-layer--3 {
+                animation: none !important;
+            }
         }
         
         .single-welcome-area {
             position: relative;
             z-index: 2;
+        }
+
+        /* Hero principal: um pouco mais baixa que o padrão do tema (800px / 1000px em telas grandes) */
+        .single-welcome-area.home_1 {
+            height: 680px !important;
+            padding: 40px 0 !important;
+        }
+
+        @media only screen and (min-width: 1400px) {
+            .single-welcome-area.home_1 {
+                height: 820px !important;
+            }
         }
         
         .cbtn:hover,
@@ -352,6 +483,111 @@
             background: rgba(0,0,0,0.3);
             cursor: pointer;
         }
+
+        /* Botão nativo no lugar do <a> — evita conflito com plugins e file:// */
+        .hero-video-section button.play-overlay {
+            appearance: none;
+            -webkit-appearance: none;
+            border: none;
+            padding: 0;
+            margin: 0;
+            font: inherit;
+            color: inherit;
+            background: transparent;
+            text-align: center;
+        }
+
+        /* Lightbox YouTube — <dialog> nativo (top layer), iframe no padrão do próprio YouTube */
+        .wr-yt-lightbox {
+            border: none;
+            padding: 0;
+            margin: auto;
+            max-width: calc(100vw - 28px);
+            width: min(960px, 100%);
+            background: transparent;
+            color: #fff;
+        }
+
+        .wr-yt-lightbox::backdrop {
+            background: rgba(0, 0, 0, 0.92);
+            cursor: pointer;
+        }
+
+        .wr-yt-lightbox__panel {
+            position: relative;
+            padding: 0;
+        }
+
+        .wr-yt-lightbox__ratio {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            background: #000;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 24px 80px rgba(0, 0, 0, 0.55);
+        }
+
+        .wr-yt-lightbox__ratio iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        .wr-yt-lightbox__close {
+            position: absolute;
+            top: -46px;
+            right: 0;
+            width: 44px;
+            height: 44px;
+            border: none;
+            background: transparent;
+            color: #fff;
+            font-size: 2.25rem;
+            line-height: 1;
+            cursor: pointer;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .wr-yt-lightbox__close:hover,
+        .wr-yt-lightbox__close:focus-visible {
+            background: rgba(255, 255, 255, 0.12);
+            outline: none;
+        }
+
+        .wr-yt-lightbox__foot {
+            margin: 14px 0 0;
+            text-align: center;
+            font-size: 0.88rem;
+        }
+
+        .wr-yt-lightbox__foot a {
+            color: rgba(200, 175, 255, 0.95);
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+
+        .wr-yt-lightbox__foot a:hover {
+            color: #fff;
+        }
+
+        .wr-yt-sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
         
         .hero-video-section .play-btn {
             width: 80px;
@@ -369,6 +605,55 @@
         .hero-video-section .play-btn:hover {
             transform: scale(1.1);
             box-shadow: 0 0 40px rgba(110, 24, 190, 0.5);
+        }
+
+        /* Hero: texto + animação lado a lado (desktop) */
+        .hero-content-row {
+            align-items: center;
+        }
+
+        .hero-animation-col {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 8px;
+        }
+
+        @media (min-width: 992px) {
+            .hero-animation-col {
+                justify-content: flex-end;
+                margin-top: 0;
+                padding-left: 0.5rem;
+            }
+        }
+
+        /* Animação institucional: sem “card” — integra ao fundo da hero */
+        .hero-gif-wrapper {
+            margin-top: 0;
+            display: inline-block;
+            max-width: 100%;
+            line-height: 0;
+            vertical-align: top;
+            background: none;
+            border: none;
+            box-shadow: none;
+            border-radius: 0;
+            overflow: visible;
+            padding: 0;
+        }
+
+        .hero-gif-wrapper img {
+            width: auto;
+            max-width: min(100%, 520px);
+            height: auto;
+            display: block;
+            filter: drop-shadow(0 12px 40px rgba(0, 0, 0, 0.35));
+        }
+
+        @media (min-width: 992px) {
+            .hero-gif-wrapper img {
+                max-width: min(100%, 440px);
+            }
         }
         
         .differential-box {
@@ -775,9 +1060,16 @@
                 height: 200px !important;
                 padding: 60px 0 !important;
             }
+
+            /* Hero com animação: altura fixa quebrava o layout */
+            .single-welcome-area.home_1 {
+                height: auto !important;
+                min-height: 460px !important;
+                padding: 52px 0 64px !important;
+            }
             
             .welcome-area-wrap {
-                min-height: 400px !important;
+                min-height: 360px !important;
             }
             
             .wlc-title {
@@ -790,6 +1082,21 @@
             
             .wlc-title p {
                 text-align: left !important;
+            }
+
+            .hero-gif-wrapper {
+                max-width: 100%;
+                margin-top: 0;
+            }
+
+            .hero-animation-col {
+                justify-content: flex-start;
+                margin-top: 20px;
+            }
+
+            .hero-gif-wrapper img {
+                max-width: min(100%, 400px);
+                filter: drop-shadow(0 8px 28px rgba(0, 0, 0, 0.3));
             }
             
             /* Botões com largura total no mobile */
@@ -917,15 +1224,68 @@
         
         <!-- WELCOME/HERO AREA -->
         <div class="welcome-area-wrap welcome__wrap1" id="home">
-            <!-- LightRays Background -->
-            <div id="light-rays-container" class="light-rays-container"></div>
+            <div class="hero-waves hero-waves--top" aria-hidden="true">
+                <div class="hero-waves-flip">
+                    <svg class="hero-waves-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2000 340" preserveAspectRatio="xMidYMax meet">
+                        <defs>
+                            <linearGradient id="heroWaveStrokeFadeTop" x1="0%" y1="0%" x2="0%" y2="100%">
+                                <stop offset="0%" stop-color="rgba(110, 24, 190, 0.38)"/>
+                                <stop offset="45%" stop-color="rgba(110, 24, 190, 0.16)"/>
+                                <stop offset="100%" stop-color="rgba(110, 24, 190, 0.05)"/>
+                            </linearGradient>
+                        </defs>
+                        <g class="hero-wave-layer hero-wave-layer--1" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="rgba(255, 255, 255, 0.1)" stroke-width="1.22" d="M-120,118 C180,78 420,158 680,118 S1180,78 1480,118 S1780,158 2120,118"/>
+                            <path stroke="url(#heroWaveStrokeFadeTop)" stroke-width="1.12" d="M-80,152 C220,112 460,192 720,152 S1220,112 1520,152 S1820,192 2160,152"/>
+                        </g>
+                        <g class="hero-wave-layer hero-wave-layer--2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="rgba(110, 24, 190, 0.28)" stroke-width="1.05" d="M-100,188 C240,148 480,228 760,188 S1240,148 1560,188 S1860,228 2200,188"/>
+                            <path stroke="rgba(255, 255, 255, 0.075)" stroke-width="0.95" d="M-60,218 C260,178 500,258 780,218 S1260,178 1580,218 S1880,258 2220,218"/>
+                        </g>
+                        <g class="hero-wave-layer hero-wave-layer--3" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="rgba(110, 24, 190, 0.22)" stroke-width="0.92" d="M-140,248 C200,208 440,288 700,248 S1160,208 1460,248 S1760,288 2100,248"/>
+                            <path stroke="rgba(200, 175, 255, 0.12)" stroke-width="0.88" d="M-40,278 C280,238 520,318 800,278 S1280,238 1600,278 S1900,318 2240,278"/>
+                        </g>
+                    </svg>
+                </div>
+            </div>
+            <div class="hero-waves hero-waves--bottom" aria-hidden="true">
+                <svg class="hero-waves-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2000 340" preserveAspectRatio="xMidYMax meet">
+                    <defs>
+                        <linearGradient id="heroWaveStrokeFadeBottom" x1="0%" y1="0%" x2="0%" y2="100%">
+                            <stop offset="0%" stop-color="rgba(110, 24, 190, 0.38)"/>
+                            <stop offset="45%" stop-color="rgba(110, 24, 190, 0.16)"/>
+                            <stop offset="100%" stop-color="rgba(110, 24, 190, 0.05)"/>
+                        </linearGradient>
+                    </defs>
+                    <g class="hero-wave-layer hero-wave-layer--1" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <path stroke="rgba(255, 255, 255, 0.1)" stroke-width="1.22" d="M-120,118 C180,78 420,158 680,118 S1180,78 1480,118 S1780,158 2120,118"/>
+                        <path stroke="url(#heroWaveStrokeFadeBottom)" stroke-width="1.12" d="M-80,152 C220,112 460,192 720,152 S1220,112 1520,152 S1820,192 2160,152"/>
+                    </g>
+                    <g class="hero-wave-layer hero-wave-layer--2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <path stroke="rgba(110, 24, 190, 0.28)" stroke-width="1.05" d="M-100,188 C240,148 480,228 760,188 S1240,148 1560,188 S1860,228 2200,188"/>
+                        <path stroke="rgba(255, 255, 255, 0.075)" stroke-width="0.95" d="M-60,218 C260,178 500,258 780,218 S1260,178 1580,218 S1880,258 2220,218"/>
+                    </g>
+                    <g class="hero-wave-layer hero-wave-layer--3" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <path stroke="rgba(110, 24, 190, 0.22)" stroke-width="0.92" d="M-140,248 C200,208 440,288 700,248 S1160,208 1460,248 S1760,288 2100,248"/>
+                        <path stroke="rgba(200, 175, 255, 0.12)" stroke-width="0.88" d="M-40,278 C280,238 520,318 800,278 S1280,238 1600,278 S1900,318 2240,278"/>
+                    </g>
+                </svg>
+            </div>
             <div class="single-welcome-area home_1">
                 <div class="container">
-                    <div class="row">
-                        <div class="col-lg-10">
+                    <div class="row hero-content-row">
+                        <div class="col-lg-7">
                             <div class="wlc-title white">
                                 <p class="fadeInDown animated">Transformamos ideias em experiências digitais memoráveis. <br>Sua marca merece o melhor do mundo digital.</p>
                                 <h1 class="fadeInDown animated">Conduzindo <span>negócios</span> ao sucesso digital</h1>
+                            </div>
+                        </div>
+                        <div class="col-lg-5">
+                            <div class="hero-animation-col">
+                                <div class="hero-gif-wrapper fadeInUp animated">
+                                    <img src="LOGOV3.1-transparent.webp?v=3" alt="Animação institucional da WebRoad com fundo transparente" loading="eager" decoding="async">
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -940,12 +1300,10 @@
                     <div class="col-lg-5 align-self-center">
                         <div class="about-shape">
                             <div class="hero-video-section">
-                                <img src="https://img.youtube.com/vi/wCblIPQZxfY/maxresdefault.jpg" alt="WebRoad - Agência Digital">
-                                <a href="https://www.youtube.com/watch?v=wCblIPQZxfY" class="js-video-button play-overlay" data-video-id="wCblIPQZxfY">
-                                    <div class="play-btn">
-                                <i class="fas fa-play"></i>
-                            </div>
-                                </a>
+                                <img src="https://img.youtube.com/vi/Rl2G52RCEr0/hqdefault.jpg" alt="WebRoad - Vídeo institucional">
+                                <button type="button" class="play-overlay" id="wr-yt-open" data-youtube-id="Rl2G52RCEr0" aria-haspopup="dialog" aria-controls="wr-yt-dialog" aria-label="Reproduzir vídeo institucional da WebRoad no YouTube">
+                                    <span class="play-btn"><i class="fas fa-play" aria-hidden="true"></i></span>
+                                </button>
                         </div>
                         </div>
                     </div>
@@ -1356,9 +1714,22 @@
         <i class="fab fa-whatsapp"></i>
     </a>
 
+    <!-- Player YouTube: <dialog> + iframe (padrão Incorporar do YouTube). Erro 153 = Referrer-Policy; ver server.js + .htaccess -->
+    <dialog id="wr-yt-dialog" class="wr-yt-lightbox" aria-labelledby="wr-yt-dialog-title">
+        <div class="wr-yt-lightbox__panel" role="document">
+            <h2 id="wr-yt-dialog-title" class="wr-yt-sr-only">Vídeo institucional WebRoad</h2>
+            <button type="button" class="wr-yt-lightbox__close" data-wr-yt-close aria-label="Fechar">&times;</button>
+            <div class="wr-yt-lightbox__ratio">
+                <!-- src definido só ao abrir; allow/referrerpolicy iguais ao código de incorporação do YouTube -->
+                <iframe id="wr-yt-frame" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+            <p class="wr-yt-lightbox__foot">
+                <a id="wr-yt-watch" href="https://www.youtube.com/watch?v=Rl2G52RCEr0" target="_blank" rel="noopener noreferrer">Abrir no YouTube</a>
+            </p>
+        </div>
+    </dialog>
+
     <!-- JavaScript -->
-    <!-- OGL Library for LightRays -->
-    <script src="https://cdn.jsdelivr.net/npm/ogl@0.0.79/dist/ogl.umd.js"></script>
     <script src="assets/js/plugins/jQuery.2.1.0.min.js"></script>
     <script src="assets/js/plugins/bootstrap.min.js"></script>
     <script src="assets/js/plugins/jquery.nav.js"></script>
@@ -1377,123 +1748,77 @@
     <script src="assets/js/plugins/isotop.v3.0.4.min.js"></script>
     <script src="assets/js/main.js"></script>
     
-    <!-- Custom Script for Video Modal -->
+    <!-- Player YouTube: API de <dialog> + URL de embed mínima (sem ?origin= / enablejsapi) -->
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Initialize modal video
-            if (typeof jQuery !== 'undefined' && jQuery.fn.videoModal) {
-                jQuery('.js-video-button').videoModal();
-            } else {
-                // Fallback: create custom modal
-                const videoButtons = document.querySelectorAll('.js-video-button');
-                videoButtons.forEach(function(button) {
-                    button.addEventListener('click', function(e) {
-                        e.preventDefault();
-                        e.stopPropagation();
-                        
-                        // Extract video ID
-                        let videoId = this.getAttribute('data-video-id');
-                        if (!videoId) {
-                            const href = this.getAttribute('href') || '';
-                            const match = href.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/)([^&\n?#]+)/);
-                            videoId = match ? match[1] : null;
-                        }
-                        
-                        if (!videoId) {
-                            console.error('Video ID not found');
-                            return;
-                        }
-                        
-                        console.log('Opening video:', videoId);
-                        
-                        // Create modal overlay
-                        const modal = document.createElement('div');
-                        modal.className = 'video-modal-overlay';
-                        modal.style.cssText = 'position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 9999; display: flex; align-items: center; justify-content: center;';
-                        
-                        // Create modal content
-                        const modalContent = document.createElement('div');
-                        modalContent.style.cssText = 'position: relative; width: 90%; max-width: 900px; padding-top: 56.25%;';
-                        
-                        const iframe = document.createElement('iframe');
-                        // Build YouTube embed URL with proper parameters
-                        // Use a safe origin for local file:// protocol
-                        const origin = window.location.origin || window.location.protocol + '//' + window.location.host || 'https://localhost';
-                        const embedUrl = 'https://www.youtube.com/embed/' + videoId + 
-                            '?autoplay=1' +
-                            '&rel=0' +
-                            '&modestbranding=1' +
-                            '&showinfo=0' +
-                            '&controls=1' +
-                            '&enablejsapi=1' +
-                            '&origin=' + encodeURIComponent(origin);
-                        
-                        iframe.src = embedUrl;
-                        iframe.style.cssText = 'position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;';
-                        iframe.setAttribute('allow', 'autoplay; encrypted-media; picture-in-picture; fullscreen');
-                        iframe.setAttribute('allowfullscreen', 'true');
-                        iframe.setAttribute('frameborder', '0');
-                        iframe.setAttribute('title', 'YouTube video player');
-                        iframe.setAttribute('loading', 'lazy');
-                        
-                        // Enhanced close function
-                        const restoreScroll = function() {
-                            document.body.style.overflow = '';
-                        };
-                        
-                        const closeModal = function() {
-                            if (document.body.contains(modal)) {
-                                document.body.removeChild(modal);
-                                restoreScroll();
-                                document.removeEventListener('keydown', escHandler);
-                            }
-                        };
-                        
-                        // Close button
-                        const closeBtn = document.createElement('button');
-                        closeBtn.innerHTML = '×';
-                        closeBtn.style.cssText = 'position: absolute; top: -40px; right: 0; background: none; border: none; color: white; font-size: 40px; cursor: pointer; line-height: 1; padding: 0; width: 40px; height: 40px; z-index: 10000;';
-                        closeBtn.addEventListener('click', closeModal);
-                        
-                        // Handle iframe load errors
-                        iframe.addEventListener('load', function() {
-                            console.log('Video iframe loaded successfully');
-                        });
-                        
-                        iframe.addEventListener('error', function() {
-                            console.error('Error loading video iframe');
-                            // Fallback: open in new tab
-                            window.open('https://www.youtube.com/watch?v=' + videoId, '_blank');
-                            closeModal();
-                        });
-                        
-                        modalContent.appendChild(iframe);
-                        modalContent.appendChild(closeBtn);
-                        modal.appendChild(modalContent);
-                        
-                        // Close on overlay click
-                        modal.addEventListener('click', function(e) {
-                            if (e.target === modal) {
-                                closeModal();
-                            }
-                        });
-                        
-                        // Close on ESC key
-                        const escHandler = function(e) {
-                            if (e.key === 'Escape') {
-                                closeModal();
-                            }
-                        };
-                        document.addEventListener('keydown', escHandler);
-                        
-                        // Prevent body scroll when modal is open
-                        document.body.style.overflow = 'hidden';
-                        
-                        document.body.appendChild(modal);
-                    });
+        (function() {
+            function wrYtInit() {
+                var btn = document.getElementById('wr-yt-open');
+                var dlg = document.getElementById('wr-yt-dialog');
+                var frame = document.getElementById('wr-yt-frame');
+                var watchA = document.getElementById('wr-yt-watch');
+                if (!btn || !dlg || !frame) return;
+
+                var id = (btn.getAttribute('data-youtube-id') || '').trim();
+                if (!id) return;
+
+                var watch = 'https://www.youtube.com/watch?v=' + encodeURIComponent(id);
+                if (watchA) watchA.href = watch;
+
+                function embedUrl(v) {
+                    var p = 'autoplay=1&rel=0&modestbranding=1&playsinline=1';
+                    return 'https://www.youtube-nocookie.com/embed/' + encodeURIComponent(v) + '?' + p;
+                }
+
+                function clearFrame() {
+                    frame.src = '';
+                    frame.removeAttribute('src');
+                }
+
+                function openDlg() {
+                    frame.src = embedUrl(id);
+                    if (typeof dlg.showModal === 'function') {
+                        dlg.showModal();
+                    } else {
+                        dlg.setAttribute('open', '');
+                    }
+                    var x = dlg.querySelector('[data-wr-yt-close]');
+                    if (x) x.focus();
+                }
+
+                function closeDlg() {
+                    if (typeof dlg.close === 'function') {
+                        dlg.close();
+                    } else {
+                        clearFrame();
+                        dlg.removeAttribute('open');
+                    }
+                }
+
+                dlg.addEventListener('close', function() {
+                    clearFrame();
+                });
+
+                btn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    openDlg();
+                });
+
+                dlg.addEventListener('click', function(e) {
+                    if (e.target === dlg) {
+                        closeDlg();
+                    }
+                    if (e.target && e.target.closest && e.target.closest('[data-wr-yt-close]')) {
+                        closeDlg();
+                    }
                 });
             }
-        });
+
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', wrYtInit);
+            } else {
+                wrYtInit();
+            }
+        })();
     </script>
     
     <!-- Configurar Stellarnav com texto em português -->
@@ -1532,340 +1857,6 @@
         });
     </script>
     
-    <!-- LightRays Background Effect -->
-    <script>
-        (function() {
-            // Wait for OGL to load
-            function initLightRays() {
-                const container = document.getElementById('light-rays-container');
-                if (!container) {
-                    console.error('Light rays container not found');
-                    setTimeout(initLightRays, 100);
-                    return;
-                }
-                
-                let OGL;
-                // Try different ways to access OGL
-                if (typeof window.OGL !== 'undefined') {
-                    OGL = window.OGL;
-                } else if (typeof OGL !== 'undefined') {
-                    OGL = window.OGL = OGL;
-                } else {
-                    console.warn('OGL library not loaded, using canvas fallback');
-                    initSimpleLightRays(container);
-                    return;
-                }
-
-                console.log('OGL loaded:', OGL);
-                
-                if (!OGL || !OGL.Renderer || !OGL.Program || !OGL.Triangle || !OGL.Mesh) {
-                    console.error('OGL objects not available. Available:', Object.keys(OGL || {}));
-                    // Fallback to simple canvas effect
-                    initSimpleLightRays(container);
-                    return;
-                }
-
-                const { Renderer, Program, Triangle, Mesh } = OGL;
-                
-                const hexToRgb = (hex) => {
-                    const m = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
-                    return m ? [parseInt(m[1], 16) / 255, parseInt(m[2], 16) / 255, parseInt(m[3], 16) / 255] : [1, 1, 1];
-                };
-
-                const getAnchorAndDir = (origin, w, h) => {
-                const outside = 0.2;
-                switch (origin) {
-                    case 'top-left':
-                        return { anchor: [0, -outside * h], dir: [0, 1] };
-                    case 'top-right':
-                        return { anchor: [w, -outside * h], dir: [0, 1] };
-                    case 'left':
-                        return { anchor: [-outside * w, 0.5 * h], dir: [1, 0] };
-                    case 'right':
-                        return { anchor: [(1 + outside) * w, 0.5 * h], dir: [-1, 0] };
-                    case 'bottom-left':
-                        return { anchor: [0, (1 + outside) * h], dir: [0, -1] };
-                    case 'bottom-center':
-                        return { anchor: [0.5 * w, (1 + outside) * h], dir: [0, -1] };
-                    case 'bottom-right':
-                        return { anchor: [w, (1 + outside) * h], dir: [0, -1] };
-                    default: // "top-center"
-                        return { anchor: [0.5 * w, -outside * h], dir: [0, 1] };
-                }
-                };
-
-                const config = {
-                    raysOrigin: 'top-center',
-                    raysColor: '#6E18BE',
-                    raysSpeed: 1.5,
-                    lightSpread: 0.8,
-                    rayLength: 1.2,
-                    followMouse: true,
-                    mouseInfluence: 0.1,
-                    noiseAmount: 0.1,
-                    distortion: 0.05
-                };
-
-                const renderer = new Renderer({
-                    dpr: Math.min(window.devicePixelRatio, 2),
-                    alpha: true
-                });
-
-                const gl = renderer.gl;
-                gl.canvas.style.width = '100%';
-                gl.canvas.style.height = '100%';
-                container.appendChild(gl.canvas);
-
-                const vert = `
-                    attribute vec2 position;
-                    varying vec2 vUv;
-                    void main() {
-                        vUv = position * 0.5 + 0.5;
-                        gl_Position = vec4(position, 0.0, 1.0);
-                    }
-                `;
-
-                const frag = `precision highp float;
-
-uniform float iTime;
-uniform vec2  iResolution;
-
-uniform vec2  rayPos;
-uniform vec2  rayDir;
-uniform vec3  raysColor;
-uniform float raysSpeed;
-uniform float lightSpread;
-uniform float rayLength;
-uniform float pulsating;
-uniform float fadeDistance;
-uniform float saturation;
-uniform vec2  mousePos;
-uniform float mouseInfluence;
-uniform float noiseAmount;
-uniform float distortion;
-
-varying vec2 vUv;
-
-float noise(vec2 st) {
-  return fract(sin(dot(st.xy, vec2(12.9898,78.233))) * 43758.5453123);
-}
-
-float rayStrength(vec2 raySource, vec2 rayRefDirection, vec2 coord,
-                  float seedA, float seedB, float speed) {
-  vec2 sourceToCoord = coord - raySource;
-  vec2 dirNorm = normalize(sourceToCoord);
-  float cosAngle = dot(dirNorm, rayRefDirection);
-
-  float distortedAngle = cosAngle + distortion * sin(iTime * 2.0 + length(sourceToCoord) * 0.01) * 0.2;
-  
-  float spreadFactor = pow(max(distortedAngle, 0.0), 1.0 / max(lightSpread, 0.001));
-
-  float distance = length(sourceToCoord);
-  float maxDistance = iResolution.x * rayLength;
-  float lengthFalloff = clamp((maxDistance - distance) / maxDistance, 0.0, 1.0);
-  
-  float fadeFalloff = clamp((iResolution.x * fadeDistance - distance) / (iResolution.x * fadeDistance), 0.5, 1.0);
-  float pulse = pulsating > 0.5 ? (0.8 + 0.2 * sin(iTime * speed * 3.0)) : 1.0;
-
-  float baseStrength = clamp(
-    (0.45 + 0.15 * sin(distortedAngle * seedA + iTime * speed)) +
-    (0.3 + 0.2 * cos(-distortedAngle * seedB + iTime * speed)),
-    0.0, 1.0
-  );
-
-  return baseStrength * lengthFalloff * fadeFalloff * spreadFactor * pulse;
-}
-
-void mainImage(out vec4 fragColor, in vec2 fragCoord) {
-  vec2 coord = vec2(fragCoord.x, iResolution.y - fragCoord.y);
-  
-  vec2 finalRayDir = rayDir;
-  if (mouseInfluence > 0.0) {
-    vec2 mouseScreenPos = mousePos * iResolution.xy;
-    vec2 mouseDirection = normalize(mouseScreenPos - rayPos);
-    finalRayDir = normalize(mix(rayDir, mouseDirection, mouseInfluence));
-  }
-
-  vec4 rays1 = vec4(1.0) *
-               rayStrength(rayPos, finalRayDir, coord, 36.2214, 21.11349,
-                           1.5 * raysSpeed);
-  vec4 rays2 = vec4(1.0) *
-               rayStrength(rayPos, finalRayDir, coord, 22.3991, 18.0234,
-                           1.1 * raysSpeed);
-
-  fragColor = rays1 * 0.5 + rays2 * 0.4;
-
-  if (noiseAmount > 0.0) {
-    float n = noise(coord * 0.01 + iTime * 0.1);
-    fragColor.rgb *= (1.0 - noiseAmount + noiseAmount * n);
-  }
-
-  float brightness = 1.0 - (coord.y / iResolution.y);
-  fragColor.x *= 0.1 + brightness * 0.8;
-  fragColor.y *= 0.3 + brightness * 0.6;
-  fragColor.z *= 0.5 + brightness * 0.5;
-
-  if (saturation != 1.0) {
-    float gray = dot(fragColor.rgb, vec3(0.299, 0.587, 0.114));
-    fragColor.rgb = mix(vec3(gray), fragColor.rgb, saturation);
-  }
-
-  fragColor.rgb *= raysColor;
-}
-
-void main() {
-  vec4 color;
-  mainImage(color, gl_FragCoord.xy);
-  gl_FragColor = color;
-}`;
-
-                const uniforms = {
-                    iTime: { value: 0 },
-                    iResolution: { value: [1, 1] },
-                    rayPos: { value: [0, 0] },
-                    rayDir: { value: [0, 1] },
-                    raysColor: { value: hexToRgb(config.raysColor) },
-                    raysSpeed: { value: config.raysSpeed },
-                    lightSpread: { value: config.lightSpread },
-                    rayLength: { value: config.rayLength },
-                    pulsating: { value: 0.0 },
-                    fadeDistance: { value: 1.0 },
-                    saturation: { value: 1.0 },
-                    mousePos: { value: [0.5, 0.5] },
-                    mouseInfluence: { value: config.mouseInfluence },
-                    noiseAmount: { value: config.noiseAmount },
-                    distortion: { value: config.distortion }
-                };
-
-                const geometry = new Triangle(gl);
-                const program = new Program(gl, {
-                    vertex: vert,
-                    fragment: frag,
-                    uniforms
-                });
-                const mesh = new Mesh(gl, { geometry, program });
-
-                const mouse = { x: 0.5, y: 0.5 };
-                const smoothMouse = { x: 0.5, y: 0.5 };
-
-                const updatePlacement = () => {
-                    if (!container) return;
-                    renderer.dpr = Math.min(window.devicePixelRatio, 2);
-                    const { clientWidth: wCSS, clientHeight: hCSS } = container;
-                    renderer.setSize(wCSS, hCSS);
-                    const dpr = renderer.dpr;
-                    const w = wCSS * dpr;
-                    const h = hCSS * dpr;
-                    uniforms.iResolution.value = [w, h];
-                    const { anchor, dir } = getAnchorAndDir(config.raysOrigin, w, h);
-                    uniforms.rayPos.value = anchor;
-                    uniforms.rayDir.value = dir;
-                };
-
-                const handleMouseMove = (e) => {
-                    if (!container) return;
-                    const rect = container.getBoundingClientRect();
-                    mouse.x = (e.clientX - rect.left) / rect.width;
-                    mouse.y = (e.clientY - rect.top) / rect.height;
-                };
-
-                if (config.followMouse) {
-                    window.addEventListener('mousemove', handleMouseMove);
-                }
-
-                const loop = (t) => {
-                    uniforms.iTime.value = t * 0.001;
-                    if (config.followMouse && config.mouseInfluence > 0.0) {
-                        const smoothing = 0.92;
-                        smoothMouse.x = smoothMouse.x * smoothing + mouse.x * (1 - smoothing);
-                        smoothMouse.y = smoothMouse.y * smoothing + mouse.y * (1 - smoothing);
-                        uniforms.mousePos.value = [smoothMouse.x, smoothMouse.y];
-                    }
-                    try {
-                        renderer.render({ scene: mesh });
-                        requestAnimationFrame(loop);
-                    } catch (error) {
-                        console.warn('WebGL rendering error:', error);
-                    }
-                };
-
-                window.addEventListener('resize', updatePlacement);
-                updatePlacement();
-                requestAnimationFrame(loop);
-            }
-
-            // Simple fallback using Canvas 2D
-            function initSimpleLightRays(container) {
-                console.log('Using simple canvas fallback');
-                const canvas = document.createElement('canvas');
-                canvas.style.width = '100%';
-                canvas.style.height = '100%';
-                container.appendChild(canvas);
-                
-                const ctx = canvas.getContext('2d');
-                let animationId;
-                
-                function resize() {
-                    canvas.width = container.clientWidth;
-                    canvas.height = container.clientHeight;
-                }
-                
-                function animate(time) {
-                    resize();
-                    ctx.clearRect(0, 0, canvas.width, canvas.height);
-                    
-                    const centerX = canvas.width / 2;
-                    const gradient = ctx.createRadialGradient(centerX, 0, 0, centerX, 0, canvas.height * 1.5);
-                    gradient.addColorStop(0, 'rgba(110, 24, 190, 0.6)');
-                    gradient.addColorStop(0.3, 'rgba(110, 24, 190, 0.3)');
-                    gradient.addColorStop(0.6, 'rgba(110, 24, 190, 0.1)');
-                    gradient.addColorStop(1, 'rgba(110, 24, 190, 0)');
-                    
-                    ctx.fillStyle = gradient;
-                    ctx.fillRect(0, 0, canvas.width, canvas.height);
-                    
-                    // Add some animated rays (sutil)
-                    const rayCount = 8;
-                    for (let i = 0; i < rayCount; i++) {
-                        const angle = (Math.PI * 2 / rayCount) * i + time * 0.0005;
-                        const rayLength = canvas.height * 1.2;
-                        const startX = centerX;
-                        const startY = 0;
-                        const endX = centerX + Math.cos(angle) * rayLength;
-                        const endY = startY + Math.sin(angle) * rayLength;
-                        
-                        const rayGradient = ctx.createLinearGradient(startX, startY, endX, endY);
-                        rayGradient.addColorStop(0, 'rgba(110, 24, 190, 0.15)');
-                        rayGradient.addColorStop(0.3, 'rgba(110, 24, 190, 0.08)');
-                        rayGradient.addColorStop(0.6, 'rgba(110, 24, 190, 0.04)');
-                        rayGradient.addColorStop(1, 'rgba(110, 24, 190, 0)');
-                        
-                        ctx.strokeStyle = rayGradient;
-                        ctx.lineWidth = 1;
-                        ctx.beginPath();
-                        ctx.moveTo(startX, startY);
-                        ctx.lineTo(endX, endY);
-                        ctx.stroke();
-                    }
-                    
-                    animationId = requestAnimationFrame(animate);
-                }
-                
-                window.addEventListener('resize', resize);
-                animate(0);
-            }
-
-            // Initialize when DOM is ready
-            if (document.readyState === 'loading') {
-                document.addEventListener('DOMContentLoaded', function() {
-                    setTimeout(initLightRays, 500);
-                });
-            } else {
-                setTimeout(initLightRays, 500);
-            }
-        })();
-    </script>
-
 </body>
 
 </html>
