@@ -2,21 +2,21 @@
 <html lang="pt-BR">
 
 <head>
-    <title>WebRoad - Transformamos ideias em experiências digitais memoráveis</title>
+    <title>WebRoad - Estratégias digitais que convertem visitantes em clientes</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Alinhado ao iframe oficial do YouTube (Compartilhar → Incorporar): strict-origin-when-cross-origin -->
     <meta name="referrer" content="strict-origin-when-cross-origin">
     
     <!-- SEO Meta Tags -->
-    <meta name="description" content="Agência digital WebRoad - Desenvolvemos websites, e-commerce, branding e gestão de tráfego. Transformamos ideias em experiências digitais memoráveis com foco em resultados.">
+    <meta name="description" content="WebRoad — estratégias digitais que convertem visitantes em clientes. Websites, e-commerce, branding, tráfego e automação para gerar leads e vendas online.">
     <meta name="keywords" content="agência digital, web design, desenvolvimento web, e-commerce, branding, marketing digital, gestão de tráfego">
     <meta name="author" content="WebRoad">
     <meta name="theme-color" content="#6E18BE">
     
     <!-- Open Graph Meta Tags -->
-    <meta property="og:title" content="WebRoad - Transformamos ideias em experiências digitais memoráveis">
-    <meta property="og:description" content="Agência digital especializada em desenvolvimento web, branding e marketing digital. Transformamos ideias em experiências digitais memoráveis.">
+    <meta property="og:title" content="WebRoad - Estratégias digitais que convertem visitantes em clientes">
+    <meta property="og:description" content="Transformamos presença digital em leads e vendas. Websites, e-commerce, branding, gestão de tráfego e automação com foco em resultados.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://webroad.com.br">
     <meta property="og:image" content="assets/imgs/agencia.jpg">
@@ -24,8 +24,8 @@
     
     <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="WebRoad - Transformamos ideias em experiências digitais memoráveis">
-    <meta name="twitter:description" content="Agência digital especializada em desenvolvimento web, branding e marketing digital.">
+    <meta name="twitter:title" content="WebRoad - Estratégias digitais que convertem visitantes em clientes">
+    <meta name="twitter:description" content="Transformamos presença digital em leads e vendas. Soluções completas para sua marca crescer online.">
     <meta name="twitter:image" content="assets/imgs/agencia.jpg">
     
     <!-- ALL CSS CALLING -->
@@ -52,7 +52,7 @@
         "@context": "https://schema.org",
         "@type": "Organization",
         "name": "WebRoad",
-        "description": "Agência digital especializada em desenvolvimento web, branding e marketing digital",
+        "description": "Agência digital focada em conversão: websites, e-commerce, branding, tráfego pago e automação para gerar leads e vendas.",
         "url": "https://webroad.com.br",
         "logo": "assets/imgs/logod.webp",
         "contactPoint": {
@@ -235,6 +235,32 @@
                 height: 820px !important;
             }
         }
+
+        /* Headline do hero: copy em 2 linhas — menor que o H1 padrão do tema (60px / 80px) */
+        .single-welcome-area.home_1 .wlc-title h1 {
+            text-transform: none !important;
+            letter-spacing: normal !important;
+            font-size: clamp(1.45rem, 1.15vw + 1rem, 2.35rem) !important;
+            line-height: 1.28 !important;
+            margin-bottom: 14px !important;
+        }
+
+        .single-welcome-area.home_1 .wlc-title h1 span {
+            letter-spacing: inherit !important;
+        }
+
+        @media only screen and (min-width: 992px) {
+            .single-welcome-area.home_1 .wlc-title h1 {
+                font-size: clamp(1.55rem, 1.25vw + 0.95rem, 2.55rem) !important;
+            }
+        }
+
+        @media only screen and (min-width: 1400px) {
+            .single-welcome-area.home_1 .wlc-title h1 {
+                font-size: clamp(1.65rem, 1.2vw + 1rem, 2.75rem) !important;
+                line-height: 1.26 !important;
+            }
+        }
         
         .cbtn:hover,
         .cbtn.cbnt1:hover {
@@ -295,6 +321,38 @@
         
         .single-service span.circle.circle-4 {
             background: rgba(110, 24, 190, 0.08) !important;
+        }
+
+        /* Serviços: cards na mesma linha com altura igual (conteúdo flexível) */
+        .service-area .row {
+            display: flex !important;
+            flex-wrap: wrap !important;
+            align-items: stretch !important;
+        }
+
+        .service-area .row > [class*="col-"] {
+            display: flex !important;
+        }
+
+        .service-area .single-service {
+            display: flex !important;
+            flex-direction: column !important;
+            flex: 1 1 auto !important;
+            height: 100% !important;
+            width: 100% !important;
+            min-height: 100% !important;
+        }
+
+        .service-area .service-text {
+            flex: 1 1 auto !important;
+            display: flex !important;
+            flex-direction: column !important;
+            min-height: 0 !important;
+        }
+
+        /* Lista encosta no rodapé do card quando há espaço sobrando */
+        .service-area .service-text ul {
+            margin-top: auto !important;
         }
         
         .stat-box {
@@ -459,15 +517,32 @@
             box-shadow: 0 8px 30px rgba(37, 211, 102, 0.6);
         }
         
+        /* Mini player (thumbnail): retangular 16:9 — não o modal */
         .hero-video-section {
             position: relative;
+            width: 100%;
             border-radius: 20px;
             overflow: hidden;
             box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+            aspect-ratio: 16 / 9;
+            background: #0a0a0a;
+        }
+
+        @supports not (aspect-ratio: 16 / 9) {
+            .hero-video-section {
+                height: 0;
+                padding-bottom: 56.25%;
+                aspect-ratio: unset;
+            }
         }
         
         .hero-video-section img {
+            position: absolute;
+            inset: 0;
             width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
             display: block;
         }
         
@@ -497,7 +572,7 @@
             text-align: center;
         }
 
-        /* Lightbox YouTube — <dialog> nativo (top layer), iframe no padrão do próprio YouTube */
+        /* Modal do vídeo (tamanho anterior — não o mini player) */
         .wr-yt-lightbox {
             border: none;
             padding: 0;
@@ -520,8 +595,9 @@
 
         .wr-yt-lightbox__ratio {
             position: relative;
-            padding-bottom: 56.25%;
+            width: 100%;
             height: 0;
+            padding-bottom: 56.25%;
             background: #000;
             border-radius: 12px;
             overflow: hidden;
@@ -559,22 +635,6 @@
         .wr-yt-lightbox__close:focus-visible {
             background: rgba(255, 255, 255, 0.12);
             outline: none;
-        }
-
-        .wr-yt-lightbox__foot {
-            margin: 14px 0 0;
-            text-align: center;
-            font-size: 0.88rem;
-        }
-
-        .wr-yt-lightbox__foot a {
-            color: rgba(200, 175, 255, 0.95);
-            text-decoration: underline;
-            text-underline-offset: 3px;
-        }
-
-        .wr-yt-lightbox__foot a:hover {
-            color: #fff;
         }
 
         .wr-yt-sr-only {
@@ -847,6 +907,16 @@
         .cta-heading small {
             color: #6E18BE !important;
         }
+
+        .cta-heading .cta-contact-subtitle {
+            font-family: 'Poppins', sans-serif;
+            font-size: clamp(1.05rem, 2vw, 1.35rem);
+            font-weight: 600;
+            line-height: 1.45;
+            color: rgba(255, 255, 255, 0.95);
+            margin: 12px 0 0;
+            letter-spacing: normal;
+        }
         
         .heading strong.filltext {
             -webkit-text-stroke: 1px #6E18BE !important;
@@ -1079,6 +1149,12 @@
             .wlc-title h1 {
                 text-align: left !important;
             }
+
+            .single-welcome-area.home_1 .wlc-title h1 {
+                letter-spacing: normal !important;
+                font-size: clamp(1.3rem, 3.8vw + 0.45rem, 1.65rem) !important;
+                line-height: 1.3 !important;
+            }
             
             .wlc-title p {
                 text-align: left !important;
@@ -1277,8 +1353,8 @@
                     <div class="row hero-content-row">
                         <div class="col-lg-7">
                             <div class="wlc-title white">
-                                <p class="fadeInDown animated">Transformamos ideias em experiências digitais memoráveis. <br>Sua marca merece o melhor do mundo digital.</p>
-                                <h1 class="fadeInDown animated">Conduzindo <span>negócios</span> ao sucesso digital</h1>
+                                <h1 class="fadeInDown animated">Estratégias digitais que <span>convertam visitantes</span> em clientes.<br>Seu crescimento online começa aqui.</h1>
+                                <p class="fadeInDown animated">Transformamos presença digital em geração de leads e vendas. Cada projeto é pensado para capturar oportunidades, criar conexões e impulsionar resultados tangíveis para sua marca.</p>
                             </div>
                         </div>
                         <div class="col-lg-5">
@@ -1355,7 +1431,7 @@
                     </div>
                     <div class="col-lg-6 align-self-center">
                         <div class="info-content">
-                            <p>Combinamos tecnologia de ponta com estratégia para entregar resultados excepcionais</p>
+                            <p>Criamos ações digitais que convertem visitantes em oportunidades reais de negócio. Tudo é pensado para gerar leads qualificados e aumentar suas vendas online.</p>
                         </div>
                     </div>
                 </div>
@@ -1365,28 +1441,28 @@
                         <div class="differential-box">
                             <i class="fas fa-rocket"></i>
                             <h4>Performance Digital</h4>
-                    <p>Desenvolvemos soluções otimizadas para máxima velocidade e conversão.</p>
+                    <p>Desenvolvemos soluções otimizadas para velocidade, experiência do usuário e conversão em cada ponto de contato digital.</p>
                 </div>
                     </div>
                     <div class="col-sm-6 col-lg-3 mb-4">
                         <div class="differential-box">
                             <i class="fas fa-paint-brush"></i>
                             <h4>Design Estratégico</h4>
-                    <p>Cada elemento visual é pensado para gerar impacto e resultados.</p>
+                    <p>Cada elemento visual é projetado com uma meta clara: atrair a atenção, engajar sua audiência e conduzir à ação.</p>
                 </div>
                     </div>
                     <div class="col-sm-6 col-lg-3 mb-4">
                         <div class="differential-box">
                             <i class="fas fa-cogs"></i>
                             <h4>Tecnologia Atualizada</h4>
-                    <p>Utilizamos as mais modernas ferramentas e frameworks do mercado.</p>
+                    <p>Utilizamos as mais modernas ferramentas e frameworks do mercado para potencializar performance, automação e inteligência de dados.</p>
                 </div>
                     </div>
                     <div class="col-sm-6 col-lg-3 mb-4">
                         <div class="differential-box">
                             <i class="fas fa-handshake"></i>
                             <h4>Atendimento Próximo</h4>
-                    <p>Relacionamento transparente e comunicação constante durante todo o projeto.</p>
+                    <p>Com comunicação constante e parceria real, você não fica no escuro. Somos seu time aliado em todos os estágios — planejamento, execução e otimização.</p>
                 </div>
             </div>
         </div>
@@ -1397,16 +1473,11 @@
         <div class="service-area padding-bottom" id="services">
         <div class="container">
                 <div class="row">
-                    <div class="col-lg-6 align-self-center">
+                    <div class="col-lg-11 col-xl-10">
                         <div class="heading white">
                             <strong class="filltext">serviços</strong>
                             <small>O QUE FAZEMOS</small>
-                            <h2>Nossos <span>Serviços</span></h2>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 align-self-center">
-                        <div class="info-content">
-                            <p>Soluções completas para transformar sua presença digital e gerar resultados reais</p>
+                            <h2>Soluções completas para transformar sua <span>presença digital</span> em resultados reais</h2>
                         </div>
                     </div>
                 </div>
@@ -1418,13 +1489,13 @@
                                 <i class="fal fa-browser"></i>
                     </div>
                             <div class="service-text">
-                                <h4>Websites & E-commerce</h4>
-                        <p>Sites institucionais, lojas virtuais e plataformas personalizadas com foco em conversão e experiência do usuário.</p>
+                                <h4>Websites &amp; E-commerce com foco em conversão</h4>
+                        <p>Criamos sites institucionais, lojas online e plataformas personalizadas pensados para atrair visitantes, gerar leads e converter em vendas reais — com usabilidade inteligente e experiência impecável para o seu público.</p>
                                 <ul style="color: rgba(255,255,255,0.7); margin-top: 15px; padding-left: 20px;">
-                            <li>Sites Responsivos</li>
-                            <li>E-commerce Completo</li>
-                            <li>Landing Pages</li>
-                            <li>Sistemas Web</li>
+                            <li>Sites responsivos e otimizados</li>
+                            <li>E-commerce completo integrado ao funil de conversão</li>
+                            <li>Landing pages de alta performance</li>
+                            <li>Sistemas web para vendas e automações</li>
                         </ul>
                     </div>
                             <div class="circles-wrap">
@@ -1443,13 +1514,13 @@
                                 <i class="fal fa-palette"></i>
                     </div>
                             <div class="service-text">
-                                <h4>Branding & Identidade Visual</h4>
-                        <p>Criação e desenvolvimento de marcas memoráveis que se conectam com seu público-alvo.</p>
+                                <h4>Branding &amp; Identidade Visual que conectam e vendem</h4>
+                        <p>Desenvolvemos marcas memoráveis que não apenas se destacam visualmente, mas também fortalecem confiança e conexão com o público.</p>
                                 <ul style="color: rgba(255,255,255,0.7); margin-top: 15px; padding-left: 20px;">
-                            <li>Logotipos</li>
-                            <li>Manual da Marca</li>
-                            <li>Papelaria Corporativa</li>
-                            <li>Redesign de Marca</li>
+                            <li>Logotipos com propósito</li>
+                            <li>Manual de marca estratégico</li>
+                            <li>Papelaria corporativa</li>
+                            <li>Redesign de marca</li>
                         </ul>
                     </div>
                             <div class="circles-wrap">
@@ -1468,13 +1539,13 @@
                                 <i class="fal fa-rocket"></i>
                     </div>
                             <div class="service-text">
-                                <h4>Gestão de Tráfego & Ads</h4>
-                        <p>Campanhas estratégicas para aumentar sua visibilidade e gerar mais leads qualificados.</p>
+                                <h4>Gestão de Tráfego &amp; Ads</h4>
+                        <p>Planejamos e executamos campanhas estratégicas focadas em atrair tráfego qualificado e transformar cliques em oportunidades reais de negócio.</p>
                                 <ul style="color: rgba(255,255,255,0.7); margin-top: 15px; padding-left: 20px;">
-                            <li>Google Ads</li>
-                            <li>Facebook & Instagram Ads</li>
-                            <li>SEO & SEM</li>
-                            <li>Analytics & Relatórios</li>
+                            <li>Google Ads otimizado</li>
+                            <li>Meta Ads focado em conversão</li>
+                            <li>SEO &amp; SEM</li>
+                            <li>Analytics e relatórios de performance</li>
                         </ul>
                     </div>
                             <div class="circles-wrap">
@@ -1493,13 +1564,13 @@
                                 <i class="fal fa-microchip"></i>
                     </div>
                             <div class="service-text">
-                                <h4>Dashboards & Automação</h4>
-                        <p>Painéis inteligentes e automações que otimizam processos e facilitam a tomada de decisões.</p>
+                                <h4>Dashboards &amp; Automação</h4>
+                        <p>Implementamos sistemas inteligentes de automação e painéis personalizados que otimizam processos e facilitam a tomada de decisões com base em dados.</p>
                                 <ul style="color: rgba(255,255,255,0.7); margin-top: 15px; padding-left: 20px;">
-                            <li>Dashboards Personalizados</li>
-                            <li>Automação de Marketing</li>
-                            <li>Integração de Sistemas</li>
-                            <li>Relatórios Automatizados</li>
+                            <li>Dashboards personalizados</li>
+                            <li>Automação de marketing</li>
+                            <li>Integração com CRM</li>
+                            <li>Relatórios automatizados</li>
                         </ul>
                     </div>
                             <div class="circles-wrap">
@@ -1516,91 +1587,7 @@
                         </div>
                     </div>
                 
-        <!-- TESTIMONIALS AREA -->
-        <div class="pricing-area pricing-area1 section-padding">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-6 align-self-center">
-                        <div class="heading white">
-                            <strong class="filltext">depoimentos</strong>
-                            <small>FEEDBACK DOS CLIENTES</small>
-                            <h2>O que nossos <span>clientes</span> dizem</h2>
-                    </div>
-                </div>
-                    <div class="col-lg-6 align-self-center">
-                        <div class="info-content">
-                            <p>A satisfação dos nossos clientes é o nosso maior orgulho</p>
-                    </div>
-                        </div>
-                        </div>
-                <div class="space-60"></div>
-                <div class="row">
-                    <div class="col-lg-4 mb-4">
-                        <div class="single-service">
-                            <div class="service-icon">
-                                <i class="fas fa-quote-left" style="font-size: 30px; color: #6E18BE;"></i>
-                    </div>
-                            <div class="service-text">
-                                <p style="font-style: italic;">"A WebRoad transformou completamente nossa presença digital. O resultado superou todas as expectativas!"</p>
-                                <div class="space-20"></div>
-                                <h5 style="color: #6E18BE;">Maria Silva</h5>
-                                <small>CEO, TechStart</small>
-                </div>
-                            <div class="circles-wrap">
-                                <div class="circles">
-                                    <span class="circle circle-1"></span>
-                                    <span class="circle circle-2"></span>
-                                    <span class="circle circle-3"></span>
-                                    <span class="circle circle-4"></span>
-                    </div>
-                        </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 mb-4">
-                        <div class="single-service active">
-                            <div class="service-icon">
-                                <i class="fas fa-quote-left" style="font-size: 30px;"></i>
-                </div>
-                            <div class="service-text">
-                                <p style="font-style: italic;">"Profissionalismo e qualidade excepcionais. Nossa loja virtual aumentou 250% as vendas em 6 meses."</p>
-                                <div class="space-20"></div>
-                                <h5>João Santos</h5>
-                                <small>Diretor, Fashion Store</small>
-            </div>
-                            <div class="circles-wrap">
-                                <div class="circles">
-                                    <span class="circle circle-1"></span>
-                                    <span class="circle circle-2"></span>
-                                    <span class="circle circle-3"></span>
-                                    <span class="circle circle-4"></span>
-        </div>
-                </div>
-            </div>
-        </div>
-                    <div class="col-lg-4 mb-4">
-                        <div class="single-service">
-                            <div class="service-icon">
-                                <i class="fas fa-quote-left" style="font-size: 30px; color: #6E18BE;"></i>
-            </div>
-                            <div class="service-text">
-                                <p style="font-style: italic;">"Equipe dedicada e resultados incríveis. Recomendo a WebRoad para qualquer projeto digital."</p>
-                                <div class="space-20"></div>
-                                <h5 style="color: #6E18BE;">Ana Costa</h5>
-                                <small>Fundadora, EduTech</small>
-        </div>
-                            <div class="circles-wrap">
-                                <div class="circles">
-                                    <span class="circle circle-1"></span>
-                                    <span class="circle circle-2"></span>
-                                    <span class="circle circle-3"></span>
-                                    <span class="circle circle-4"></span>
-        </div>
-    </div>
-                            </div>
-                        </div>
-                            </div>
-                        </div>
-                            </div>
+        <!-- Depoimentos: seção removida temporariamente -->
 
         <!-- CTA AREA -->
         <div class="cta-area cta-area1 padding-top" id="contact">
@@ -1608,10 +1595,11 @@
                 <div class="row">
                     <div class="col-lg-6 m-auto text-center">
                         <div class="heading cta-heading white">
-                            <small>Entre em Contato</small>
+                            <small>Contato</small>
                             <div class="space-20"></div>
-                            <h2>Pronto para elevar sua marca ao <span>próximo nível?</span></h2>
-                            <p style="margin-top: 20px;">Vamos conversar sobre como podemos transformar suas ideias em realidade digital.</p>
+                            <h2>Entre em Contato</h2>
+                            <p class="cta-contact-subtitle">Pronto para transformar sua presença digital em mais leads e vendas?</p>
+                            <p style="margin-top: 20px;">Vamos conversar sobre como estruturar estratégias digitais que atraiam novos clientes, gerem oportunidades reais e impulsionem o crescimento do seu negócio.</p>
                         </div>
                         <div class="space-40"></div>
                         <a href="https://wa.me/5511971534673" target="_blank" class="cbtn cbnt1 fadeInDown animated">Fale conosco no Whatsapp <i class="fab fa-whatsapp"></i></a>
@@ -1723,9 +1711,6 @@
                 <!-- src definido só ao abrir; allow/referrerpolicy iguais ao código de incorporação do YouTube -->
                 <iframe id="wr-yt-frame" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
             </div>
-            <p class="wr-yt-lightbox__foot">
-                <a id="wr-yt-watch" href="https://www.youtube.com/watch?v=Rl2G52RCEr0" target="_blank" rel="noopener noreferrer">Abrir no YouTube</a>
-            </p>
         </div>
     </dialog>
 
@@ -1755,14 +1740,10 @@
                 var btn = document.getElementById('wr-yt-open');
                 var dlg = document.getElementById('wr-yt-dialog');
                 var frame = document.getElementById('wr-yt-frame');
-                var watchA = document.getElementById('wr-yt-watch');
                 if (!btn || !dlg || !frame) return;
 
                 var id = (btn.getAttribute('data-youtube-id') || '').trim();
                 if (!id) return;
-
-                var watch = 'https://www.youtube.com/watch?v=' + encodeURIComponent(id);
-                if (watchA) watchA.href = watch;
 
                 function embedUrl(v) {
                     var p = 'autoplay=1&rel=0&modestbranding=1&playsinline=1';
