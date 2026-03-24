@@ -380,6 +380,13 @@
             font-size: 16px;
             margin: 0;
         }
+
+        /* Stats (Sobre): colunas empilhadas no mobile com respiro entre os cards */
+        @media (max-width: 767.98px) {
+            .about-area .row > .col-md-4:not(:last-child) {
+                margin-bottom: 20px;
+            }
+        }
         
         .team-member-card {
             background: rgba(255,255,255,0.03);
@@ -672,6 +679,45 @@
             align-items: center;
         }
 
+        /* Mobile / tablet: GIF acima do headline + sem “vazio” enorme no topo */
+        @media (max-width: 991.98px) {
+            #home.welcome-area-wrap {
+                min-height: 0 !important;
+            }
+
+            .single-welcome-area.home_1 {
+                align-items: flex-start !important;
+                justify-content: flex-start !important;
+                height: auto !important;
+                min-height: 0 !important;
+                padding-top: 24px !important;
+                padding-bottom: 52px !important;
+            }
+
+            .hero-content-row {
+                flex-direction: column-reverse;
+                align-items: flex-start;
+                justify-content: flex-start;
+            }
+
+            .hero-content-row > [class*="col-"] {
+                max-width: 100%;
+            }
+
+            .hero-animation-col {
+                margin-top: 0 !important;
+                margin-bottom: 32px !important;
+                justify-content: flex-start !important;
+                width: 100%;
+            }
+
+            .single-welcome-area.home_1 .wlc-title,
+            .single-welcome-area.home_1 .wlc-title h1,
+            .single-welcome-area.home_1 .wlc-title p {
+                text-align: left !important;
+            }
+        }
+
         .hero-animation-col {
             display: flex;
             justify-content: center;
@@ -917,6 +963,11 @@
             margin: 12px 0 0;
             letter-spacing: normal;
         }
+
+        /* Contato: classe .padding-top do tema = 120px; aqui fica 0 */
+        #contact.cta-area.cta-area1.padding-top {
+            padding-top: 0 !important;
+        }
         
         .heading strong.filltext {
             -webkit-text-stroke: 1px #6E18BE !important;
@@ -1131,15 +1182,16 @@
                 padding: 60px 0 !important;
             }
 
-            /* Hero com animação: altura fixa quebrava o layout */
             .single-welcome-area.home_1 {
                 height: auto !important;
-                min-height: 460px !important;
-                padding: 52px 0 64px !important;
+                min-height: 0 !important;
+                padding-top: 20px !important;
+                padding-bottom: 48px !important;
+                text-align: left !important;
             }
             
             .welcome-area-wrap {
-                min-height: 360px !important;
+                min-height: 0 !important;
             }
             
             .wlc-title {
@@ -1166,12 +1218,13 @@
             }
 
             .hero-animation-col {
-                justify-content: flex-start;
-                margin-top: 20px;
+                justify-content: flex-start !important;
             }
 
             .hero-gif-wrapper img {
-                max-width: min(100%, 400px);
+                width: 150px !important;
+                max-width: 150px !important;
+                height: auto;
                 filter: drop-shadow(0 8px 28px rgba(0, 0, 0, 0.3));
             }
             
